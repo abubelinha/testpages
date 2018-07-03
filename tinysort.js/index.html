@@ -6,7 +6,17 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script>
-
+<script type="text/javascript">
+function sortCodes(a,b) {
+  var sa=a.elm.textContent.toString();
+  var sb=b.elm.textContent.toString();
+  return sa===sb ? 0 : (sa>sb?1:-1);
+  /* var lenA = a.elm.textContent.length;
+  var lenB = b.elm.textContent.length;
+  return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
+  */
+}
+</script>
 <style>
 .code {color:red; font-weight:bold;}
 #messages {background-color:yellow; color:red; font-weight:bold;}
@@ -18,7 +28,7 @@
 
 <button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
 
-<button onclick='tinysort("div#mylist>ol>li","[class=person]",{natural:true}); document.getElementById("messages").innerHTML="";'>person</button>
+<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,forceStrings:true}); document.getElementById("messages").innerHTML="";'>person</button>
 
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
 
@@ -34,5 +44,13 @@
 <span class="code">Product.1-11</span></li>
 <li><b><i><span class="name">Coffee</span></i></b>. <span class="place">Brasil. São Paulo.</span><br><span class="person">João Vieira</span> <span class="date">(2017.06.04)</span>
 <span class="code">Product.1-1</span></li>
+<li><b><i><span class="name">cafeína</span></i></b>. <span class="place">Brasil. Salvador da Bahia.</span><br><span class="person">Sánchez Dragão</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.21</span></li>
+<li><b><i><span class="name">café</span></i></b>. <span class="place">Brasil. São Paulo.</span><br><span class="person">Saúl Craviotto</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.10</span></li>
+<li><b><i><span class="name">cafeteiras</span></i></b>. <span class="place">Brasil. Santa Catarina.</span><br><span class="person">Sandra Lopes</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.01</span></li>
+<li><b><i><span class="name">cafetinhos</span></i></b>. <span class="place">Brasil. Santos.</span><br><span class="person">Sàcha Yamamoto</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.1</span></li>
 </ol>
 </div>
