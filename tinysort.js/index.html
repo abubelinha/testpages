@@ -18,6 +18,11 @@ function sortCodes(a,b) {
   return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
   */
 }
+function sortByLength(a,b) {
+  var lenA = a.elm.textContent.length;
+  var lenB = b.elm.textContent.length;
+  return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
+}  
 </script>
 <style>
 .code {color:red; font-weight:bold;}
@@ -25,14 +30,11 @@ function sortCodes(a,b) {
 </style>
 
 <button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.code&quot;,forceStrings:true});'>code</button>
-
 <button onclick='tinysort("div#mylist>ol>li","[class=name]",{natural:true}); document.getElementById("messages").innerHTML="";'>product name</button>
-
 <button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
-
 <button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:myCharOrder}); document.getElementById("messages").innerHTML="";'>person</button>
-
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
+<button onclick='tinysort("div#mylist>ol>li",{sortFunction:sortByLength}); document.getElementById("messages").innerHTML="";'>by length</button>
 
 <p>
 <div id="messages"></div>
