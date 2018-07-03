@@ -1,0 +1,33 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script>
+
+<style>
+.code {color:red; font-weight:bold;}
+#messages {background-color:yellow; color:red; font-weight:bold;}
+</style>
+
+<button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li","[class=code]",{forceStrings:true}); document.getElementById("messages").innerHTML="Why does this sort in reversed order?";'>code</button>
+
+<button onclick='tinysort("div#mylist>ol>li","[class=name]",{natural:true}); document.getElementById("messages").innerHTML="";'>product name</button>
+
+<button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
+
+<button onclick='tinysort("div#mylist>ol>li","[class=person]",{natural:true}); document.getElementById("messages").innerHTML="";'>person</button>
+
+<button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
+
+<p>
+<div id="messages"></div>
+<div id="mylist">
+<ol>
+<li><b><i><span class="name">Pop corn</span></i></b>. <span class="place">USA. New York</span><br><span class="person">Donald Duck</span> <span class="date">(2018.05.11)</span>
+<span class="code">Product.1-2</span></li>
+<li><b><i><span class="name">Croissant</span></i></b>. <span class="place">France. Paris.</span><br><span class="person">Amelie Dupont</span> <span class="date">(2017.05.23)</span>
+<span class="code">Product.1.0</span></li>
+<li><b><i><span class="name">Beer</span></i></b>. <span class="place">Deutschland. Berlin.</span><br><span class="person">Karl Heinz</span> <span class="date">(2017.05.24)</span>
+<span class="code">Product.1-11</span></li>
+<li><b><i><span class="name">Coffee</span></i></b>. <span class="place">Brasil. São Paulo.</span><br><span class="person">João Vieira</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1-1</span></li>
+</ol>
+</div>
