@@ -7,6 +7,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script>
 <script type="text/javascript">
+var myCharOrder='a[áàäâãå]e[éèëê]i[íìïî]o[óòöôõ]u[úùüû]c';
 function sortCodes(a,b) {
   var sa=a.elm.textContent.toString();
   var sb=b.elm.textContent.toString();
@@ -28,7 +29,7 @@ function sortCodes(a,b) {
 
 <button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
 
-<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,forceStrings:true}); document.getElementById("messages").innerHTML="";'>person</button>
+<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charorder:myCharOrder}); document.getElementById("messages").innerHTML="";'>person</button>
 
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
 
