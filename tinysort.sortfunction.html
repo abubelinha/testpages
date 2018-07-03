@@ -1,3 +1,4 @@
+<div id="content">
 Finally I could sort my codes as non-numeric stuff:
 <ul id="xcst">
   <li>mycode.1-8</li>
@@ -9,6 +10,9 @@ Finally I could sort my codes as non-numeric stuff:
   <li>mycode.1.0</li>
   <li>mycode.1-1</li>
 </ul>
+</div>
+<div id=messages style="background-color:red;">
+</div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script>
 <script type=text/javascript>
@@ -23,4 +27,5 @@ function sortCodes(a,b) {
 tinysort('ul#xcst>li', {
   sortFunction: sortCodes
 });
+document.getElementById("messages").innerHTML="script finished!";
 </script>
