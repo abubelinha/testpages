@@ -13,12 +13,12 @@ Finally I could sort my codes as non-numeric stuff:
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script>
 <script type=text/javascript>
 function sortCodes(a,b) {
-    var lenA = a.elm.textContent.length,
-      lenB = b.elm.textContent.length;
-      var sa=a.elm.textContent.toString();
-      var sb=b.elm.textContent.toString();
-      return sa===sb ? 0 : (sa>sb?1:-1);
-   // return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
+  var sa=a.elm.textContent.toString();
+  var sb=b.elm.textContent.toString();
+  return sa===sb ? 0 : (sa>sb?1:-1);
+  // var lenA = a.elm.textContent.length,
+  // var lenB = b.elm.textContent.length;
+  // return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
 }
 tinysort('ul#xcst>li', {
   sortFunction: sortCodes
