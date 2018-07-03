@@ -1,0 +1,24 @@
+Finally I could sort my codes as non-numeric stuff:
+<ul id="xcst">
+  <li>mycode.1-8</li>
+  <li>mycode.1.3</li>
+  <li>mycode.1-5</li>
+  <li>mycode.2.2</li>
+  <li>mycode.2-1</li>
+  <li>mycode.2.0</li>
+  <li>mycode.1.0</li>
+  <li>mycode.1-1</li>
+</ul>
+<script type=text/javascript>
+function sortCodes(a,b) {
+    var lenA = a.elm.textContent.length,
+      lenB = b.elm.textContent.length;
+      var sa=a.elm.textContent.toString();
+      var sb=b.elm.textContent.toString();
+      return sa===sb ? 0 : (sa>sb?1:-1);
+   // return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
+}
+tinysort('ul#xcst>li', {
+  sortFunction: sortCodes
+});
+</script>
