@@ -1,6 +1,7 @@
 <h1><a href=http://tinysort.sjeiti.com/>TinySort homepage</a> and <a href=https://github.com/Sjeiti/TinySort/issues>GitHub page</a></h1>
 
 <li><a href=https://www.w3schools.com/cssref/css_selectors.asp>CSS selectors reference</a></li>
+<li><a href=https://github.com/Sjeiti/TinySort/issues/125#issuecomment-244302431>how to unsort</a>? ... <a href=https://jsfiddle.net/Sjeiti/66tgnwzg/>jsfiddle demo</a>
 <hr>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
@@ -11,7 +12,7 @@
 #messages {background-color:yellow; color:red; font-weight:bold;}
 </style>
 
-<button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li","[class=code]",{forceStrings:true}); document.getElementById("messages").innerHTML="Why does this sort in reversed order?";'>code</button>
+<button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li",{selector:'span.code',forceStrings:true}); document.getElementById("messages").innerHTML="Why does this sort in reversed order?";'>code</button>
 
 <button onclick='tinysort("div#mylist>ol>li","[class=name]",{natural:true}); document.getElementById("messages").innerHTML="";'>product name</button>
 
