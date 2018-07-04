@@ -13,12 +13,11 @@ function sortCodes(a,b) {
   var sa=a.elm.textContent.toString();
   var sb=b.elm.textContent.toString();
   return sa===sb ? 0 : (sa>sb?1:-1);
-  /* var lenA = a.elm.textContent.length;
-  var lenB = b.elm.textContent.length;
-  return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
-  */
 }
-function sortByLength(a,b) {
+function sortByLength(a,b) { /*
+  Taken from here:    https://jsfiddle.net/Sjeiti/wkcayhq7/
+  And commented here: https://github.com/Sjeiti/TinySort/issues/132#issuecomment-307611044
+  */
   var lenA = a.elm.textContent.length;
   var lenB = b.elm.textContent.length;
   return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
