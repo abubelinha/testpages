@@ -64,7 +64,7 @@ console.log(asql);
   	rollo+=" <a target=_blank href="+item.checklistdoi+">" +item.checklistname+"</a>";
     rollo+="</li>";
   });
-  document.getElementById('results').innerHTML =  rollo +"<hr>" + JSON.stringify(asql) + "<hr>" + JSON.stringify(jsondata);	
+  document.getElementById('results').innerHTML =  rollo +"<hr>" + JSON.stringify(asql) + "<hr>" + JSON.stringify(jsondata);
 
 }
 function verCL(checklistId) {
@@ -72,6 +72,29 @@ function verCL(checklistId) {
   var jsondata=getjsondata(url);
 	console.log("LISTA: " + JSON.stringify(jsondata));
   return({"title":jsondata.title, "doi":"http://dx.doi.org/"+jsondata.doi});
+}
+function getTaxonId() {
+	var arrnomes=document.getElementById('string').value.split(',');
+	var ids=[], urlsant='https://www.gbif.org/occurrence/charts?catalog_number=1,75000&dataset_key=1c334170-7ed1-11df-8c4a-0800200c9a66';
+	var querystring='';
+	var fallos=[];
+	var rollo="";
+	arrnomes.forEach(function(nome,n) {
+		var url = 'https://api.gbif.org/v1/species?name=' + encodeURI(nome);
+		url = 'https://api.gbif.org/v1/species/match?verbose=false&kingdom=Plantae&strict=true&name=' + encodeURI(nome);
+		var jsondata=getjsondata(url);
+		if(jsondata.matchType=='EXACT') {
+		//ids.push(jsondata.usageKey);
+		ids.push(jsondata.acceptedUsageKey);
+		rollo+='<li>'+n+' - <a target=_blank href="'+url+'">'+nome+'</a></li>';
+		urlsant+="&taxon_key="+jsondata.usageKey;
+		} else {
+			fallos.push(jsondata);
+		}
+	});
+	document.getElementById('results').innerHTML =  rollo +"<hr>"+"<a target=_blank href='"+urlsant+"'>"+urlsant+"</a>";
+	console.log(fallos);
+	document.getElementById('results').innerHTML += JSON.stringify(fallos);
 }
 //listaxeneros();
 $('#opcion').click( function() {
