@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Leaflet UTM Demo</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.js" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.js"></script>
 
     <style type="text/css">
 		body {/*height:100%; position:fixed;*/ /* prevent overscroll bounce*/
@@ -21,7 +21,7 @@
 		#menu {border: 1px dashed blue; width:85%; height:50%;}
         form { margin: 2px; }
         .btn { margin: 2px; }
-        #center { margin: 2px; }
+        #consola { margin: 2px; }
 
         .crosshairs:before, .crosshairs:after {
           content: '';
@@ -66,14 +66,14 @@
 </div>
     <div id="map" class="crosshairs"></div>
     <!--div id="overlay" style="position:absolute; top:0px; left:100px; background-color:white; width:100px; height:100px; z-index: 400"> My Test</div-->
-    <div id="center"></div>
+    <div id="consola"></div>
 
     <script src="./basemap.js"></script>
     <script src="./L.LatLng.UTM.js"></script>
 
     <script type="text/javascript">
 	function consolar(rollo) {
-		var panel=document.getElementById("center");
+		var panel=document.getElementById("consola");
 		panel.innerHTML=rollo;
 	}
 	/* // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
@@ -159,7 +159,7 @@
 
         map.on('move', function(e) {
             var c = map.getCenter();
-            document.getElementById('center').innerHTML = c + '<br>UTM: ' + c.utm();
+            document.getElementById('consola').innerHTML = c + '<br>UTM: ' + c.utm();
         });
         map.fire('move');
     </script>
