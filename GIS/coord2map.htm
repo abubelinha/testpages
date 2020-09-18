@@ -154,7 +154,7 @@
 		}
 		map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
-		map.locate({setView: true, maxZoom: 16, maximumAge: 10000});
+		map.locate({setView: true, maxZoom: 16, timeout: 10000});
        // toUTMBtn();
 
         map.on('move', function(e) {
