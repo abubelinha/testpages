@@ -65,13 +65,17 @@
     </form>
 </div>
     <div id="map" class="crosshairs"></div>
-
+    <!--div id="overlay" style="position:absolute; top:0px; left:100px; background-color:white; width:100px; height:100px; z-index: 400"> My Test</div-->
     <div id="center"></div>
 
     <script src="./basemap.js"></script>
     <script src="./L.LatLng.UTM.js"></script>
 
     <script type="text/javascript">
+	function consolar(rollo) {
+		var panel=document.getElementById("center");
+		panel.innerHTML=rollo;
+	}
 	/* // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 	// We listen to the resize event
 	window.addEventListener('resize', () => {
@@ -130,13 +134,10 @@
 		basemap(latit, lonxit, 12, "map");
         //var map = L.map('map', {layers: [osm], center: [latit,lonxit], zoom: 10});
         var marker = new L.Marker([latit, lonxit]).addTo(map);
-		function onLocationError(e) {
-			alert("location not found:"+e.message);
-		}
 		function onLocationFound(e) {
 			var radius = e.accuracy;
 			var posicion = new L.Circle(e.latlng, radius);
-			alert("location found: "+JSON.stringify(e.latlng));
+			consolar("location found: "+JSON.stringify(e.latlng));
 			posicion.addTo(map).bindPopup("Your are within " + radius + " meters from the center of this circle");
 			var utm = e.latlng.utm();
 			marker.setLatLng(e.latlng).bindPopup(utm + '<br>' + utm.latLng());//.openPopup();
@@ -147,6 +148,9 @@
 			el2.zone.value = utm.zone;
 			el2.band.value = utm.band;
 			el2.southHemi.value = utm.southHemi;
+		}
+		function onLocationError(e) {
+			consolar("location not found:"+e.message);
 		}
 		map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
