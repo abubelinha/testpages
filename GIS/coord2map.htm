@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leaflet UTM Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet-src.js"></script>
+
+    <style type="text/css">
+		body {/*height:100%; position:fixed;*/ /* prevent overscroll bounce*/
+		/* https://css-tricks.com/the-trick-to-viewport-units-on-mobile/: */
+		/* Fallback for browsers that do not support Custom Properties: */ /*height: 100vh; */
+		/* height: calc(var(--vh, 1vh) * 100); */
+		
+		}
+        html { font-family: Helvetica, Verdana, Arial, sans-serif; }
+        #map { width: 95%; height: 250px; margin: 2px; }
+		#menu {border: 1px dashed blue; width:85%; height:50%;}
+        form { margin: 2px; }
+        .btn { margin: 2px; }
+        #center { margin: 2px; }
+
+        .crosshairs:before, .crosshairs:after {
+          content: '';
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          z-index: 999;
+          pointer-events: none;
+        }
+        .crosshairs:before {
+          bottom: 50%;
+          left: 50%;
+          transform: translate(-50%, 0);
+          border-bottom: 1px #000 solid;
+        }
+        .crosshairs:after {
+          right: 50%;
+          top: 50%;
+          transform: translate(0, -50%);
+          border-right: 1px #000 solid;
+        }
+    </style>
+</head>
+
+<body>
+<div id=formulario class="menu">
+    <form id="frm1" action="">
+      Lat.:<input type="text" name="lat" value="0" size="6">
+      Lon.:<input type="text" name="lng" value="0" size="6">
+      <span class="btn"><input type="button" onclick="toUTMBtn()" value="to UTM"></span>
+      UTM: <span id="result1"></span>
+    </form>
+    <form id="frm2" action="">
+      X:<input type="text" name="x" value="600000" size="6" title="UTM Easting (500000 m = center meridian of UTM zone)">
+      Y:<input type="text" name="y" value="4700000" size="7" title="UTM Northing (0-10 million m)">
+      z:<input type="text" name="zone" value="29" size="2" maxlength="2" title="UTM longitudinal zone (1-60 from West to East)">
+      b:<input type="text" name="band" value="T" size="1" maxlength="2" title="UTM latitudinal band (C-X from South to North)">
+      (southHemi: <input type="text" name="southHemi" value="" size="1" maxlength="5" title="used only if band is empty">)
+      <span class="btn"><input type="button" onclick="toLatLngBtn()" value="to LL"></span>
+      <span id="result2"></span>
+    </form>
+</div>
+    <div id="map" class="crosshairs"></div>
+
+    <div id="center"></div>
+
+    <script src="./basemap.js"></script>
+    <script src="./L.LatLng.UTM.js"></script>
+
+    <script type="text/javascript">
+	/* // https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+	// We listen to the resize event
+	window.addEventListener('resize', () => {
+	  // We execute the same script as before
+	  let vh = window.innerHeight * 0.01;
+	  document.documentElement.style.setProperty('--vh', `${vh}px`);
+	});*/
+
+        var el1 = document.forms.frm1.elements;
+        var el2 = document.forms.frm2.elements;
+
+        function toUTMBtn() {
+            document.getElementById('result1').innerHTML = '---';
+            var ll = L.latLng(el1.lat.value, el1.lng.value);
+            var utm = ll.utm();
+            marker.setLatLng(ll).bindPopup(utm + '<br>' + ll);//.openPopup();
+            el2.x.value = utm.x.toFixed(1);
+            el2.y.value = utm.y.toFixed(1);
+            el2.zone.value = utm.zone;
+            el2.band.value = utm.band;
+            el2.southHemi.value = utm.southHemi;
+            document.getElementById('result1').innerHTML = '' + utm;
+        }
+
+        function toLatLngBtn() {
+            document.getElementById('result2').innerHTML = '---';
+            var sh = el2.southHemi.value.toLowerCase();
+            var southHemi = ['true', 'y', 'yes', '1'].indexOf(sh) > -1 ? true : false;
+            var utm = L.utm(el2.x.value, el2.y.value, el2.zone.value, el2.band.value, southHemi);
+            var ll = utm.latLng();
+            if (ll) {
+                marker.setLatLng(ll).bindPopup(utm + '<br>' + ll);//.openPopup();
+				map.setView(ll);
+                el1.lat.value = ll.lat.toFixed(6);
+                el1.lng.value = ll.lng.toFixed(6);
+                document.getElementById('result2').innerHTML = '' + ll;
+            }
+        }
+
+        var options = {
+            attribution:
+                '<a href="https://openstreetmap.org/copyright"</a> &copy; ' +
+                'OpenStreetmap Contributors',
+            subdomains: 'abc',
+            minZoom: 0,
+            maxZoom: 19
+        };
+
+        var osm = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', options);
+		var latit=42.5, lonxit=-8.0;
+		basemap(42.682435, -8.179344, 12, "map");
+        //var map = L.map('map', {layers: [osm], center: [latit,lonxit], zoom: 10});
+        var marker = new L.Marker([latit, lonxit]).addTo(map);
+       // toUTMBtn();
+
+        map.on('move', function(e) {
+            var c = map.getCenter();
+            document.getElementById('center').innerHTML = c + '<br>UTM: ' + c.utm();
+        });
+        map.fire('move');
+    </script>
+</body>
+</html>
