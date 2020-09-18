@@ -16,7 +16,8 @@
 		
 		}
         html { font-family: Helvetica, Verdana, Arial, sans-serif; }
-        #map { width: 95%; height: 250px; margin: 2px; }
+        /* #map { width: 95%; height: 250px; margin: 2px; } */
+		#map {height: 75vh; width: 100vw;}
 		#menu {border: 1px dashed blue; width:85%; height:50%;}
         form { margin: 2px; }
         .btn { margin: 2px; }
@@ -51,7 +52,7 @@
       Lat.:<input type="text" name="lat" value="0" size="6">
       Lon.:<input type="text" name="lng" value="0" size="6">
       <span class="btn"><input type="button" onclick="toUTMBtn()" value="to UTM"></span>
-      UTM: <span id="result1"></span>
+      <span id="result1"></span>
     </form>
     <form id="frm2" action="">
       X:<input type="text" name="x" value="600000" size="6" title="UTM Easting (500000 m = center meridian of UTM zone)">
@@ -131,11 +132,12 @@
         var marker = new L.Marker([latit, lonxit]).addTo(map);
 		map.locate({setView: true, maxZoom: 16});
 		function onLocationError(e) {
-			
+			alert("location not found:"+e.message);
 		}
 		function onLocationFound(e) {
 			var radius = e.accuracy;
 			var posicion = new L.Circle(e.latlng, radius);
+			alert("location found: "+JSON.stringify(e.latlng));
 			posicion.addTo(map).bindPopup("Your are within " + radius + " meters from the center of this circle");
 			var utm = e.latlng.utm();
 			marker.setLatLng(e.latlng).bindPopup(utm + '<br>' + utm.latLng());//.openPopup();
