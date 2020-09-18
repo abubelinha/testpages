@@ -79,6 +79,7 @@
 	  document.documentElement.style.setProperty('--vh', `${vh}px`);
 	});*/
 
+
         var el1 = document.forms.frm1.elements;
         var el2 = document.forms.frm2.elements;
 
@@ -123,7 +124,8 @@
 		var latit=42.5, lonxit=-8.0;
 		basemap(42.682435, -8.179344, 12, "map");
         //var map = L.map('map', {layers: [osm], center: [latit,lonxit], zoom: 10});
-        var marker = new L.Marker([latit, lonxit]).addTo(map);
+		map.locate({setView: true, maxZoom: 16});
+        //var marker = new L.Marker([latit, lonxit]).addTo(map);
        // toUTMBtn();
 
         map.on('move', function(e) {
