@@ -130,7 +130,7 @@
 		basemap(latit, lonxit, 12, "map");
         //var map = L.map('map', {layers: [osm], center: [latit,lonxit], zoom: 10});
         var marker = new L.Marker([latit, lonxit]).addTo(map);
-		map.locate({setView: true, maxZoom: 16});
+		map.locate({setView: true, maxZoom: 16, maximumAge: 10000});
 		function onLocationError(e) {
 			alert("location not found:"+e.message);
 		}
