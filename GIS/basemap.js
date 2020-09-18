@@ -10,7 +10,7 @@ function basemap(lat=42.682435, lon=-8.179344,zoom=14,div="divmap") {// BASE MAP
 	var ocmUrl = 'http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=your_api_key',
 		ocmAttribution = "",
 		ocm = new L.TileLayer(ocmUrl, {/*minZoom: 14,*/ maxZoom: 18, attribution: ocmAttribution});
-	//map.addLayer(ocm);
+	//map.addLayer(ocm); 
 
 	var WMSs = {
 	"pnoa":{"wms":"http://www.ign.es/wms-inspire/pnoa-ma","layers":"pnoa","formats":"image/jpeg","attribution":"PNOA"},
