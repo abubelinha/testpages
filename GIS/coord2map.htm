@@ -139,6 +139,13 @@
 			posicion.addTo(map).bindPopup("Your are within " + radius + " meters from the center of this circle");
 			var utm = e.latlng.utm();
 			marker.setLatLng(e.latlng).bindPopup(utm + '<br>' + utm.latLng());//.openPopup();
+			el1.lat.value = e.latlng.lat.toFixed(6);
+			el1.lng.value = e.latlng.lng.toFixed(6);
+			el2.x.value = utm.x.toFixed(1);
+			el2.y.value = utm.y.toFixed(1);
+			el2.zone.value = utm.zone;
+			el2.band.value = utm.band;
+			el2.southHemi.value = utm.southHemi;
 		}
 		map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
