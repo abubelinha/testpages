@@ -79,7 +79,6 @@
 	  document.documentElement.style.setProperty('--vh', `${vh}px`);
 	});*/
 
-
         var el1 = document.forms.frm1.elements;
         var el2 = document.forms.frm2.elements;
 
@@ -88,6 +87,7 @@
             var ll = L.latLng(el1.lat.value, el1.lng.value);
             var utm = ll.utm();
             marker.setLatLng(ll).bindPopup(utm + '<br>' + ll);//.openPopup();
+				map.setView(ll);
             el2.x.value = utm.x.toFixed(1);
             el2.y.value = utm.y.toFixed(1);
             el2.zone.value = utm.zone;
@@ -122,10 +122,26 @@
 
         var osm = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', options);
 		var latit=42.5, lonxit=-8.0;
-		basemap(42.682435, -8.179344, 12, "map");
+		latit = 42.682435; lonxit = -8.179344;
+		latit = 42.8489; lonxit = -7.999732;
+		el1.lat.value = latit;
+		el1.lng.value = lonxit;
+		basemap(latit, lonxit, 12, "map");
         //var map = L.map('map', {layers: [osm], center: [latit,lonxit], zoom: 10});
+        var marker = new L.Marker([latit, lonxit]).addTo(map);
 		map.locate({setView: true, maxZoom: 16});
-        //var marker = new L.Marker([latit, lonxit]).addTo(map);
+		function onLocationError(e) {
+			
+		}
+		function onLocationFound(e) {
+			var radius = e.accuracy;
+			var posicion = new L.Circle(e.latlng, radius);
+			posicion.addTo(map).bindPopup("Your are within " + radius + " meters from the center of this circle");
+			var utm = e.latlng.utm();
+			marker.setLatLng(e.latlng).bindPopup(utm + '<br>' + utm.latLng());//.openPopup();
+		}
+		map.on('locationfound', onLocationFound);
+		map.on('locationerror', onLocationError);
        // toUTMBtn();
 
         map.on('move', function(e) {
