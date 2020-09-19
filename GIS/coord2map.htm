@@ -124,11 +124,31 @@
             minZoom: 0,
             maxZoom: 19
         };
-
+		function checkparams() {
+			/* Comprobar se ao script se lle pasaron unhas coordenadas ou zoom concretos:
+				https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
+				https://gomakethings.com/getting-all-query-string-values-from-a-url-with-vanilla-js/
+				https://davidwalsh.name/query-string-javascript
+			*/
+			var url = new URL(window.location.href);
+			var q = url.searchParams;
+			if(q.toLocaleString().length > 0) {
+				if(typeof q.get("lat") !== 'undefined') if(q.get("lat") !== null) latit = parseFloat(q.get("lat"));
+				if(typeof q.get("lon") !== 'undefined') if(q.get("lon") !== null) lonxit = parseFloat(q.get("lon"));
+				var retorno = true;
+			} else {
+				var retorno = false;
+			}
+			return retorno;
+		}
         var osm = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', options);
 		var latit=42.5, lonxit=-8.0;
 		latit = 42.682435; lonxit = -8.179344;
-		latit = 42.8489; lonxit = -7.999732;
+		latit = 42.8489; lonxit = -7.999732; // punto triple C-Lu-Po
+		// centro xeografico GZ IGN: 42.756984, -7.910827 https://www.lavozdegalicia.es/noticia/lugo/antas-de-ulla/2019/12/21/centro-geografico-galicia-calculado-algoritmo/0003_201912D21C3993.htm
+		/* punto intermedio E-W / N-S  (non centroide): X=475443+(686710-475443)/2=581076.5 ; Y=4628890+(4849612-4628890)/2=4739251
+		   UTM: 581076.5, 4739251.0, 29T, WGS84 ; LatLng(42.80152, -8.008488) */
+		checkparams();
 		el1.lat.value = latit;
 		el1.lng.value = lonxit;
 		basemap(latit, lonxit, 12, "map");
@@ -154,7 +174,7 @@
 		}
 		map.on('locationfound', onLocationFound);
 		map.on('locationerror', onLocationError);
-		map.locate({setView: true, maxZoom: 16, timeout: 10000});
+		if(! checkparams() ) map.locate({setView: true, maxZoom: 16, timeout: 10000, maximumAge: 10000});
        // toUTMBtn();
 
         map.on('move', function(e) {
