@@ -124,7 +124,7 @@
             minZoom: 0,
             maxZoom: 19
         };
-		function checkparams() {
+		function checkparams_modernBrowsers() {
 			/* Comprobar se ao script se lle pasaron unhas coordenadas ou zoom concretos:
 				https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
 				https://gomakethings.com/getting-all-query-string-values-from-a-url-with-vanilla-js/
@@ -132,6 +132,27 @@
 			*/
 			var url = new URL(window.location.href);
 			var q = url.searchParams;
+			if(q.toLocaleString().length > 0) {
+				if(typeof q.get("lat") !== 'undefined') if(q.get("lat") !== null) latit = parseFloat(q.get("lat"));
+				if(typeof q.get("lon") !== 'undefined') if(q.get("lon") !== null) lonxit = parseFloat(q.get("lon"));
+				var retorno = true;
+			} else {
+				var retorno = false;
+			}
+			return retorno;
+		}
+		function checkparams() { // para oldbrowsers
+			/* Comprobar se ao script se lle pasaron unhas coordenadas ou zoom concretos:
+				https://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-get-parameters
+				https://gomakethings.com/getting-all-query-string-values-from-a-url-with-vanilla-js/
+				https://davidwalsh.name/query-string-javascript
+			*/
+			/* por algún motivo (en Chrome versión 49.0.2623.112 m de WinXP),
+			   a función fallaba co primeiro parámetro do querystring: ?lat=42.5&lon-7.8
+			  ¿pode ser porque a cadea inclúe tamén á interrogación do principio, e interpreta que o nome parámetro é "?lat" en lugar de "lat" ?
+			*/
+			var q = new URLSearchParams(window.location.search.substr(1));
+			
 			if(q.toLocaleString().length > 0) {
 				if(typeof q.get("lat") !== 'undefined') if(q.get("lat") !== null) latit = parseFloat(q.get("lat"));
 				if(typeof q.get("lon") !== 'undefined') if(q.get("lon") !== null) lonxit = parseFloat(q.get("lon"));
