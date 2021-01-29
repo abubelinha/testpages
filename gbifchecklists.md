@@ -9,6 +9,9 @@
 
 # GBIF DwCA info:
 - [my own DwCA / GBIF backbone links](https://github.com/abubelinha/DwCA)
+- [DwCA extensions at DwCA-validator page](https://tools.gbif.org/dwca-validator/extensions.do)
+- [old DwCA validator](https://tools.gbif.org/dwca-validator/home.do): This validator only checks the archive structure, but is retained for non-GBIF use of Darwin Core Archives. The validator can also be used as a [json webservice API](https://tools.gbif.org/dwca-validator/api.do) to validate online archives and will return some basic validation information.
+- [GBIF data validator](https://www.gbif.org/tools/data-validator): checks the structure and data content of archives, to find mistakes with coordinates, scientific names, dates and so on.
 
 ------------------------------------------------
 
@@ -26,6 +29,7 @@
 ## GBIF interesting checklists:
 - GBIF checklists search "[plant](https://www.gbif.org/dataset/search?q=plant&type=CHECKLIST)"
 - [GBIF Algae classification](https://github.com/gbif/algae) aiming to fill the gaps in the current Catalog of Life due to the removal of Algaebase. Related issues in ropensci project [taxize#433](https://github.com/ropensci/taxize/issues/433#issuecomment-167071651) & [wishlist#20](https://github.com/ropensci/wishlist/issues/20).
+See also related R package [algaeClassify](https://cran.r-project.org/web/packages/algaeClassify/) [PDF manual](https://cran.r-project.org/web/packages/algaeClassify/algaeClassify.pdf))
 
 
 ----
