@@ -29,7 +29,7 @@
 ## GBIF interesting checklists:
 - GBIF checklists search "[plant](https://www.gbif.org/dataset/search?q=plant&type=CHECKLIST)"
 - [GBIF Algae classification](https://github.com/gbif/algae) aiming to fill the gaps in the current Catalog of Life due to the removal of Algaebase. Related issues in ropensci project [taxize#433](https://github.com/ropensci/taxize/issues/433#issuecomment-167071651) & [wishlist#20](https://github.com/ropensci/wishlist/issues/20).
-See also related R package [algaeClassify](https://cran.r-project.org/web/packages/algaeClassify/) [PDF manual](https://cran.r-project.org/web/packages/algaeClassify/algaeClassify.pdf))
+See also related R package [algaeClassify](https://cran.r-project.org/web/packages/algaeClassify/) (& [PDF manual](https://cran.r-project.org/web/packages/algaeClassify/algaeClassify.pdf))
 
 
 ----
