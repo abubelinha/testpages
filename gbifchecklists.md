@@ -30,7 +30,8 @@
 - GBIF checklists search "[plant](https://www.gbif.org/dataset/search?q=plant&type=CHECKLIST)"
 - [GBIF Algae classification](https://github.com/gbif/algae) aiming to fill the gaps in the current Catalog of Life due to the removal of Algaebase. Related issues in ropensci project [taxize#433](https://github.com/ropensci/taxize/issues/433#issuecomment-167071651) & [wishlist#20](https://github.com/ropensci/wishlist/issues/20).
 See also related R package [algaeClassify](https://cran.r-project.org/web/packages/algaeClassify/) (& [PDF manual](https://cran.r-project.org/web/packages/algaeClassify/algaeClassify.pdf))
-
+- [WoRMs](https://www.gbif.org/dataset/2d59e5db-57ad-41ff-97d6-11f5fb264527) & [WRiMS (introduced)](https://www.gbif.org/dataset/0a2eaf0c-5504-4f48-a47f-c94229029dc8): API [AphiaRecordsByNames?scientificnames[]=A&scientificnames[]=B&...](http://www.marinespecies.org/rest/AphiaRecordsByNames?scientificnames[]=Fucus%20vesiculosus&scientificnames[]=Cystoseira%20baccata)
+- [APG4](https://www.gbif.org/dataset/fa8ab13c-52ed-4754-b838-aeff74c79718)
 
 ----
 
