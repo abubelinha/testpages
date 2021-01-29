@@ -1,4 +1,4 @@
-# GBIF checklist datasets
+# GBIF checklist datasets references:
 
 - [List of Darwin Core terms](https://dwc.tdwg.org/list)
 - [Darwin Core quick reference guide](https://dwc.tdwg.org/terms/)
@@ -7,7 +7,12 @@
 - [Remsen D., Döring M., Robertson, T., Ko, B. (2010). _Best Practices in Publishing Species Checklists_. Copenhagen: GBIF. Version 2.0, 52 pp.](http://web.archive.org/web/20150906005234/http://www.gbif.org/resource/80647) + [gbif.jp](https://www.gbif.jp/v2/pdf/checklist_how-tw.v2.pdf) + [archive.org](http://web.archive.org/web/20210124181939/https://www.gbif.jp/v2/pdf/checklist_how-tw.v2.pdf)
 - [GBIF IPT wiki: Best Practices in Publishing Species Checklists, v.2.0](https://github.com/gbif/ipt/wiki/BestPracticesChecklists)
 
-## GBIF issues:
+# GBIF DwCA info:
+- [my own DwCA / GBIF backbone links](https://github.com/abubelinha/DwCA)
+
+------------------------------------------------
+
+## GBIF checklist-related issues:
 - [Gheet issues & links list](https://docs.google.com/spreadsheets/d/1xwYcIbxnU3zlUJmFfBxcsvyZq0MesDXuUwRNBrL2aSU/edit#gid=0)
 ### IPT:
 - [Advice on publishing a plant usages dataset #1485](https://github.com/gbif/ipt/issues/1485)
