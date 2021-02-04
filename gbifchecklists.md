@@ -6,6 +6,7 @@
 - [Remsen, D.P., Robertson, T.; Döring, M. (2010). _GBIF GNA Profile Reference Guide for Darwin Core Archive_ [Core Terms and Extensions]. Version 1.2, 2012.03.15](https://www.gbif.jp/v2/pdf/gbif_gna_profile_reference_guide.pdf) + [Zenodo](https://zenodo.org/record/3463261#.YA2zA3b0lQI)
 - [Remsen D., Döring M., Robertson, T., Ko, B. (2010). _Best Practices in Publishing Species Checklists_. Copenhagen: GBIF. Version 2.0, 52 pp.](http://web.archive.org/web/20150906005234/http://www.gbif.org/resource/80647) + [gbif.jp](https://www.gbif.jp/v2/pdf/checklist_how-tw.v2.pdf) + [archive.org](http://web.archive.org/web/20210124181939/https://www.gbif.jp/v2/pdf/checklist_how-tw.v2.pdf)
 - [GBIF IPT wiki: Best Practices in Publishing Species Checklists, v.2.0](https://github.com/gbif/ipt/wiki/BestPracticesChecklists)
+- [GBIF IPT wiki: Checklist Data](https://github.com/gbif/ipt/wiki/checklistData#required-dwc-fields)
 
 # GBIF DwCA info:
 - [my own DwCA / GBIF backbone links](https://github.com/abubelinha/DwCA)
