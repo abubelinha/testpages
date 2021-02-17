@@ -8,6 +8,13 @@
 - [GBIF IPT wiki: Best Practices in Publishing Species Checklists, v.2.0](https://github.com/gbif/ipt/wiki/BestPracticesChecklists)
 - [GBIF IPT wiki: Checklist Data](https://github.com/gbif/ipt/wiki/checklistData#required-dwc-fields)
 
+# GBIF DwCA information from IPT metadata:
+- AS reported [here](https://code.google.com/archive/p/gbif-providertoolkit/wikis/IPT2ManualNotes.wiki) if you add `/inventory/dataset` to the root of the IPT: http://ipt.jbrj.gov.br/jbrj/inventory/dataset  
+  This way you can see expose json info about the datasets served by the IPT.
+- http://193.144.34.193/iptest/inventory/dataset
+- UN XEITO DE LOCALIZAR DATASETS QUE USEN UNHA DETERMINADA EXTENSIÓN (p.ex. ExtendedMeasurementOrFact). Aínda que é a API para occurrences, creo que así filtramos polas que estean usando esa extenión, e ademáis obtemos facetas que agrupamos neste caso por dataset_key:  
+  https://www.gbif.org/api/occurrence/breakdown?advanced=true&dimension=dataset_key&dwca_extension=http:%2F%2Frs.iobis.org%2Fobis%2Fterms%2FExtendedMeasurementOrFact&limit=10&locale=en&offset=0&secondDimension=
+
 # GBIF DwCA info:
 - [my own DwCA / GBIF backbone links](https://github.com/abubelinha/DwCA)
 - [DwCA extensions at DwCA-validator page](https://tools.gbif.org/dwca-validator/extensions.do)
