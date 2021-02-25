@@ -12,8 +12,13 @@
 - AS reported [here](https://code.google.com/archive/p/gbif-providertoolkit/wikis/IPT2ManualNotes.wiki) if you add `/inventory/dataset` to the root of the IPT: http://ipt.jbrj.gov.br/jbrj/inventory/dataset  
   This way you can see expose json info about the datasets served by the IPT.
 - http://193.144.34.193/iptest/inventory/dataset
-- UN XEITO DE LOCALIZAR DATASETS QUE USEN UNHA DETERMINADA EXTENSIÓN (p.ex. ExtendedMeasurementOrFact). Aínda que é a API para occurrences, creo que así filtramos polas que estean usando esa extenión, e ademáis obtemos facetas que agrupamos neste caso por dataset_key:  
+## ways to locate datasets using a given DwC extension (i.e. _ExtendedMeasurementOrFact_): 
+- Although this uses the **occurrences** API, this way we filter datasets using that extension, plus we obtain facets which we can group by dataset_key:  
   https://www.gbif.org/api/occurrence/breakdown?advanced=true&dimension=dataset_key&dwca_extension=http:%2F%2Frs.iobis.org%2Fobis%2Fterms%2FExtendedMeasurementOrFact&limit=10&locale=en&offset=0&secondDimension=
+- This way we can see which extensions are being used by a given **occurrence** dataset, and facet the number of records mapped to each of those extensions:  
+SANT: https://api.gbif.org/v1/occurrence/search?dataset_key=1c334170-7ed1-11df-8c4a-0800200c9a66&limit=0&facet=dwcaExtension  
+BC: https://api.gbif.org/v1/occurrence/search?dataset_key=838475f4-f762-11e1-a439-00145eb45e9a&limit=0&facet=dwcaExtension  
+UM-MPU: [example specimen](https://www.gbif.org/occurrence/1986852345) with identifier+identification+multimedia extensions https://api.gbif.org/v1/occurrence/search?dataset_key=cb9beff3-a185-486f-975a-732251444158&limit=0&facet=dwcaExtension
 
 # GBIF DwCA info:
 - [my own DwCA / GBIF backbone links](https://github.com/abubelinha/DwCA)
