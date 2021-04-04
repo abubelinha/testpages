@@ -11,15 +11,19 @@
 ### Python
 
 #### Packages:
-- Pyproj: [create Transformer co convert from CRS to CRS](https://pyproj4.github.io/pyproj/v2.6.1rel/examples.html#step-2-create-transformer-to-convert-from-crs-to-crs)
+- Pyproj:  
+(v.>= 2.6.1) [create Transformer co convert from CRS to CRS](https://pyproj4.github.io/pyproj/v2.6.1rel/examples.html#step-2-create-transformer-to-convert-from-crs-to-crs)
 ```
     from pyproj import Transformer
     transformer = Transformer.from_crs("EPSG:4326", "EPSG:25829")
     transformer.transform(42.45233096182118,-9)
 ```
-
+     (v.>=3.0.0) Transformation grids: https://pyproj4.github.io/pyproj/dev/transformation_grids.html
 #### Tutorials:
 - Automating GIS processes: [2018 Lesson 4: Point in polygon](https://automating-gis-processes.github.io/CSC18/lessons/L4/point-in-polygon.html) [2019 Lesson 3: Spatial join](https://automating-gis-processes.github.io/site/notebooks/L3/spatial-join.html)
 - IBM developer: [Working with geospatial vector data uging Geopandas in Python](https://developer.ibm.com/tutorials/working-with-geospatial-vector-data-in-python/)
 - University of Colorado, Earth Lab. [Earth Data Analytics Online Certificate](https://www.earthdatascience.org/workshops/gis-open-source-python/)   
 Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, Lines and Polygons Spatial data open source python Workshop](https://www.earthdatascience.org/workshops/gis-open-source-python/intro-vector-data-python/)
+### PROJ4:
+- Grid transformations: https://github.com/OSGeo/PROJ-data/tree/master/es_ign
+- 
