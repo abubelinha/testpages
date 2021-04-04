@@ -9,6 +9,16 @@
 - [Intersecting Points and Polygons in R](https://stackoverflow.com/questions/3647744/intersecting-points-and-polygons-in-r)
 - Disque funciona: [check if point is inside (multi)polygon/s](https://stackoverflow.com/questions/21971447/check-if-point-is-in-spatial-object-which-consists-of-multiple-polygons-holes/21987964#21987964) (also [plotting multipolygons](https://stackoverflow.com/questions/21962452/plot-spatial-area-defined-by-multiple-polygons/21963215#21963215) in R)
 ### Python
+
+#### Packages:
+- Pyproj: [create Transformer co convert from CRS to CRS](https://pyproj4.github.io/pyproj/v2.6.1rel/examples.html#step-2-create-transformer-to-convert-from-crs-to-crs)
+```
+    from pyproj import Transformer
+    transformer = Transformer.from_crs("EPSG:4326", "EPSG:25829")
+    transformer.transform(42.45233096182118,-9)
+```
+
+#### Tutorials:
 - Automating GIS processes: [2018 Lesson 4: Point in polygon](https://automating-gis-processes.github.io/CSC18/lessons/L4/point-in-polygon.html) [2019 Lesson 3: Spatial join](https://automating-gis-processes.github.io/site/notebooks/L3/spatial-join.html)
 - IBM developer: [Working with geospatial vector data uging Geopandas in Python](https://developer.ibm.com/tutorials/working-with-geospatial-vector-data-in-python/)
 - University of Colorado, Earth Lab. [Earth Data Analytics Online Certificate](https://www.earthdatascience.org/workshops/gis-open-source-python/)   
