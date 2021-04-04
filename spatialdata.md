@@ -26,4 +26,4 @@
 Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, Lines and Polygons Spatial data open source python Workshop](https://www.earthdatascience.org/workshops/gis-open-source-python/intro-vector-data-python/)
 ### PROJ4:
 - Grid transformations: https://github.com/OSGeo/PROJ-data/tree/master/es_ign
-- 
+- Spatial reference: [epsg projection 25829 - etrs89 / utm zone 29n](https://spatialreference.org/ref/epsg/25829/), [epsg projection 23029 - ed50 / utm zone 29n](https://spatialreference.org/ref/epsg/23029/), [epsg projection 4326 - wgs 84](https://spatialreference.org/ref/epsg/4326/)
