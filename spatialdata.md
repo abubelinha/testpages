@@ -32,6 +32,9 @@
     transformer.transform(42.45233096182118,-9)
   ```
   - (v.>=3.0.0) Transformation grids: https://pyproj4.github.io/pyproj/dev/transformation_grids.html
+ - Shapely
+ - Geopandas
+ - 
 #### Tutorials:
 - Automating GIS processes: [2018 Lesson 4: Point in polygon](https://automating-gis-processes.github.io/CSC18/lessons/L4/point-in-polygon.html) [2019 Lesson 3: Spatial join](https://automating-gis-processes.github.io/site/notebooks/L3/spatial-join.html)
 - IBM developer: [Working with geospatial vector data uging Geopandas in Python](https://developer.ibm.com/tutorials/working-with-geospatial-vector-data-in-python/)
@@ -48,3 +51,9 @@ Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, L
 ### PROJ4:
 - Grid transformations: https://github.com/OSGeo/PROJ-data/tree/master/es_ign
 - Spatial reference: [EPSG projection 25829 (etrs89 / UTM zone 29N)](https://spatialreference.org/ref/epsg/25829/), [EPSG projection 23029 (ED50 / UTM zone 29N)](https://spatialreference.org/ref/epsg/23029/), [EPSG projection 4326 (WGS 84)](https://spatialreference.org/ref/epsg/4326/)
+----------
+## Specific problems:
+### Nearest neighbor / minimum distance
+- https://gis.stackexchange.com/questions/14456/finding-the-closest-geometry-in-postgis and derived functions by [George MacKerron](http://blog.mackerron.com/2011/03/postgis-nearest-neighbour/) and [BostonGIS](http://www.bostongis.com/?content_name=postgis_nearest_neighbor_generic)
+- https://gis.stackexchange.com/questions/159225/postgis-closest-polygon-to-point (concellos SANT-Algae?)
+- https://postgis.net/workshops/postgis-intro/knn.html
