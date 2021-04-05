@@ -1,9 +1,14 @@
 # Spatial Data
+## Data sources
+- [Spain Atlas TopoJSON](https://github.com/martgnz/es-atlas)
+- 
+## Software
 ### PostGIS
 - [Introduction to PostGIS](https://postgis.net/workshops/postgis-intro/) (workshop material by [Boundless](http://boundlessgeo.com/)): 
 [Geometries](https://postgis.net/workshops/postgis-intro/geometries.html), [Projecting Data](https://postgis.net/workshops/postgis-intro/projection.html) and many more topics.
 - [Working with PostgreSQL and PostGIS: How To Become A GIS Expert](https://www.percona.com/blog/2020/04/15/working-with-postgresql-and-postgis-how-to-become-a-gis-expert/) (Percona blog)
 - [Install Postgres/PostGIS and get started with spatial SQL](http://zevross.com/blog/2019/12/04/install-postgres-postgis-and-get-started-with-spatial-sql/)
+- OSGeoLive: [PostGIS QuickstartS](https://live.osgeo.org/en/quickstart/postgis_quickstart.html)
 #### PostgreSQL
 - Psycopg (python PostgreSQL driver): https://www.psycopg.org/docs/usage.html
 - [sql-workbench](https://www.sql-workbench.eu/getting-started.html) SQL [blog](https://blog.sql-workbench.eu/)
