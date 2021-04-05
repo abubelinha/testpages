@@ -1,7 +1,9 @@
 # Spatial Data
+----------
 ## Data sources
 - [Spain Atlas TopoJSON](https://github.com/martgnz/es-atlas)
 - 
+----------
 ## Software
 ### PostGIS
 - [Introduction to PostGIS](https://postgis.net/workshops/postgis-intro/) (workshop material by [Boundless](http://boundlessgeo.com/)): 
