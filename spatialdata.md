@@ -24,6 +24,13 @@
 - IBM developer: [Working with geospatial vector data uging Geopandas in Python](https://developer.ibm.com/tutorials/working-with-geospatial-vector-data-in-python/)
 - University of Colorado, Earth Lab. [Earth Data Analytics Online Certificate](https://www.earthdatascience.org/workshops/gis-open-source-python/)   
 Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, Lines and Polygons Spatial data open source python Workshop](https://www.earthdatascience.org/workshops/gis-open-source-python/intro-vector-data-python/)
+[Get Started With GIS in Open Source Python - Geopandas, Rasterio & Matplotlib](https://www.earthdatascience.org/workshops/gis-open-source-python/)
+- Introduction to Geospatial Raster and Vector Data with Python: [carpentries-incubator.github.io/geospatial-python](https://carpentries-incubator.github.io/geospatial-python/)
+- [10 Essential Operations for Spatial Data in Python](https://medium.com/nam-r/10-essential-operations-for-spatial-data-in-python-4603d933bdda)
+- [15 Python Libraries for GIS and Mapping - GIS Geography](https://gisgeography.com/python-libraries-gis-mapping/)
+- [Walkthrough: Mapping GIS Data in Python | by Nicole Janeway Bills](https://towardsdatascience.com/walkthrough-mapping-gis-data-in-python-92c77cd2b87a)
+- [Python Foundation for Spatial Analysis (Full Course Material)](https://courses.spatialthoughts.com/python-foundation.html)
+- [In-Database Geospatial Analytics using Python](https://www.researchgate.net/publication/337411276_In-Database_Geospatial_Analytics_using_Python)  ([doi:10.1145/3356395.3365598](https://doi.org/10.1145/3356395.3365598)) Conference: the 2nd ACM SIGSPATIAL International Workshop
 ### PROJ4:
 - Grid transformations: https://github.com/OSGeo/PROJ-data/tree/master/es_ign
 - Spatial reference: [EPSG projection 25829 (etrs89 / UTM zone 29N)](https://spatialreference.org/ref/epsg/25829/), [EPSG projection 23029 (ED50 / UTM zone 29N)](https://spatialreference.org/ref/epsg/23029/), [EPSG projection 4326 (WGS 84)](https://spatialreference.org/ref/epsg/4326/)
