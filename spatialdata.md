@@ -1,7 +1,13 @@
 # Spatial Data
 ### PostGIS
-[Introduction to PostGIS](https://postgis.net/workshops/postgis-intro/) (workshop material by [Boundless](http://boundlessgeo.com/)): 
+- [Introduction to PostGIS](https://postgis.net/workshops/postgis-intro/) (workshop material by [Boundless](http://boundlessgeo.com/)): 
 [Geometries](https://postgis.net/workshops/postgis-intro/geometries.html), [Projecting Data](https://postgis.net/workshops/postgis-intro/projection.html) and many more topics.
+- [Working with PostgreSQL and PostGIS: How To Become A GIS Expert](https://www.percona.com/blog/2020/04/15/working-with-postgresql-and-postgis-how-to-become-a-gis-expert/) (Percona blog)
+- [Install Postgres/PostGIS and get started with spatial SQL](http://zevross.com/blog/2019/12/04/install-postgres-postgis-and-get-started-with-spatial-sql/)
+#### PostgreSQL
+- Psycopg (python PostgreSQL driver): https://www.psycopg.org/docs/usage.html
+- [sql-workbench](https://www.sql-workbench.eu/getting-started.html) SQL [blog](https://blog.sql-workbench.eu/)
+- 
 ### R
 - [Simple features for R](https://r-spatial.github.io/sf/index.html): [package](https://cloud.r-project.org/package=sf) + [github](https://github.com/r-spatial/sf/) + vignettes [1](https://r-spatial.github.io/sf/articles/sf1.html) [2](https://r-spatial.github.io/sf/articles/sf2.html) [3](https://r-spatial.github.io/sf/articles/sf3.html) [4](https://r-spatial.github.io/sf/articles/sf4.html) [5](https://r-spatial.github.io/sf/articles/sf5.html) [6](https://r-spatial.github.io/sf/articles/sf6.html) [7](https://r-spatial.github.io/sf/articles/sf7.html) + [article](https://journal.r-project.org/archive/2018/RJ-2018-009/index.html) & [PDF](https://journal.r-project.org/archive/2018/RJ-2018-009/RJ-2018-009.pdf)
 - [Given a vector of coordinates, identify the polygon from a shapefile it falls into
@@ -29,6 +35,7 @@ Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, L
 - [10 Essential Operations for Spatial Data in Python](https://medium.com/nam-r/10-essential-operations-for-spatial-data-in-python-4603d933bdda)
 - [15 Python Libraries for GIS and Mapping - GIS Geography](https://gisgeography.com/python-libraries-gis-mapping/)
 - [Walkthrough: Mapping GIS Data in Python | by Nicole Janeway Bills](https://towardsdatascience.com/walkthrough-mapping-gis-data-in-python-92c77cd2b87a)
+- Datacamp.com tutorial: [Introduction to Geospatial Data in Python](https://www.datacamp.com/community/tutorials/geospatial-data-python)
 - [Python Foundation for Spatial Analysis (Full Course Material)](https://courses.spatialthoughts.com/python-foundation.html)
 - [In-Database Geospatial Analytics using Python](https://www.researchgate.net/publication/337411276_In-Database_Geospatial_Analytics_using_Python)  ([doi:10.1145/3356395.3365598](https://doi.org/10.1145/3356395.3365598)) Conference: the 2nd ACM SIGSPATIAL International Workshop
 ### PROJ4:
