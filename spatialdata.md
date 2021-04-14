@@ -22,6 +22,8 @@
 - [Intersecting Points and Polygons in R](https://stackoverflow.com/questions/3647744/intersecting-points-and-polygons-in-r)
 - Disque funciona: [check if point is inside (multi)polygon/s](https://stackoverflow.com/questions/21971447/check-if-point-is-in-spatial-object-which-consists-of-multiple-polygons-holes/21987964#21987964) (also [plotting multipolygons](https://stackoverflow.com/questions/21962452/plot-spatial-area-defined-by-multiple-polygons/21963215#21963215) in R)
 ### Python
+- https://github.com/mdiener21/python-geospatial-analysis-cookbook
+- 
 
 #### Packages:
 - Unofficial Windows Binaries for Python Extension Packages (wheels): https://www.lfd.uci.edu/~gohlke/pythonlibs/
@@ -34,7 +36,8 @@
   ```
   - (v.>=3.0.0) Transformation grids: https://pyproj4.github.io/pyproj/dev/transformation_grids.html
  - Shapely
- - Geopandas
+ - Geopandas: https://geopandas.org/getting_started/install.html
+ - plpygis https://plpygis.readthedocs.io/en/latest/usage.html
  - 
 #### Tutorials:
 - Automating GIS processes: [2018 Lesson 4: Point in polygon](https://automating-gis-processes.github.io/CSC18/lessons/L4/point-in-polygon.html) [2019 Lesson 3: Spatial join](https://automating-gis-processes.github.io/site/notebooks/L3/spatial-join.html)
@@ -49,6 +52,9 @@ Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, L
 - Datacamp.com tutorial: [Introduction to Geospatial Data in Python](https://www.datacamp.com/community/tutorials/geospatial-data-python)
 - [Python Foundation for Spatial Analysis (Full Course Material)](https://courses.spatialthoughts.com/python-foundation.html)
 - [In-Database Geospatial Analytics using Python](https://www.researchgate.net/publication/337411276_In-Database_Geospatial_Analytics_using_Python)  ([doi:10.1145/3356395.3365598](https://doi.org/10.1145/3356395.3365598)) Conference: the 2nd ACM SIGSPATIAL International Workshop
+- A tool for extracting data from PostGIS into GeoJSON and TopoJSON: https://gist.github.com/jczaplew/7680118
+- Google: [python geojson to postgis](https://www.google.com/search?q=python+geojson+to+postgis)
+- 
 ### PROJ4:
 - Grid transformations: https://github.com/OSGeo/PROJ-data/tree/master/es_ign
 - Spatial reference: [EPSG projection 25829 (etrs89 / UTM zone 29N)](https://spatialreference.org/ref/epsg/25829/), [EPSG projection 23029 (ED50 / UTM zone 29N)](https://spatialreference.org/ref/epsg/23029/), [EPSG projection 4326 (WGS 84)](https://spatialreference.org/ref/epsg/4326/)
