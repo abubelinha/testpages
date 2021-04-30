@@ -13,7 +13,8 @@ function basemap(lat=42.682435, lon=-8.179344,zoom=14,div="divmap") {// BASE MAP
 	//map.addLayer(ocm); 
 
 	var WMSs = {
-	"pnoa":{"wms":"http://www.ign.es/wms-inspire/pnoa-ma","layers":"pnoa","formats":"image/jpeg","attribution":"PNOA"},
+	"pnoa-vello":{"wms":"http://www.ign.es/wms-inspire/pnoa-ma","layers":"pnoa","formats":"image/jpeg","attribution":"PNOA"},
+	"pnoa":{"wms":"http://www.ign.es/wms-inspire/pnoa-ma","layers":"OI.OrthoimageCoverage","formats":"image/jpeg","attribution":"PNOA"},
 	"mtn-vello":{"wms":"http://www.idee.es/wms/MTN-Raster/MTN-Raster","layers":"mtn_rasterizado","formats":"image/png","attribution":"MTN-Raster"},
 	"mtn":{"wms":"http://www.ign.es/wms-inspire/mapa-raster","layers":"mtn_rasterizado","formats":"image/png","attribution":"MTN-Raster"},
 	"cartociudad":{"wms":"http://www.cartociudad.es/wms/CARTOCIUDAD/CARTOCIUDAD","layers":"DivisionTerritorial,Toponimo","formats":"image/png","attribution":"Cartociudad"},
