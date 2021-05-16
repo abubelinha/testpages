@@ -64,3 +64,10 @@ Lesson 4. [GIS in Python: Introduction to Vector Format Spatial Data - Points, L
 - https://gis.stackexchange.com/questions/14456/finding-the-closest-geometry-in-postgis and derived functions by [George MacKerron](http://blog.mackerron.com/2011/03/postgis-nearest-neighbour/) and [BostonGIS](http://www.bostongis.com/?content_name=postgis_nearest_neighbor_generic)
 - https://gis.stackexchange.com/questions/159225/postgis-closest-polygon-to-point (concellos SANT-Algae?)
 - https://postgis.net/workshops/postgis-intro/knn.html
+### GIS layers transformation:
+- http://mapshaper.org lets you upload and convert layers using -proj and precision parameters
+- Convert and reproject with ogr2ogr (shp file to geojson file WGS84): 
+```
+SET GDAL_DATA=C:\soft\sql\postgresql\postgis-bundle-pg96-2.5.0x32\gdal-data
+C:\...\bin>ogr2ogr -f GeoJSON -t_srs EPSG:4236 C:\...\Parroquias.wgs84.geo.json  C:\...\Parroquias.shp
+```
