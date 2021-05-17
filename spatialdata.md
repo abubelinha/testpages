@@ -23,6 +23,7 @@
 - Disque funciona: [check if point is inside (multi)polygon/s](https://stackoverflow.com/questions/21971447/check-if-point-is-in-spatial-object-which-consists-of-multiple-polygons-holes/21987964#21987964) (also [plotting multipolygons](https://stackoverflow.com/questions/21962452/plot-spatial-area-defined-by-multiple-polygons/21963215#21963215) in R)
 ### Python
 - https://github.com/mdiener21/python-geospatial-analysis-cookbook
+- https://gis.stackexchange.com/questions/2276/installing-gdal-with-python-on-windows/7617#7617
 - 
 
 #### Packages:
