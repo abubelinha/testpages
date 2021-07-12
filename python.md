@@ -22,5 +22,17 @@ def df_update(dictline={"canonical":"name string", "field1":"value","field2":15}
 	else:
 		print("ERROR: MULTIPLE ROWS WHERE 'canonical'=={}".format(nome))
 	return(df)
-	
+```
+#### updating dataframe columns:
+
+
+```Python
+# localiza filas onde "rank"=="G" e actualiza o valor da columna "status" co valor "pending":
+df.loc[df["rank"]=="G", "status"]="pending"
+
+# localiza filas onde "rank"=="G" e "fam"=="Agavaceae":
+df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae")]
+
+# localiza filas onde "rank"=="G" e "fam"=="Agavaceae", e actualiza o seu vaor da columna "status" co valor "OK":
+df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae"), "status"]="OK"
 ```
