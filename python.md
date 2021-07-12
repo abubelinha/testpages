@@ -1,10 +1,13 @@
 ### Pandas:
+
+#### updating dataframe rows:
 ```Python
 from pandas import pd
 df = pd.read_csv("mydata.csv")
 # updating dataframes:
 
 def df_update(dictline={"canonical":"name string", "field1":"value","field2":15}):
+	# actualiza unha única fila do dataframe, cun diccionario de valores (un deles, fai de clave para localizar a fila)
 	global df
 	nome = dictline["canonical"]
 	if len(df[df.canonical==nome])==0: # non existe o nome todavía
