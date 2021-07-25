@@ -37,6 +37,7 @@ df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae")]
 df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae"), "status"]="OK"
 
 # update column with substring of own value: "BLA-01-02341" --> "2341" (from AHIM-gbif-check.py line 126)
+# https://stackoverflow.com/questions/33604139/how-to-split-pandas-column-by-a-delimiter-and-select-preferred-element-as-the-re/33606147#33606147
 df["catalogNumber"] = df["catalogNumber"].str.split('-').str[2].astype('int').astype('str')
 
 ```
