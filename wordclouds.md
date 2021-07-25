@@ -6,4 +6,7 @@
  ![Figure 1-1](https://jku-vds-lab.at/assets/images/projects/upset//banana.png "Figure 1-1")
  Now see it using UpSet:
  ![Figura 2](https://jku-vds-lab.at/assets/images/projects/upset//upsetr-banana.png "pasa rato por Figura 2")
+ 
+  <img src="https://jku-vds-lab.at/assets/images/projects/upset//banana.png" width="50%"/><img src="https://jku-vds-lab.at/assets/images/projects/upset//upsetr-banana.png" width="50%" />
+
 - N.Mahto 2018. Visualizing Intersecting Sets | Upset Chart in Python. https://medium.com/@narayanmahto/visualizing-intersecting-sets-upset-chart-in-python-cf72e4cad5b1
