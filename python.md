@@ -40,5 +40,9 @@ df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae"), "status"]="OK"
 # https://stackoverflow.com/questions/33604139/how-to-split-pandas-column-by-a-delimiter-and-select-preferred-element-as-the-re/33606147#33606147
 df["catalogNumber"] = df["catalogNumber"].str.split('-').str[2].astype('int').astype('str')
 
+# minúsculas: 
+# https://stackoverflow.com/questions/22245171/how-to-lowercase-a-pandas-dataframe-string-column-if-it-has-missing-values/22247593#22247593
+df["name"] = df["name"].str.lower()
+
 ```
 
