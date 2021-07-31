@@ -27,20 +27,20 @@ def df_update(dictline={"canonical":"name string", "field1":"value","field2":15}
 
 
 ```Python
-# localiza filas onde "rank"=="G" e actualiza o valor da columna "status" co valor "pending":
+# find rows where "rank"=="G" and update column "status" value to "pending":
 df.loc[df["rank"]=="G", "status"]="pending"
 
-# localiza filas onde "rank"=="G" e "fam"=="Agavaceae":
+# find rows where "rank"=="G" and "fam"=="Agavaceae":
 df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae")]
 
-# localiza filas onde "rank"=="G" e "fam"=="Agavaceae", e actualiza o seu vaor da columna "status" co valor "OK":
+# find rows where "rank"=="G" and "fam"=="Agavaceae", and update their column "status" value to "OK":
 df.loc[(df["rank"]=="G") & (df["fam"]=="Agavaceae"), "status"]="OK"
 
 # update column with substring of own value: "BLA-01-02341" --> "2341" (from AHIM-gbif-check.py line 125)
 # https://stackoverflow.com/questions/33604139/how-to-split-pandas-column-by-a-delimiter-and-select-preferred-element-as-the-re/33606147#33606147
 df["catalogNumber"] = df["catalogNumber"].str.split('-').str[2].astype('int').astype('str')
 
-# minúsculas: 
+# update full column to lowercase: 
 # https://stackoverflow.com/questions/22245171/how-to-lowercase-a-pandas-dataframe-string-column-if-it-has-missing-values/22247593#22247593
 df["name"] = df["name"].str.lower()
 
