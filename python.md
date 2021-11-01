@@ -50,5 +50,19 @@ df["catalogNumber"] = df["catalogNumber"].str.split('-').str[2].astype('int').as
 # https://stackoverflow.com/questions/22245171/how-to-lowercase-a-pandas-dataframe-string-column-if-it-has-missing-values/22247593#22247593
 df["name"] = df["name"].str.lower()
 
+# add multiple columns to a dataframe:
+# https://stackoverflow.com/questions/30926670/add-multiple-empty-columns-to-pandas-dataframe
+df = pd.DataFrame([['a1','b1'], ['a2','b2']], columns=['A','B'])
+print(df)
+    A   B
+0  a1  b1
+1  a2  b2
+df = pd.concat([df,pd.DataFrame(columns=list('BCD'))]) # if a column does exist, it's not added
+print(df)
+    A   B    C    D
+0  a1  b1  NaN  NaN
+1  a2  b2  NaN  NaN
+
+
 ```
 
