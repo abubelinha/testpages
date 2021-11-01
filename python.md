@@ -65,6 +65,7 @@ print(df)
 
 # apply function to dataframe rows, to update one or many columns at once:
 # https://towardsdatascience.com/apply-function-to-pandas-dataframe-rows-76df74165ee4
+# v.dvd_gbif_functions.py line 650
 def mgrs2latlon(mgrs=""):
 	import pandas as pd
 	if mgrs.strip()=="":
