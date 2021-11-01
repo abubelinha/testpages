@@ -63,6 +63,16 @@ print(df)
 0  a1  b1  NaN  NaN
 1  a2  b2  NaN  NaN
 
+# apply function to dataframe rows, to update one or many columns at once:
+# https://towardsdatascience.com/apply-function-to-pandas-dataframe-rows-76df74165ee4
+def mgrs2latlon(mgrs=""):
+	import pandas as pd
+	if mgrs.strip()=="":
+		return pd.Series([None,None,None])
+	else:
+		# do calculations ...
+		return pd.Series([round(ll.lat,6), round(ll.lon,6), myradius])	
+df[["lat", "lon","radius"]] = df.apply(lambda row: mgrs2latlon(row["mgrs"]), axis=1)
 
 ```
 
