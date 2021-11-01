@@ -1,5 +1,11 @@
 ### Pandas:
 
+#### problems with NA integers:
+You can't have blanks in integer columns.
+The [lack of NaN rep in integer columns](https://stackoverflow.com/questions/21287624/convert-pandas-column-containing-nans-to-dtype-int/21290084#21290084) is a [pandas "gotcha"](https://pandas.pydata.org/pandas-docs/stable/user_guide/gotchas.html#support-for-integer-na). The usual workaround is to simply use floats.
+- https://stackoverflow.com/questions/42403907/how-to-round-remove-traling-0-zeros-in-pandas-column
+- https://stackoverflow.com/questions/46774069/python-remove-decimal-and-zero-from-string/46774118#46774118
+
 #### updating dataframe rows:
 ```Python
 from pandas import pd
