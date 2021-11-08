@@ -1,3 +1,28 @@
+### File read/write:
+
+Problems with line feeds in text files:
+```Python
+df['scientificname'] = df['scientificname'].str.replace(r'(?<!\r)\n','', regex=True) 
+df["scientificname"] = df["scientificname"].apply(lambda x: pulir_pre_gnparser(x))
+
+# #### ELIMINATE posible lines (bs4 imported) where we have line breaks 
+#   LF (Line Feeds, \n) without a previous CR (Carriage Return, \r )
+# So, every line should be ended by CRLF, without LF inside the line:
+# in Notepad++ we should make Regex replace of this (and replace by NOTHING): (?<!\r)\n
+# where (?<!x)y means finding the text "y" not preceded by "x"
+# https://stackoverflow.com/questions/37160929/how-to-remove-carriage-return-in-a-dataframe
+df['scientificname'] = df['scientificname'].str.replace(r'(?<!\r)\n','', regex=True) 
+
+# #### SAVE THE FILE AS TAB DELIMITED, TO AVOID DOUBLE QUOTES (WHICH WOULD RAISE LATER PROBLEMS AS INPUT FOR gnparser):
+# https://stackoverflow.com/questions/21147058/pandas-to-csv-output-quoting-issue/21147228#21147228
+# https://stackoverflow.com/questions/55897894/pandas-to-csv-unable-to-set-quotes
+df['scientificname'] = df['scientificname'].str.replace('"','') 
+import csv
+df["scientificname"].to_csv("gnparser_input.txt", sep ='\t', quoting = csv.QUOTE_NONE,escapechar="\\", index=False, header=False, encoding="utf-8")
+
+listOfNames = "gnparser_input.txt"
+```
+
 ### Pandas:
 
 #### problems with NA integers:
