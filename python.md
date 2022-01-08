@@ -101,4 +101,26 @@ def mgrs2latlon(mgrs=""):
 df[["lat", "lon","radius"]] = df.apply(lambda row: mgrs2latlon(row["mgrs"]), axis=1)
 
 ```
+#### Substring matching:
+https://towardsdatascience.com/joining-dataframes-by-substring-match-with-python-pandas-8fcde5b03933
+
+#### Cross joins:
+solutions here: https://github.com/pandas-dev/pandas/issues/41150 (duplic. issue)
+main issue here: https://github.com/pandas-dev/pandas/issues/8962
+PR tests here: https://github.com/pandas-dev/pandas/pull/42964
+
+Examples (not only python):
+https://towardsdatascience.com/tagged/cross-join
+
+## Google Colab python notebooks:
+
+https://stackoverflow.com/questions/53085501/how-to-upgrade-pandas-on-google-colab
+https://stackoverflow.com/questions/57831187/need-to-restart-runtime-before-import-an-installed-package-in-colab/57839010#57839010
+
+https://stackoverflow.com/questions/53154369/google-colab-how-to-restart-runtime-using-python-code-or-command-line-interf/53165687#53165687
+
+https://stackoverflow.com/questions/55036559/how-to-autosave-notebooks-in-google-colab/69570529#69570529
+
+https://stackoverflow.com/questions/55005114/restart-kernel-in-google-colab#comment96775342_55005114
+https://stackoverflow.com/questions/57831187/need-to-restart-runtime-before-import-an-installed-package-in-colab
 
