@@ -123,4 +123,7 @@ https://stackoverflow.com/questions/55036559/how-to-autosave-notebooks-in-google
 
 https://stackoverflow.com/questions/55005114/restart-kernel-in-google-colab#comment96775342_55005114
 https://stackoverflow.com/questions/57831187/need-to-restart-runtime-before-import-an-installed-package-in-colab
+#### my notebooks:
+Cross joins before range matching:
+https://colab.research.google.com/drive/11WBMCTWx7B1lL0CNDy1fO99eNrBirtPl?authuser=2
 
