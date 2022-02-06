@@ -12,6 +12,7 @@ Plus [jinja2 documentation](https://jinja.palletsprojects.com/en/3.0.x/templates
 
 _**FILE: ./path/to/_pdoc_custom_templates/module.html.jinja2**_
 ```jinja2
+{% raw %}
 {% extends "default/module.html.jinja2" %} {# <--- ALL CODE BELOW MODIFIES DIFFERENT PARTS OF THIS FILE #}
 
 {% defaultmacro member(doc) %}
@@ -33,6 +34,7 @@ _**FILE: ./path/to/_pdoc_custom_templates/module.html.jinja2**_
         {{ view_source(doc) }}
     {% endif %}
 {% enddefaultmacro %}
+{% endraw %}
 ```
 
 
@@ -40,6 +42,7 @@ _**FILE: ./path/to/_pdoc_custom_templates/module.html.jinja2**_
 
 _**FILE: ./path/to/_pdoc_custom_templates/module.html.jinja2**_
 ```jinja2
+{% raw %}
 {% extends "default/module.html.jinja2" %} {# <--- ALL CODE BELOW MODIFIES DIFFERENT PARTS OF THIS FILE #}
 
 {% block nav %}  {# <----- I HAVE TO REPRODUCE THE FULL BLOCK WHICH CONTAINS THE PART I WANT TO MODIFY  #}
@@ -120,6 +123,7 @@ _**FILE: ./path/to/_pdoc_custom_templates/module.html.jinja2**_
         </div>
     </nav>
 {% endblock %}
+{% endraw %}
 ```
 #### TO-DO:
 - Create [TOC](https://stackoverflow.com/questions/18244417/how-do-i-create-some-kind-of-table-of-content-in-github-wiki/66824119#66824119).
