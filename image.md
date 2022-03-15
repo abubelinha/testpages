@@ -8,8 +8,10 @@ Hello World
 
 ## linked github-stored image
 ![pyr.tif](https://github.com/abubelinha/testpages/blob/master/vips.8.12.2_output.pyr.tif?raw=true)
-![pyr.tif](https://github.com/abubelinha/testpages/blob/master/test.50.jpg?raw=true)
-![pyr.tif](https://github.com/abubelinha/testpages/blob/master/Klasea legionensis.jp2?raw=true)
+___________________
+![test.50.jpg](https://github.com/abubelinha/testpages/blob/master/test.50.jpg?raw=true)
+___________________
+![Klasea jp2](https://github.com/abubelinha/testpages/blob/master/Klasea legionensis.jp2?raw=true)
 
 ## references
 - https://superuser.com/questions/1199393/is-it-possible-to-directly-embed-an-image-into-a-markdown-document/1199449#1199449
