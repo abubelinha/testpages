@@ -9,7 +9,9 @@ Hello World
 ## linked github-stored image
 
 ------
-![test.50.jpg](https://github.com/abubelinha/testpages/blob/master/test.50.jpg?raw=true)
+![test.50.jpg](https://ggithub.com/abubelinha/testpages/blob/master/test.50.jpg?raw=true)
+![weserv](https://images.weserv.nl/?url=merovingio.c2rmf.cnrs.fr/iiif/PIA03883.pyr.tif/480,600,300,500/full/0/default.jpg)
+![weserv](https://images.weserv.nl/?url=merovingio.c2rmf.cnrs.fr/iiif/PIA03883.pyr.tif/480,600,300,500/full/0/default.jpg)
 ------
 
 ## references
