@@ -1,20 +1,6 @@
 # LISTADO
 
-<div id='panel' style='background:yellow; border: 3px dashed grey; visibility: hidden; position: fixed; top:5px; background: white; width: 90%; height: 90%; top:5%; left:5%;'>
-		<span title="CLOSE" style="cursor:pointer;border:2px solid black;padding:3px;background:lightgrey;font-weight: bold;" onclick="document.getElementById('panel').style.visibility='hidden';">CLOSE</span><br>
-		<div id='visor' style='background:cyan;'>
-		<li>bla</li>
-		<li>bla</li>
-		<li>bla</li>
-		</div>
-		</div>
-
-
------------
-<script type='text/javascript'>
-		function ver(im='') {
-			document.getElementById('panel').style.visibility='visible';
-		}
-	</script><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201407_AHIM_18_2013/201407_022.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201602_AHIM_20_2015_A/20160202_010.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201502_AHIM_16_2011/20150224_000.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-C/20110714_087.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201602_AHIM_20_2015_A/20160202_006.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-J/20110726_036.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201106-A/20110609_025.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-L/20110727_043.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_202010_AHIM_24_2019_C/20201001_094.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201502_AHIM_16_2011/20150224_040.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201106-D/20110624_013.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201106-E/20110627_028.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201407_AHIM_18_2013/201407_021.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201106-E/20110628_002.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-L/20110727_070.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-G/20110719_084.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201001-B/20100120_014.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201502_AHIM_16_2011/20150224_085.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-K/20110726_101.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span><span onclick="ver();">![weserv](https://images.weserv.nl/?url=ssl:herbarios.ga/iipsrv/iipsrv.fcgi%3Ffif=/mnt/scratch/pyrtif/bc_SANT_201107-A/20110704_051.pyr.tif%26CNT=1.1%26WID=150%26CVT=jpeg)</span>
-
------------
+1. asdf
+2. fsdaf
+3. 233fs
+4. 
