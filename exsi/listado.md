@@ -21,11 +21,7 @@
 </div>
 </div>
 
-<script type='text/javascript'>
-function ver(im='') {
-document.getElementById('panel').style.visibility='visible';
-}
-</script>
+
 <link rel="stylesheet" href="exsi.css">
 ## Exemplares:
 
@@ -41,5 +37,5 @@ document.getElementById('panel').style.visibility='visible';
 
 -----------
 
-<script type="text/javascript" href="exsi.js"></script>
 <script type="text/javascript" href="tinysort.min.js"></script>
+<script type="text/javascript" href="exsi.js"></script>
