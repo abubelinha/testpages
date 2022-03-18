@@ -23,6 +23,7 @@
 
 
 <link rel="stylesheet" href="exsi.css">
+<script type="text/javascript" href="./exsi.js"></script>
 ## Exemplares:
 
 <select>
@@ -37,4 +38,3 @@
 
 -----------
 
-<script type="text/javascript" href="./exsi.js"></script>
