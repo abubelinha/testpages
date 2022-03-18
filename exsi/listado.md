@@ -3,7 +3,7 @@
 {:toc}
 
 <link rel="stylesheet" href="exsi.css">
-<script type="text/javascript" href="./exsi.js"></script>
+<script type="text/javascript" src="./exsi.js"></script>
 
 -----------
 
