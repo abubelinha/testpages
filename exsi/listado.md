@@ -37,5 +37,5 @@
 
 -----------
 
-<script type="text/javascript" href="tinysort.min.js"></script>
-<script type="text/javascript" href="exsi.js"></script>
+<script type="text/javascript" href="./tinysort.min.js"></script>
+<script type="text/javascript" href="./exsi.js"></script>
