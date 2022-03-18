@@ -2,6 +2,9 @@
 * TOC 
 {:toc}
 
+<link rel="stylesheet" href="exsi.css">
+<script type="text/javascript" href="./exsi.js"></script>
+
 -----------
 
 
@@ -21,9 +24,6 @@
 </div>
 </div>
 
-
-<link rel="stylesheet" href="exsi.css">
-<script type="text/javascript" href="./exsi.js"></script>
 ## Exemplares:
 
 <select>
