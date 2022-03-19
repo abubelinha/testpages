@@ -4,7 +4,7 @@
 	/*display:inline-block; height:100px;*/
 	display:inline;
 }
-.exemplar:hover {
+.exemplar:hover, .exemplar:active {
 	background-color: lightgrey;
 }
 .oculto {
