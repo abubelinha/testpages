@@ -50,5 +50,5 @@ Nin é sempre ibero-macaronésica, nin é sempre selecta.
 ## Referencias bibliográficas:
 - <https://mappingsupport.com/p2/gissurfer.php?center=29SNB99&zoom=10&basemap=Open_Street_Map&scale=meters>
 
-<link rel="stylesheet" href="exsi.css">
+<link rel="stylesheet" href="./exsi.css">
 <script type="text/javascript" src="./exsi.js"></script>
