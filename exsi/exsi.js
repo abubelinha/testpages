@@ -1,5 +1,30 @@
-function ver(im) {
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+function replaceAll(str, find, replace) {
+// https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript/1144788#1144788
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+
+function ver(fotos) {
 	document.getElementById('panel').style.visibility='visible';
+	//md_txt += "![weserv](https://images.weserv.nl/?url="+imgurl.replace("?","%3F").replace("&","%26").replace("http://","ssl:")+")"
+	fotos = fotos.split("#");
+	rollohtml="";
+	server = "193.144.34.193/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/";
+	wid="300";
+	sampleimaxe = 'bc_SANT_201504_C/20150430_044.pyr.tif';
+	for(i=0; i<fotos.length; i++) {
+		fsplit=fotos[i].split("|");
+		scale = fsplit[3] / 25.4;
+		thumb = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+wid+'&CVT=jpeg', '?','%3F'),'&','%26');
+		big = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+"1100"+'&CVT=jpeg','?','%3F'),'&','%26');
+		url = 'https://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
+		rollohtml += "<a href="+url+" target=_blank><img class='imaxe' src='"+thumb+"'></a> ";
+	
+	}
+	document.getElementById('visor').innerHTML = "<pre>"+fotos+"</pre><hr>"+rollohtml;
 }
 
 function filtrar() {
@@ -7,7 +32,8 @@ function filtrar() {
 	// PRIMEIRO OCULTAMOS TODOS:
 	exs = document.querySelectorAll(classtotal);
 	for (i=0; i<exs.length; i++) exs[i].style.display="none";
-	// AGORA REDIBUXAMOS OS DA SELECCIÓN:
+	// E LOGO AMOSAMOS SÓ OS SELECCIONADOS:
+	// https://stackoverflow.com/questions/9427311/how-to-get-all-elements-by-class-name/9427330#9427330
 	selc = document.getElementById("sel_centuria");
 	classc = selc[selc.selectedIndex].value;
 	if(classc>"") classtotal+=("."+classc);
