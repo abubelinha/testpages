@@ -84,10 +84,16 @@ function filtrar() {
 		*/
 	}
 }
-
+function cancel_sel() {
+	document.getElementById("sel_herbario").selectedIndex=0;
+	document.getElementById("sel_centuria").selectedIndex=0;
+	document.getElementById("sel_zona").selectedIndex=0;
+	filtrar();
+}
 document.getElementById("sel_herbario").addEventListener("change", filtrar);
 document.getElementById("sel_centuria").addEventListener("change", filtrar);
 document.getElementById("sel_zona").addEventListener("change", filtrar);
+document.getElementById("cancel_sel").addEventListener("click", cancel_sel);
 filtrar();
 
 function myFunction() {
