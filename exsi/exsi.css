@@ -1,0 +1,9 @@
+.exemplar {
+	border:0px solid lightgrey; margin:0px; cursor:pointer;
+	/* https://stackoverflow.com/questions/2491068/does-height-and-width-not-apply-to-span/2491072#2491072 */
+	/*display:inline-block; height:100px;*/
+	display:inline;
+}
+.oculto {
+	display:none;
+}
