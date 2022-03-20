@@ -1,7 +1,9 @@
-{{TITULO}}
+# Exsiccata de Flora Ibero-Macaronésica Selecta. Lista de números repartidos._
+(a partir de datos de fondos disponibles en Herbario SANT)
+
 * TOC 
 {:toc}
-{{MEOLLO}}
+
 
 -----------
 
