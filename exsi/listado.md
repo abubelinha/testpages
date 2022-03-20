@@ -2,31 +2,7 @@
 D.G.SanLeón (2022) - Herbario SANT / Departamento de Botánica. Universidade de Santiago de Compostela.
 * TOC 
 {:toc}
-## Introducción
-Bla bla bla
-## Material e métodos
-Escaneado. Proxecto GPI
-
-## Resultados
-### Participación
-- Socios institucionais e individuais
-- Evolución da participación
-- Recolectoras individuais
-### Reparto xeográfico
-- Países e provincias
-- Pisos altitudinais
-- Hetereoxeneidade dos sistemas de coordenadas
-### Selección de taxons
-Nin é sempre ibero-macaronésica, nin é sempre selecta.
-#### Repetitividade
-- Número de repeticións por centuria e institución
-#### Endemicidade
-#### Rareza
-- Flora ameazada / legalmente protexida (Anthos - Pytheia)
-- Flora exótica e invasora
-#### Reparto taxonómico (GPA IV)
-#### Biotipos / Formas biolóxicas
-
+{{MEOLLO}}
 
 -----------
 
