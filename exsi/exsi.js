@@ -56,6 +56,10 @@ function filtrar() {
 		if(i>0) sep=", ";
 		else sep="";
 		//console.log(tax, ": ",ux, x, x[0]," / ",resto.join(" "));
+		if(x[0]!=ux[0]) {
+			console.log("NOVA LETRA: ",x[0]);
+			sep='<br><br>'; // nova letra
+		}
 		if(x!=ux) {
 			exs[i].innerHTML = sep+"<i><b>"+x+"</b> " + resto.join(" ") + "</i>";
 			//console.log("'"+x+"' é distinto do último xénero: '"+ux+"'");
