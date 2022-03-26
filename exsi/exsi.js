@@ -7,10 +7,10 @@ function replaceAll(str, find, replace) {
   return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
-function ver(fotos) {
+function verold(fotostring,col,nh) {
 	document.getElementById('panel').style.visibility='visible';
 	//md_txt += "![weserv](https://images.weserv.nl/?url="+imgurl.replace("?","%3F").replace("&","%26").replace("http://","ssl:")+")"
-	fotos = fotos.split("#");
+	fotos = fotostring.split("#");
 	rollohtml="";
 	server = "193.144.34.193/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/";
 	wid="300";
@@ -22,11 +22,67 @@ function ver(fotos) {
 		big = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+"1100"+'&CVT=jpeg','?','%3F'),'&','%26');
 		url = 'https://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
 		rollohtml += "<a href="+url+" target=_blank><img class='imaxe' src='"+thumb+"'></a> ";
-	
 	}
-	document.getElementById('visor').innerHTML = "<pre>"+fotos+"</pre><hr>"+rollohtml;
+	urlsant = "https://www.usc.es/herbario/"+col+"/"+nh;
+	document.getElementById('visor').innerHTML = "<h1><a href='"+urlsant+"' target=_blank>"+col+" "+nh+"</a></h1>"+"<pre>"+fotos+"</pre><hr>"+rollohtml;
 }
-
+function verdatosex(col,nh) {
+	return ('');
+}
+function ver(fotostring,col,nh) {
+	document.getElementById('panel').style.visibility='visible';
+	//md_txt += "![weserv](https://images.weserv.nl/?url="+imgurl.replace("?","%3F").replace("&","%26").replace("http://","ssl:")+")"
+	fotos = fotostring.split("#");
+	rollohtml="";
+	// https://stackoverflow.com/questions/2694640/find-an-element-in-dom-based-on-an-attribute-value/16775485#16775485
+	//datos = document.querySelectorAll('[ex="SANT.78325"]')[0]
+	ex = document.querySelector('[ex="'+col+'.'+nh+'"]');
+	dj = JSON.parse(ex.getAttribute("data-json"));
+	rollohtml += "<hr>"+JSON.stringify(dj)+"<hr>";
+	rollohtml += "<div class='label'><h3>Exemplar aportado por "+dj.h+"";
+	rollohtml += "<br>Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</h3>";
+	rollohtml += "<h3><i>"+dj.sci+"</i></h3>"+"<i>Legit</i>: "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]<br>Lugar: "+dj.loc+"<br>Habitat: "+dj.hab+"<br></div>";
+	rollohtml += "<hr>";
+	server = "193.144.34.193/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/";
+	wid="300";
+	sampleimaxe = 'bc_SANT_201504_C/20150430_044.pyr.tif';
+	if(fotostring.length>0) {
+		for(i=0; i<fotos.length; i++) {
+			fsplit=fotos[i].split("|");
+			scale = fsplit[3] / 25.4;
+			thumb = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+wid+'&CVT=jpeg', '?','%3F'),'&','%26');
+			big = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+"1100"+'&CVT=jpeg','?','%3F'),'&','%26');
+			url = 'https://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
+			//rollohtml += "<a href="+url+" target=_blank><img class='imaxe' src='"+thumb+"'></a> "; // pa enlazar a SANT
+			// pa cargar visor en iframe:
+			rollohtml += "<a onclick=\"verdetalle('"+fotostring+"','"+col+"','"+nh+"','"+url+"');\"><img class='imaxe' src='"+thumb+"'></a> "; 
+		}
+	} else {
+		rollohtml += "<h1>DIXITALIZACIÓN PENDENTE</h1>"
+	}
+	urlsant = "https://www.usc.es/herbario/"+col+"/"+nh;
+	back = "<button onclick=\"ver('"+fotos+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
+	back = "";
+	datosex = verdatosex(col,nh);
+	linksant = "<a href='"+urlsant+"' target=_blank title='ver datos en web Herbario SANT'>"+col+" "+nh+"</a>";
+	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>"+datosex+"<pre>"+fotos+"</pre><hr>"+rollohtml;
+}
+function verdetalle(fotostring,col,nh,urlvisor) {
+	back = "<button onclick=\"ver('"+fotostring+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
+	urlsant = "https://www.usc.es/herbario/"+col+"/"+nh;
+	linksant = "<a href='"+urlsant+"' target=_blank title='ver datos en web Herbario SANT'>"+col+" "+nh+"</a>";
+	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>" + "<iframe style='width:100%;height:90%;' src='"+urlvisor+"'></iframe>";
+}
+var readJson = (path, cb) => {
+	// https://stackoverflow.com/questions/14484613/load-local-json-file-into-variable/18060638#18060638
+	// precisa de require.js
+	fs.readFile(require.resolve(path), (err, data) => {
+		if (err)
+		  cb(err)
+		else
+		  cb(null, JSON.parse(data))
+	})
+}
 function filtrar() {
 	classtotal=".exemplar";
 	// PRIMEIRO OCULTAMOS TODOS:
