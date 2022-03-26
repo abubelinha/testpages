@@ -18,6 +18,13 @@
 .imaxe {
 	border:2px dashed grey; cursor:pointer;
 }
+.label {
+	border: 1px solid black;
+	padding: 10px;
+	width: 90%;
+	max-width: 400px;
+	background-color: burlywood;
+}
 .imaxe:hover {
 	border-style:solid; border-color: blue;
 	border: 3px solid blue;
