@@ -38,7 +38,7 @@ function ver(fotostring,col,nh) {
 	//datos = document.querySelectorAll('[ex="SANT.78325"]')[0]
 	ex = document.querySelector('[ex="'+col+'.'+nh+'"]');
 	dj = JSON.parse(ex.getAttribute("data-json"));
-	rollohtml += "<hr>"+JSON.stringify(dj)+"<hr>";
+	rollohtml += "<hr>"+JSON.stringify(dj)+"<hr>"; // DEBUG
 	rollohtml += "<div class='label'><h3>Exemplar aportado por "+dj.h+"";
 	rollohtml += "<br>Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</h3>";
 	rollohtml += "<h3><i>"+dj.sci+"</i></h3>"+"<i>Legit</i>: "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]<br>Lugar: "+dj.loc+"<br>Habitat: "+dj.hab+"<br></div>";
@@ -65,6 +65,7 @@ function ver(fotostring,col,nh) {
 	back = "";
 	datosex = verdatosex(col,nh);
 	linksant = "<a href='"+urlsant+"' target=_blank title='ver datos en web Herbario SANT'>"+col+" "+nh+"</a>";
+	// DEBUG: fotos
 	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>"+datosex+"<pre>"+fotos+"</pre><hr>"+rollohtml;
 }
 function verdetalle(fotostring,col,nh,urlvisor) {
