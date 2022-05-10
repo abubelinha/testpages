@@ -38,11 +38,13 @@ function ver(fotostring,col,nh) {
 	//datos = document.querySelectorAll('[ex="SANT.78325"]')[0]
 	ex = document.querySelector('[ex="'+col+'.'+nh+'"]');
 	dj = JSON.parse(ex.getAttribute("data-json"));
-	rollohtml += "<hr>"+JSON.stringify(dj)+"<hr>"; // DEBUG
-	rollohtml += "<div class='label'><h3>Exemplar aportado por "+dj.h+"";
-	rollohtml += "<br>Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</h3>";
-	rollohtml += "<h3><i>"+dj.sci+"</i></h3>"+"<i>Legit</i>: "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]<br>Lugar: "+dj.loc+"<br>Habitat: "+dj.hab+"<br></div>";
-	rollohtml += "<hr>";
+	rollohtml += "<div class='label'><h5><b>"+dj.h+"</b>";
+	rollohtml += ". Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</h5>";
+	rollohtml += "<h4><i>"+dj.sci+"</i></h5>";
+	rollohtml += "<span class='campo'><i>Legit</i>:</span> "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]";
+	rollohtml += "<br><span class='campo'>Lugar:</span> "+dj.loc;
+	rollohtml += "<br><span class='campo'>Habitat:</span> "+dj.hab;
+	rollohtml += "<br></div>"+"<hr>";
 	server = "193.144.34.193/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/";
 	wid="300";
 	sampleimaxe = 'bc_SANT_201504_C/20150430_044.pyr.tif';
@@ -60,13 +62,14 @@ function ver(fotostring,col,nh) {
 	} else {
 		rollohtml += "<h1>DIXITALIZACIÓN PENDENTE</h1>"
 	}
+	rollohtml += "<hr>"+JSON.stringify(dj); // DEBUG
 	urlsant = "https://www.usc.es/herbario/"+col+"/"+nh;
 	back = "<button onclick=\"ver('"+fotos+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
 	back = "";
 	datosex = verdatosex(col,nh);
 	linksant = "<a href='"+urlsant+"' target=_blank title='ver datos en web Herbario SANT'>"+col+" "+nh+"</a>";
 	// DEBUG: fotos
-	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>"+datosex+"<pre>"+fotos+"</pre><hr>"+rollohtml;
+	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>"+datosex+rollohtml+"<hr><pre>"+fotos+"</pre>";
 }
 function verdetalle(fotostring,col,nh,urlvisor) {
 	back = "<button onclick=\"ver('"+fotostring+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
