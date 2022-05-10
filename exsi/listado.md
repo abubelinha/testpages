@@ -1,5 +1,5 @@
-# _25 años de Exsiccata de Flora Ibero-Macaronésica Selecta. Estudio cuantitativo._
-D.G.SanLeón (2022) - Herbario SANT / Departamento de Botánica. Universidade de Santiago de Compostela.
+# Exsiccata de Flora Ibero-Macaronésica Selecta. Números repartidos.
+(a partir de datos de fondos disponibles en Herbario SANT)
 
 * TOC 
 {:toc}
