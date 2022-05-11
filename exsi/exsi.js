@@ -38,15 +38,16 @@ function ver(fotostring,col,nh) {
 	//datos = document.querySelectorAll('[ex="SANT.78325"]')[0]
 	ex = document.querySelector('[ex="'+col+'.'+nh+'"]');
 	dj = JSON.parse(ex.getAttribute("data-json"));
-	rollohtml += "<div class='label'><h5><b>"+dj.h+"</b>";
-	rollohtml += ". Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</h5>";
-	rollohtml += "<h4><i>"+dj.sci+"</i></h5>";
-	rollohtml += "<span class='campo'><i>Legit</i>:</span> "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]";
+	rollohtml += "<div class='label'>"
+	rollohtml += "<span class='label_exsic'><b>"+dj.h+"</b>";
+	rollohtml += ". Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</span>";
+	rollohtml += "<br><span class='label_taxon'><i>"+dj.sci+"</i></span>";
+	rollohtml += "<br><span class='campo'><i>Legit</i>:</span> "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]";
 	rollohtml += "<br><span class='campo'>Lugar:</span> "+dj.loc;
 	rollohtml += "<br><span class='campo'>Habitat:</span> "+dj.hab;
 	rollohtml += "<br></div>"+"<hr>";
 	server = "193.144.34.193/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/";
-	wid="300";
+	wid="250";
 	sampleimaxe = 'bc_SANT_201504_C/20150430_044.pyr.tif';
 	if(fotostring.length>0) {
 		for(i=0; i<fotos.length; i++) {
