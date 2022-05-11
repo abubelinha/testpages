@@ -62,14 +62,17 @@ function ver(fotostring,col,nh) {
 	} else {
 		rollohtml += "<h1>DIXITALIZACIÓN PENDENTE</h1>"
 	}
-	rollohtml += "<hr>"+JSON.stringify(dj); // DEBUG
+	if(false) rollohtml += "<hr>"+JSON.stringify(dj); // DEBUG
 	urlsant = "https://www.usc.es/herbario/"+col+"/"+nh;
 	back = "<button onclick=\"ver('"+fotos+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
 	back = "";
 	datosex = verdatosex(col,nh);
 	linksant = "<a href='"+urlsant+"' target=_blank title='ver datos en web Herbario SANT'>"+col+" "+nh+"</a>";
 	// DEBUG: fotos
-	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>"+datosex+rollohtml+"<hr><pre>"+fotos+"</pre>";
+	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>"+datosex+rollohtml;
+	if(false) {
+		document.getElementById('visor').innerHTML += "<hr><pre>"+fotos+"</pre>";
+	}
 }
 function verdetalle(fotostring,col,nh,urlvisor) {
 	back = "<button onclick=\"ver('"+fotostring+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
