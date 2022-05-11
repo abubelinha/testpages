@@ -1,3 +1,8 @@
+#panel {
+	background:yellow; border: 3px dashed grey; visibility: hidden; position: fixed; top:5px; 
+	background: white; width: 90%; height: 90%; top:5%; left:5%;
+	background: green;
+}
 .exemplar {
 	border:0px solid lightgrey; margin:0px; cursor:pointer;
 	/* https://stackoverflow.com/questions/2491068/does-height-and-width-not-apply-to-span/2491072#2491072 */
