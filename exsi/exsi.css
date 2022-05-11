@@ -14,10 +14,12 @@
 #panel {
 	background:yellow; border: 3px dashed grey; visibility: hidden; position: fixed; top:5px; 
 	background: white; width: 90%; height: 90%; top:5%; left:5%;
+	background: white; width: 99%; height: 99%; top:0.5%; left:0.5%; border: 3px dotted grey;
 }
 .visor {
 	background:antiquewhite;
 	position:absolute; width:95%; height:95%; right:0px;
+	position:absolute; width:98%; height:98%; right:1%; top:1%;
 	overflow-y:scroll; overflow-x:hidden;
 }
 .label {
@@ -33,16 +35,23 @@
 .label_exsic {
 	font-weight: bold;
 }
+#div_taxon {
+	text-align: right;
+	padding:3px; margin:3px;
+	border-top:1px dotted black;
+	border-bottom:1px dotted black;
+}
 .label_taxon {
 	font-family: Arial, Helvetica, sans-serif;
-	line-height: 2;
+	/*border-top:1px solid; border-bottom:1px solid;*/
+	/*line-height: 2;*/
 }
 .imaxe {
-	border:2px dashed grey; cursor:pointer;
+	border:2px dotted grey; cursor:pointer;
 }
 .imaxe:hover {
 	border-style:solid; border-color: blue;
-	border: 3px solid blue;
+	border: 2px dashed blue;
 }
 .close {
 	cursor:pointer; 
