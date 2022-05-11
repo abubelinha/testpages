@@ -41,8 +41,8 @@ function ver(fotostring,col,nh) {
 	rollohtml += "<div class='label'>"
 	rollohtml += "<span class='label_exsic'><b>"+dj.h+"</b>";
 	rollohtml += ". Centuria "+dj.c+", Nº"+dj.n+" ("+(parseInt(dj.c)+1995).toString()+"):</span>";
-	rollohtml += "<br><span class='label_taxon'><i>"+dj.sci+"</i></span>";
-	rollohtml += "<br><span class='campo'><i>Legit</i>:</span> "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]";
+	rollohtml += "<!--br--><div id='div_taxon'><span class='label_taxon'><i>"+dj.sci+"</i></span></div>";
+	rollohtml += "<!--br--><span class='campo'><i>Legit</i>:</span> "+dj.leg+"</i> ["+dj.ano+"/"+dj.mes+"/"+dj.dia+"]";
 	rollohtml += "<br><span class='campo'>Lugar:</span> "+dj.loc;
 	rollohtml += "<br><span class='campo'>Habitat:</span> "+dj.hab;
 	rollohtml += "<br></div>"+"<hr>";
@@ -53,9 +53,11 @@ function ver(fotostring,col,nh) {
 		for(i=0; i<fotos.length; i++) {
 			fsplit=fotos[i].split("|");
 			scale = fsplit[3] / 25.4;
-			thumb = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+wid+'&CVT=jpeg', '?','%3F'),'&','%26');
-			big = 'https://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+"1100"+'&CVT=jpeg','?','%3F'),'&','%26');
-			url = 'https://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
+			protocol='https';
+			protocol='http';
+			thumb = protocol+'://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+wid+'&CVT=jpeg', '?','%3F'),'&','%26');
+			big = protocol+'://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+"1100"+'&CVT=jpeg','?','%3F'),'&','%26');
+			url = protocol+'://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
 			//rollohtml += "<a href="+url+" target=_blank><img class='imaxe' src='"+thumb+"'></a> "; // pa enlazar a SANT
 			// pa cargar visor en iframe:
 			rollohtml += "<a onclick=\"verdetalle('"+fotostring+"','"+col+"','"+nh+"','"+url+"');\"><img class='imaxe' src='"+thumb+"'></a> "; 
@@ -76,7 +78,7 @@ function ver(fotostring,col,nh) {
 	}
 }
 function verdetalle(fotostring,col,nh,urlvisor) {
-	back = "<button onclick=\"ver('"+fotostring+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&lt;</button>";
+	back = "<button onclick=\"ver('"+fotostring+"','"+col+"','"+nh+"');\" title=\"ATRÁS\">&lt;&lt;&nbsp;etiqueta</button>";
 	urlsant = "https://www.usc.es/herbario/"+col+"/"+nh;
 	linksant = "<a href='"+urlsant+"' target=_blank title='ver datos en web Herbario SANT'>"+col+" "+nh+"</a>";
 	document.getElementById('visor').innerHTML = "<h3>"+back+" "+linksant+"</h3>" + "<iframe style='width:100%;height:90%;' src='"+urlvisor+"'></iframe>";
