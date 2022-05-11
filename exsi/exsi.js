@@ -47,7 +47,7 @@ function ver(fotostring,col,nh) {
 	rollohtml += "<br><span class='campo'>Habitat:</span> "+dj.hab;
 	rollohtml += "<br></div>"+"<hr>";
 	server = "193.144.34.193/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/";
-	wid="250";
+	wid="200";
 	sampleimaxe = 'bc_SANT_201504_C/20150430_044.pyr.tif';
 	if(fotostring.length>0) {
 		for(i=0; i<fotos.length; i++) {
