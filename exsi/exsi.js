@@ -57,7 +57,7 @@ function ver(fotostring,col,nh) {
 			protocol='http';
 			thumb = protocol+'://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+wid+'&CVT=jpeg', '?','%3F'),'&','%26');
 			big = protocol+'://images.weserv.nl/?url='+replaceAll(replaceAll(server+fsplit[1]+'/'+fsplit[2]+'&CNT=1.1&WID='+"1100"+'&CVT=jpeg','?','%3F'),'&','%26');
-			url = protocol+'://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
+			url = 'https'+'://herbarios.ga/imsrv/visorcesga.php?fif='+fsplit[1]+'/'+fsplit[2]+'&scale='+scale;
 			//rollohtml += "<a href="+url+" target=_blank><img class='imaxe' src='"+thumb+"'></a> "; // pa enlazar a SANT
 			// pa cargar visor en iframe:
 			rollohtml += "<a onclick=\"verdetalle('"+fotostring+"','"+col+"','"+nh+"','"+url+"');\"><img class='imaxe' src='"+thumb+"'></a> "; 
