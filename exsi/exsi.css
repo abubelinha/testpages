@@ -7,6 +7,17 @@
 .exemplar:hover, .exemplar:active {
 	background-color: lightgrey;
 }
+
+.campo {
+	font-weight: bold;
+}
+.label_exsic {
+	font-weight: bold;
+}
+.label_taxon {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 2;
+}
 .oculto {
 	display:none;
 }
