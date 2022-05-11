@@ -8,7 +8,7 @@
 -----------
 
 
-<div id='panel' style='background:yellow; border: 3px dashed grey; visibility: hidden; position: fixed; top:5px; background: white; width: 90%; height: 90%; top:5%; left:5%;'>
+<div id='panel'>
 <span title="CERRAR" class='close' onclick="document.getElementById('panel').style.visibility='hidden';">X</span><br>
 <div id='visor' class='visor'>
 </div>
