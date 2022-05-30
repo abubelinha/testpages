@@ -11,7 +11,8 @@ document.querySelectorAll(".exe").forEach(
 		cl = item.className;
 		item.title = 'Centuria '+ cl.split("c_")[1].split(" ")[0]; // title='c.{} (N.{}): {}/{}'
 		item.title += ', Nº' + item.id;
-		item.title += ',\n (herbario ' + cl.split(" ").at(-1) + ')';
+		//item.title += ',\n (herbario ' + cl.split(" ").at(-1) + ')'; // ES-2022
+		item.title += ',\n (herbario ' + cl.split(" ")[cl.split(" ").length-1] + ')';
 		item.title += '\n Zona: ' + cl.split("z_")[1].split(" ")[0];
 	});
 
