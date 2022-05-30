@@ -1,3 +1,21 @@
+function verex() {
+	exemplarSANT = this.getAttribute('ex').replace('.','_')+'_#/1';
+	//alert(elem.id +': '+ex+' = '+exr  );
+	window.open('https://www.usc.gal/herbario/?'+exemplarSANT,'_blank');
+}
+
+document.querySelectorAll(".exe").forEach(
+	item => {
+		//console.log(item.getAttribute('ex'))
+		item.onclick = verex;
+		cl = item.className;
+		item.title = 'Centuria '+ cl.split("c_")[1].split(" ")[0]; // title='c.{} (N.{}): {}/{}'
+		item.title += ', Nº' + item.id;
+		item.title += ',\n (herbario ' + cl.split(" ").at(-1) + ')';
+		item.title += '\n Zona: ' + cl.split("z_")[1].split(" ")[0];
+	});
+
+	
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
@@ -28,6 +46,14 @@ function verold(fotostring,col,nh) {
 }
 function verdatosex(col,nh) {
 	return ('');
+}
+function v(elem) {
+	// https://stackoverflow.com/questions/6575210/how-to-pass-the-id-of-an-element-that-triggers-an-onclick-event-to-the-event-h
+	ex = elem.getAttribute('ex');
+	exr = ex.replace('.','/');
+	exr = ex.replace('.','_')+'_#/1';
+	alert(elem.id +': '+ex+' = '+exr  );
+	window.open('https://www.usc.es/herbario/?'+exr,'_blank');
 }
 function ver(fotostring,col,nh) {
 	document.getElementById('panel').style.visibility='visible';
@@ -94,7 +120,7 @@ var readJson = (path, cb) => {
 	})
 }
 function filtrar() {
-	classtotal=".exemplar";
+	classtotal=".exe";
 	// PRIMEIRO OCULTAMOS TODOS:
 	exs = document.querySelectorAll(classtotal);
 	for (i=0; i<exs.length; i++) exs[i].style.display="none";
