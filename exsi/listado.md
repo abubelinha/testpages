@@ -14,7 +14,7 @@
 </div>
 </div>
 
-## Anexo: lista de exemplares:
+## Lista de exemplares:
 Recollidos un total de 2792 exemplares, repartidos en 25 centurias:
 
 <button id='cancel_sel'>ver todo</button>
