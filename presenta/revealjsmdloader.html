@@ -14,14 +14,19 @@
 </head>
 <body>
     <div class="reveal">
-        <div class="slides">
+        <div class="slides" id="div_slides">
             <!-- Use external markdown resource, separate slides by three dashes; vertical slides by two dashes -->
-            <section>
-                <section data-markdown="./slides.md" data-separator="\n---\n" data-separator-vertical="\n--\n"></section>
+            <section id="md_slides">
+                <!-- section data-markdown="https://raw.githubusercontent.com/abubelinha/testpages/master/presenta/slides.md" data-separator="\n---\n" data-separator-vertical="\n--\n"></section-->
+				<!-- how to get the .md filename from querystring:
+				https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/901144#901144
+				https://stackoverflow.com/questions/979975/get-the-values-from-the-get-parameters-javascript
+				https://stackoverflow.com/questions/34481306/how-to-wait-for-page-to-load-befor-reveal-js-starts
+				-->
+                 <section data-markdown="https://raw.githubusercontent.com/abubelinha/testpages/master/presenta/slides.md" data-separator="\n---\n" data-separator-vertical="\n--\n"></section>
             </section>
         </div>
     </div>
-
     <!-- javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/markdown/markdown.min.js"></script>
@@ -29,6 +34,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/notes/notes.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/math/math.min.js"></script>
     <script>
+	window.onload = function(){
+		/* trick from http://anbasile.github.io/reveal_pickmeup/
+		https://stackoverflow.com/questions/34481306/how-to-wait-for-page-to-load-befor-reveal-js-starts
+		https://stackoverflow.com/questions/16683176/add-two-functions-to-window-onload/16683215#16683215
+		*/
+		// https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/901144#901144
+		const params = new Proxy(new URLSearchParams(window.location.search), {
+		  get: (searchParams, prop) => searchParams.get(prop),
+		});
+		var serverpath = "https://raw.githubusercontent.com/abubelinha/testpages/master/presenta/";
+		var md_file=serverpath+"slides4.md";
+		//alert(params.mdfile);
+		if (params.mdfile==null || params.mdfile=="") {
+			// do nothing: we keep default md_file
+			var message="no slides file provided";
+			//alert(message);
+			document.getElementById("div_slides").innerHTML = "<h3>"+message+"</h3>";
+			document.getElementById("div_slides").className="";
+			return;
+		} else {
+			md_file = serverpath+params.mdfile;
+		}
+		//alert(md_file);
+		//md_file = serverpath+params.mdfile;
+		document.getElementById("md_slides").innerHTML = "<section data-markdown='"+md_file+"'></section>";
         Reveal.initialize({
             controls: true,
             progress: true,
@@ -38,8 +68,7 @@
             autoAnimateDuration: 0.5,
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
         });
+	}
     </script>
-
 </body>
-
 </html>
