@@ -17,10 +17,11 @@
         <div class="slides">
             <!-- Use external markdown resource, separate slides by three dashes; vertical slides by two dashes -->
             <section>
-                <section data-markdown="slides.md" data-separator="^\n---\n" data-separator-vertical="^\n--\n"></section>
+                <section data-markdown="./slides.md" data-separator="\n---\n" data-separator-vertical="\n--\n"></section>
             </section>
         </div>
     </div>
+
     <!-- javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/markdown/markdown.min.js"></script>
@@ -38,5 +39,7 @@
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
         });
     </script>
+
 </body>
+
 </html>
