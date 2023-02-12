@@ -58,7 +58,8 @@
 		}
 		//alert(md_file);
 		//md_file = serverpath+params.mdfile;
-		document.getElementById("md_slides").innerHTML = "<section data-markdown='"+md_file+"'></section>";
+		var separators = ' data-separator="\n---\n" data-separator-vertical="\r?\n--\r?\n"';
+		document.getElementById("md_slides").innerHTML = "<section data-markdown='"+md_file+"'"+separators+"></section>";
         Reveal.initialize({
             controls: true,
             progress: true,
