@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Herbario SANT</title>
+
+		<!--meta name="description" content="Simple Reveal.js slidedeck template. Source files loaded from jsDelivr."-->
+		<meta name="description" content="visor de exemplares do Herbario SANT">
+		<meta name="author" content="D.G.SanLéon 2019">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/simple.css" id="theme">
+		<!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/moon.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/css/theme/night.css"-->
+		<!-- Printing and PDF exports -->
+		<script>
+			// Load print, pdf stylesheets from jsDelivr
+			var srcUrlPrefix = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/';
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = srcUrlPrefix + (window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css');
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+<section><p><h4>SANT 50000: <br><i><b>Iberodes littoralis (Lehm.) M. Serrano, R. Carbajal and S. Ortiz subsp. gallaecica (M. Laínz) M. Serrano, R. Carbajal and S. Ortiz</b></i></h4><hr><ul><li><b>Localidade:</b> ES. C. Ponteceso. Ilha dos Cagalhons</li><li><b>Hábitat:</b> em Violo-Silenetum. Muito abundante</li><li><b><i>Legit</b></i>: Roi Carbajal; M.Serrano (2001/5/18)</li><li>Threatened taxon in Spain</li></ul></p></section><section><h4>SANT 50000: <br><i><b>Iberodes littoralis (Lehm.) M. Serrano, R. Carbajal and S. Ortiz subsp. gallaecica (M. Laínz) M. Serrano, R. Carbajal and S. Ortiz</b></i></h4><a href='https://herbarios.ga/imsrv/visorcesga.php?fif=SANT_2006/4__2006-10-25_17-39-59.pyr.tif&scale=15.748031496063'><img height=250 title='Imaxe servida polo Herbario SANT coa colaboración do CESGA' src=https://herbarios.ga/iipsrv/iipsrv.fcgi?fif=/mnt/scratch/pyrtif/SANT_2006/4__2006-10-25_17-39-59.pyr.tif&JTL=0,0></a>&nbsp;</section>			</div><!-- .slides -->
+
+		</div><!-- .reveal -->
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/lib/js/head.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.7.0/js/reveal.min.js"></script>
+		<style>
+		/* 
+			https://www.raymondcamden.com/2014/04/01/Adding-an-Absolutely-Positioned-Header-to-Revealjs#comment-2469766865
+			https://github.com/hakimel/reveal.js/issues/180#issuecomment-173543708 
+		*/
+/*
+		.reveal.slide .slides > section, .reveal.slide .slides > section > section {
+		  min-height: 100% !important;
+		  display: flex !important;
+		  flex-direction: column !important;
+		  justify-content: center !important;
+		  position: absolute !important;
+		  top: 0 !important;
+		  align-items: center !important;
+		} 
+		section > h1, section > h2 , section > h3 , section > h4 {
+		  position: absolute !important;
+		  top: 0 !important;
+		  margin-left: auto !important;
+		  margin-right: auto !important;
+		  left: 0 !important;
+		  right: 0 !important;
+		  text-align: center !important;
+		}
+		.print-pdf .reveal.slide .slides > section, .print-pdf .reveal.slide .slides > section > section {
+		  min-height: 770px !important;
+		  position: relative !important;
+		}
+*/
+		.reveal.slide .slides {
+		//	border:1px dashed red;
+		}
+		</style>
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true, /* orixinalmente true, pero iso deixa moito marxe por enriba do título https://www.raymondcamden.com/2014/04/01/Adding-an-Absolutely-Positioned-Header-to-Revealjs#comment-2469766865
+				https://github.com/hakimel/reveal.js/issues/180#issuecomment-173543708 */
+				/*width: "100%", height: "100%",*/ /*width: getWidth(), height: getHeight(),*/ margin: 0.1, /*minScale: 1, maxScale: 1,  */
+				/* width: '100%', height: '100%', https://github.com/hakimel/reveal.js/issues/565#issuecomment-22883207 */
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				autoSlide: 10000,
+				autoSlideStoppable: true,
+				autoSlideMethod: Reveal.navigateNext,
+				loop: true, /* https://github.com/hakimel/reveal.js/issues/33#issuecomment-5397910
+				https://github.com/hakimel/reveal.js/commit/cde5362db3c9f9c11377bce38c527b4e7d09344f */
+
+				// Optional reveal.js plugins, loaded from jsDelivr
+				dependencies: [
+					{ src: srcUrlPrefix + 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: srcUrlPrefix + 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: srcUrlPrefix + 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: srcUrlPrefix + 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: srcUrlPrefix + 'plugin/zoom-js/zoom.js', async: true },
+					{ src: srcUrlPrefix + 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
