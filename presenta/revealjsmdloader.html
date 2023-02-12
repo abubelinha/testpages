@@ -58,7 +58,7 @@
 		}
 		//alert(md_file);
 		//md_file = serverpath+params.mdfile;
-		var separators = ' data-separator="\n---\n" data-separator-vertical="\r?\n--\r?\n"';
+		var separators = ' data-separator="\n---\n" data-separator-vertical="\n--\n"';
 		document.getElementById("md_slides").innerHTML = "<section data-markdown='"+md_file+"'"+separators+"></section>";
         Reveal.initialize({
             controls: true,
