@@ -8,7 +8,7 @@ pozvamoz
 
 ### yeah
 3. poznuncatedezided
---
+---
 ## Blah 3
 poznozé
 - this is **bold** 
@@ -17,4 +17,8 @@ poznozé
 - and this <font color=red>red</font>
 ---
 ## Slide 4
+- Item 1 <!-- .element: class="fragment" data-fragment-index="2" -->
+- Item 2 <!-- .element: class="fragment" data-fragment-index="1" -->
+===
+## Tras vertical??
 pozacabó
