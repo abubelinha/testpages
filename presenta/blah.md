@@ -21,7 +21,9 @@ poznozé
 - and this _italics_
 - and this _**both**_
 - and this <font color=red>red</font>
+
 ---
+
 ## Slide 4
 - Item 1 <!-- .element: class="fragment" data-fragment-index="2" -->
 - Item 2 <!-- .element: class="fragment" data-fragment-index="1" -->
