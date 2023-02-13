@@ -60,7 +60,7 @@
 		//md_file = serverpath+params.mdfile;
 		var separators = '';
 		separators = ' data-separator="\n---\n" data-separator-vertical="\n--\n"';
-		separators = ' data-separator="\n---\n" data-separator-vertical="\n===\n"';
+		separators = ' data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n===\r?\n"';
 		document.getElementById("md_slides").innerHTML = "<section data-markdown='"+md_file+"'"+separators+"></section>";
         Reveal.initialize({
             controls: true,
