@@ -1,9 +1,19 @@
 <html>
     <body>
       Example taken from <a target=_blank href="https://docxtemplater.com/docs/get-started-browser/">https://docxtemplater.com/docs/get-started-browser/</a><br>
-        Expecting to extende this example to <a target=_blank href="https://github.com/open-xml-templating/docxtemplater/issues/708">multiple label production</a>
+      Expecting to extend this example to <a target=_blank href="https://github.com/open-xml-templating/docxtemplater/issues/708">multiple label production</a> 
+        from browser-edited data with either:
+        <li><a target=_blank href="https://github.com/olifolkerd/tabulator">tabulator</a></li>
+        <li><a target=_blank href="">datatables</a></li>
       <hr>
-        <button onclick="generate()">Generate document</button>
+      <button onclick="generate()">Generate document</button>
+      <hr>
+      <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+      <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+      <div id="example-table"></div>
+      <script type="text/javascript">
+        var table = new Tabulator("#example-table", {});
+      </script>  
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.34.3/docxtemplater.js"></script>
     <script src="https://unpkg.com/pizzip@3.1.4/dist/pizzip.js"></script>
