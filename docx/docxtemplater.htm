@@ -1,7 +1,7 @@
 <html>
     <body>
       Example taken from <a target=_blank href="https://docxtemplater.com/docs/get-started-browser/">https://docxtemplater.com/docs/get-started-browser/</a><br>
-      Expecting to extend this example to <a target=_blank href="https://github.com/open-xml-templating/docxtemplater/issues/708">multiple label production</a> 
+      I want to extend this example to <a target=_blank href="https://github.com/open-xml-templating/docxtemplater/issues/708">multiple label production</a> 
         from browser-edited data with either:
         <li><a target=_blank href="https://github.com/olifolkerd/tabulator">tabulator</a></li>
         <li><a target=_blank href="">datatables</a></li>
@@ -35,8 +35,8 @@
         window.generate = function generate() {
             var mytemplate = "";
 	    mytemplate = "https://github.com/abubelinha/testpages/raw/master/docx/docxtemplater_25-in-A4_template.docx"; // this fails
-	    mytemplate = "https://github.com/abubelinha/testpages/blob/master/docx/docxtemplater_25-in-A4_template.docx?raw=true"; // this fails
 	    mytemplate = "https://docxtemplater.com/tag-example.docx"; // this works
+	    mytemplate = "https://github.com/abubelinha/testpages/blob/master/docx/docxtemplater_25-in-A4_template.docx?raw=true"; // this fails
             loadFile(
                 mytemplate,
                 function (error, content) {
