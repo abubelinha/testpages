@@ -3,16 +3,77 @@
       Example taken from <a target=_blank href="https://docxtemplater.com/docs/get-started-browser/">https://docxtemplater.com/docs/get-started-browser/</a><br>
       I want to extend this example to <a target=_blank href="https://github.com/open-xml-templating/docxtemplater/issues/708">multiple label production</a> 
         from browser-edited data with either:
-        <li><a target=_blank href="https://github.com/olifolkerd/tabulator">tabulator</a></li>
-        <li><a target=_blank href="">datatables</a></li>
+        <li><a target=_blank href="http://tabulator.info/">tabulator</a> 
+		(<a target=_blank href="https://github.com/olifolkerd/tabulator">github</a>)</li>
+        <li><a target=_blank href="http://www.datatables.net/">datatables</a> 
+		(<a target=_blank href="https://github.com/DataTables/DataTables">github</a>)</li>
+		<li><a target=_blank href="https://handsontable.com/demo">handsontable</a> 
+		(<a target=_blank href="https://github.com/handsontable/handsontable">github</a>)</li>
       <hr>
       <button onclick="generate()">Generate document</button>
+	  <button onclick="table.print()">Print table</button>
+	  <button onclick="alert(JSON.stringify(table.getColumnDefinitions()))">Show table columns</button>
+	  <button onclick="console.log(tabledata);console.log(table.getData());">Old vs new data</button>
+	  
       <hr>
       <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
       <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
       <div id="example-table"></div>
+	  <hr>
+	  Note: Just in case anyone tries to use github pages for hosting both docxtemplater .html tests and .docx templates and gets a <a target=_blank href="https://github.com/open-xml-templating/docxtemplater/issues/600#issuecomment-831068521">CORS error</a>, remember to link your templates using github.io urls (althought they are also available from github.com using raw links)  ... since your .html pages will be served from github.io domain.
       <script type="text/javascript">
-        var table = new Tabulator("#example-table", {});
+		var tabledata = [
+			{
+			e_name: "John",
+			e_surname: "Doe",
+			e_phone: "0652455478",
+			e_email: "john@johndoe.com",
+			e_address: "Central Street, 123	",
+			e_age:52,
+			},
+			{
+			e_name: "Johnny",
+			e_surname: "Doolittle",
+			e_phone: "0652455470",
+			e_email: "johnny@johndoe.com",
+			},
+		   {
+				"e_name":"Mary",
+				"e_surname":"Fing", 
+				"e_address":"Baker Street, 6", 
+				"e_phone":2302148124, 
+				"e_email":"mary@fing.com",
+				"e_age":27,
+				"col":"red",
+		   }, 
+		   {
+				"e_name":"Sean",
+				"e_surname":"Paul", 
+				"e_address":"Other Street, 6", 
+				"e_phone":49539259235, 
+				"e_email":"sean-paul@gmail.com",
+				"dob":"3/3/1933",
+		   }, 
+		];
+		var table = new Tabulator("#example-table", {
+			data:tabledata,
+			height:405, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+			data:tabledata, //assign data to table
+			layout:"fitColumns", //fit columns to width of table (optional)
+			clipboard:true, // true: enable clipboard copy & paste, "copy": enable only copy, "paste": only paste, false (default)
+			tabEndNewRow: true, // create new row and add focus on its 1st editable cell when you tab out of the last editable cell on the table
+			columns:[ //Define Table Columns
+				{title:"Name", field:"e_name", width:150, editor:"input"},
+				{title:"Surname", field:"e_surname", editor:"input", width:150},
+				{title:"Address", field:"e_address", editor:"input"},
+				{title:"Telephone", field:"e_phone", editor:"input", width:150},
+				{title:"Email address", field:"e_email", width:150},
+				{title:"Favourite Color", field:"col"},
+				/*
+				{title:"Age", field:"e_age", hozAlign:"left", formatter:"progress"}, 
+				{title:"Date Of Birth", field:"dob", sorter:"date", hozAlign:"center"}, */
+			],
+		});
       </script>  
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.34.3/docxtemplater.js"></script>
@@ -33,11 +94,12 @@
             PizZipUtils.getBinaryContent(url, callback);
         }
         window.generate = function generate() {
-            var mytemplate = "";
-	    mytemplate = "https://github.com/abubelinha/testpages/raw/master/docx/docxtemplater_25-in-A4_template.docx"; // this fails
-	    mytemplate = "https://docxtemplater.com/tag-example.docx"; // this works
-	    mytemplate = "https://github.com/abubelinha/testpages/blob/master/docx/docxtemplater_25-in-A4_template.docx?raw=true"; // this fails
-	    mytemplate = "https://abubelinha.github.io/testpages/docx/docxtemplater_25-in-A4_template.docx"; // this should work !!
+			var mytemplate = "";
+			mytemplate = "https://github.com/abubelinha/testpages/raw/master/docx/docxtemplater_25-in-A4_template.docx"; // fails
+			mytemplate = "https://docxtemplater.com/tag-example.docx"; // this works
+			mytemplate = "https://github.com/abubelinha/testpages/blob/master/docx/docxtemplater_25-in-A4_template.docx?raw=true"; // fails
+			mytemplate = "docxtemplater_25-in-A4_template.docx"; // this should work !!
+			mytemplate = "https://abubelinha.github.io/testpages/docx/docxtemplater_25-in-A4_template.docx"; // this should work !!
             loadFile(
                 mytemplate,
                 function (error, content) {
@@ -51,12 +113,39 @@
                     });
 
                     // Render the document (Replace {first_name} by John, {last_name} by Doe, ...)
-                    doc.render({
-                        first_name: "John",
-                        last_name: "Doe",
-                        phone: "0652455478",
-                        description: "New Website",
-                    });
+					var tabledata = [
+						{
+                        e_name: "John",
+                        e_surname: "Doe",
+                        e_phone: "0652455478",
+                        e_email: "john@johndoe.com",
+                        e_address: "Central Street, 123	",
+						},
+						{
+                        e_name: "Johnny",
+                        e_surname: "Doolittle",
+                        e_phone: "0652455470",
+                        e_email: "johnny@johndoe.com",
+						},
+					   {
+							"e_name":"Mary",
+							"e_surname":"Fing", 
+							"e_address":"Baker Street, 6", 
+							"e_phone":2302148124, 
+							"e_email":"mary@fing.com"
+					   }, 
+					   {
+							"e_name":"Sean",
+							"e_surname":"Paul", 
+							"e_address":"Other Street, 6", 
+							"e_phone":49539259235, 
+							"e_email":"sean-paul@gmail.com"
+					   }, 
+                    ];
+					// https://stackoverflow.com/questions/54716194/tabulator-how-to-extract-just-the-data-and-save-as-json-object/54716780#54716780
+					tabledata = table.getData();
+					columns = table.getColumnDefinitions();
+                    doc.render({people:tabledata});
 
                     var blob = doc.getZip().generate({
                         type: "blob",
