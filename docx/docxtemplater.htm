@@ -33,8 +33,11 @@
             PizZipUtils.getBinaryContent(url, callback);
         }
         window.generate = function generate() {
+            var mytemplate = "https://docxtemplater.com/tag-example.docx";
+			mytemplate = "https://github.com/abubelinha/testpages/raw/master/docx/docxtemplater_25-in-A4_template.docx";
+			mytemplate = "https://github.com/abubelinha/testpages/blob/master/docx/docxtemplater_25-in-A4_template.docx?raw=true";
             loadFile(
-                "https://docxtemplater.com/tag-example.docx",
+                mytemplate,
                 function (error, content) {
                     if (error) {
                         throw error;
