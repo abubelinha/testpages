@@ -43,6 +43,9 @@
 		const params = new Proxy(new URLSearchParams(window.location.search), {
 		  get: (searchParams, prop) => searchParams.get(prop),
 		});
+		/* Se searchParams.get() falla en browsers vellos (Fitofoto), podemos probar coa function getParameterByName():
+		https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/901144#901144
+                */
 		var serverpath = "https://raw.githubusercontent.com/abubelinha/testpages/master/presenta/";
 		var md_file=serverpath+"slides4.md";
 		//alert(params.mdfile);
