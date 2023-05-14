@@ -428,9 +428,7 @@ taxonID,scientificName,family,genericName,specificEpithet,taxonRank,infraspecifi
 595,Matricaria discoidea DC.,Compositae,Matricaria,discoidea,species,,DC.,Plantae
 596,Allosorus acrosticus (Balb.) Christenh.,Pteridaceae E.D.M. Kirchn.,Allosorus,acrosticus,species,,(Balb.) Christenh.,Plantae
 598,Allosorus guanchicus (Bolle.) Christenh.,Pteridaceae E.D.M. Kirchn.,Allosorus,guanchicus,species,,(Bolle.) Christenh.,Plantae
-599,"Oeosporangium hispanicum (Mett.) Fraser-Jenk.
-& Pariyar",Pteridaceae E.D.M. Kirchn.,Oeosporangium,hispanicum,species,,"(Mett.) Fraser-Jenk.
-& Pariyar",Plantae
+599,Oeosporangium hispanicum (Mett.) Fraser-Jenk. & Pariyar,Pteridaceae E.D.M. Kirchn.,Oeosporangium,hispanicum,species,,(Mett.) Fraser-Jenk. & Pariyar,Plantae
 602,Allosorus tinaei (Tod.) Christenh.,Pteridaceae E.D.M. Kirchn.,Allosorus,tinaei,species,,(Tod.) Christenh.,Plantae
 603,Cheirolophus sempervirens (L.) Pomel,Compositae,Cheirolophus,sempervirens,species,,(L.) Pomel,Plantae
 604,Chelidonium majus L.,Papaveraceae,Chelidonium,majus,species,,L.,Plantae
@@ -2419,17 +2417,13 @@ taxonID,scientificName,family,genericName,specificEpithet,taxonRank,infraspecifi
 3503,Avellinia michelli (Savi) Parl.,Gramineae,Avellinia,michelli,species,,(Savi) Parl.,Plantae
 3504,Crassula vaillantii (Willd.) Roth,Crassulaceae,Crassula,vaillantii,species,,(Willd.) Roth,Plantae
 3505,Eragrostis pilosa (L.) P. Beauv.,Gramineae,Eragrostis,pilosa,species,,(L.) P. Beauv.,Plantae
-3506,"Hordeum murinum L. subsp. leporinum (Link)
-Arcang.",Gramineae,Hordeum,murinum,subsp.,leporinum,"(Link)
-Arcang.",Plantae
+3506,Hordeum murinum L. subsp. leporinum (Link)  Arcang.,Gramineae,Hordeum,murinum,subsp.,leporinum,(Link)  Arcang.,Plantae
 3507,Polygonum equisetiforme Sm.,Polygonaceae,Polygonum,equisetiforme,species,,Sm.,Plantae
-3508,"Romulea columnae Sebast. & Mauri subsp.
-columnae",Iridaceae,Romulea,columnae,subsp.,columnae,Sebast. & Mauri,Plantae
+3508,Romulea columnae Sebast. & Mauri subsp.  columnae,Iridaceae,Romulea,columnae,subsp.,columnae,Sebast. & Mauri,Plantae
 3510,Alternanthera philoxeroides (Mart.) Griseb.,Amaranthaceae,Alternanthera,philoxeroides,species,,(Mart.) Griseb.,Plantae
 3511,Lupinus micranthus Guss.,Leguminosae,Lupinus,micranthus,species,,Guss.,Plantae
 3512,Vicia villosa Roth,Leguminosae,Vicia,villosa,species,,Roth,Plantae
-3513,"Galium verticillatum Danthoine ex Lam. subsp.
-verticillatum",Rubiaceae,Galium,verticillatum,subsp.,verticillatum,Danthoine ex Lam.,Plantae
+3513,Galium verticillatum Danthoine ex Lam. subsp.  verticillatum,Rubiaceae,Galium,verticillatum,subsp.,verticillatum,Danthoine ex Lam.,Plantae
 3514,Achyrocline satureioides (Lam.) DC.,Compositae,Achyrocline,satureioides,species,,(Lam.) DC.,Plantae
 3515,Carex acutiformis Ehrh.,Cyperaceae,Carex,acutiformis,species,,Ehrh.,Plantae
 3516,Narcissus ×dezanus García Mart. & Silva Pando,Amaryllidaceae,Narcissus,×dezanus,species,,García Mart. & Silva Pando,Plantae
@@ -2512,9 +2506,7 @@ verticillatum",Rubiaceae,Galium,verticillatum,subsp.,verticillatum,Danthoine ex 
 3597,Fuchsia x hybrida Hort. Ex Sieber,Onagraceae,Fuchsia,hybrida,hybrid,,Hort. Ex Sieber,Plantae
 3598,Kalanchoe x hughtonii D.B. Ward,Crassulaceae,Kalanchoe,hughtonii,hybrid,,D.B. Ward,Plantae
 3599,Kerria japonica (L.) DC,,Kerria,japonica,species,,(L.) DC,Plantae
-3600,"Leucanthemum × superbum (Bergmans ex
-J.W.Ingram) D.H. Kent",Compositae,Leucanthemum,×,species,,"superbum (Bergmans ex
-J.W.Ingram) D.H. Kent",Plantae
+3600,Leucanthemum × superbum (Bergmans ex  J.W.Ingram) D.H. Kent,Compositae,Leucanthemum,×,species,,superbum (Bergmans ex  J.W.Ingram) D.H. Kent,Plantae
 3601,Ligustrum lucidum W.T. Aiton,Oleaceae,Ligustrum,lucidum,species,,W.T. Aiton,Plantae
 3602,Opuntia maxima Mill.,Cactaceae,Opuntia,maxima,species,,Mill.,Plantae
 3603,Opuntia ficus-indica (L.) Mill.,Cactaceae,Opuntia,ficus-indica,species,,(L.) Mill.,Plantae
