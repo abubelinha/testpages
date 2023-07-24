@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Herbario SANT</title>
+		<link rel="stylesheet" href="sortable.css" />
+<?php if(isset($_GET["js"])) { ?>
+<textarea id=nomen></textarea>
+<div id=results>bla<br>bla</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+<script type=text/javascript>
+	var parents={
+		"Poaceae":{"key":3073,"children":1332},
+		"Asteraceae":{"key":3065,"children":3275},
+		"Aster":{"key":3093921,"children":625},
+		"Centaurea":{"key":3127469,"children":1425},
+		"Carex":{"key":2721893,"children":3303},
+		"Parmeliaceae":{"key":8305,"children":127},
+		"Bryum":{"key":2676502,"children":1406},
+		"Ulva":{"key":9408069,"children":74}
+	};
+	var listanomes = [];
+	function randomIntBetween(min, max) { 
+		// https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript/7228322#7228322
+		return Math.floor(Math.random() * (max - min + 1) + min)
+	}
+	function listarnomes(limit=20) {
+		var nomes = Object.keys(parents);
+		var parent = nomes[randomIntBetween(0,nomes['length']-1)];
+		parents[parent]["key"]
+		//var limit=20;
+		var offset = randomIntBetween(0,parents[parent]["children"]-limit)
+		URLnomenclator="https://api.gbif.org/v1/species/"+parents[parent]["key"]+"/children?limit="+(limit)+"&offset="+offset;
+		//URLnomenclator = "https://api.gbif.org/v1/species/3073/children?limit=20&offset=569";
+		var retorno=[];
+		$.ajax({
+			url: URLnomenclator,
+			dataType: "html",
+			type: "GET",
+			async: false,
+			success: function(data) {
+				$("#results").html("<h3>NOMES:</h3><span class='apiresults'>"+data+"</span>");
+				gbifnomes = JSON.parse(data)['results'];
+				//JSON.parse(listanomes)['results'].forEach(function(v,k) {console.log(k+1, v['canonicalName'])});
+				var listanomes=[];
+				gbifnomes.forEach(function(v,k) {
+					//console.log(k+1, v['canonicalName'])
+					if(!(listanomes.indexOf(v['canonicalName'])>=0) && v['canonicalName']>"") {
+						listanomes.push(v['canonicalName']);
+					}
+					// https://stackoverflow.com/questions/2641347/short-circuit-array-foreach-like-calling-break/2641374#2641374
+					if(listanomes.length >= limit) return; // sae do forEach(function()), xa que os forEach non teñen opción de break
+				});
+				retorno=listanomes;
+			}
+		});
+		return retorno;
+	}
+	$("#nomen").click(function() { //alert("clickao nomen!");
+		//var nomes=array_keys($parents);
+		//var parent=$nomes[rand(0,count($parents)-1)];
+		var URLnomenclator = "./buscanomes.php?"+"nomen="+$("#nomen").val()+"&tesauro=FE";
+		//URLnomenclator="https://api.gbif.org/v1/species/"+$parents[$parent]["key"]."/children?limit=".($limit)
+		//."&offset=".rand(0,$parents[$parent]["children"]-$limit);
+		// https://stackoverflow.com/questions/13751166/javascript-uncaught-referenceerror-keys-is-not-defined/13751208#13751208
+		var nomes = Object.keys(parents);
+		parentname = randomIntBetween(0,nomes['length']-1);
+		//alert(parentname+": "+nomes[parentname]);
+		var parent = nomes[randomIntBetween(0,nomes['length']-1)];
+		parents[parent]["key"]
+		var limit=20;
+		var offset = randomIntBetween(0,parents[parent]["children"]*0.8-limit*2)
+		URLnomenclator="https://api.gbif.org/v1/species/"+parents[parent]["key"]+"/children?limit="+(limit*2)+"&offset="+offset;
+		URLnomenclator+="&nameType=SCIENTIFIC"
+		//URLnomenclator = "https://api.gbif.org/v1/species/3073/children?limit=20&offset=569";
+		$.ajax({
+			url: URLnomenclator,
+			dataType: "html",
+			type: "GET",
+			//async: false,
+			success: function(data) {
+				$("#results").html("<h3>NOMES:</h3><span class='apiresults'>"+data+"</span>");
+				gbifnomes = JSON.parse(data)['results'];
+				/*
+				data = {
+					"offset":253,"limit":20,"endOfRecords":false,"results":[{"key":5693088,"nubKey":5693088,"nameKey":1095778,"taxonID":"gbif:5693088","sourceTaxonKey":175058671,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster menelii","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5693088,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":3093921,"parent":"Aster","scientificName":"Aster menelii H.Lév.","canonicalName":"Aster menelii","authorship":"H.Lév.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"H. Lév. (1915). In: Fl. Kouy-Tcheou, 87 1914.","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:27.300+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":7969831,"nubKey":7969831,"nameKey":1095789,"taxonID":"gbif:7969831","sourceTaxonKey":169349746,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster menziesii","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":7969831,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster menziesii Hook.","canonicalName":"Aster menziesii","authorship":"Hook.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Fl. Bor.-Amer. 2: 12 (1834)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.563+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":8418182,"nubKey":8418182,"nameKey":1095792,"taxonID":"gbif:8418182","sourceTaxonKey":169349745,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster menziesii","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":8418182,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster menziesii Lindl.","canonicalName":"Aster menziesii","authorship":"Lindl.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"Possible variant of Aster menziesii Hook.","publishedIn":"Prodr. 5: 243 (1836)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.518+00:00","issues":["ORTHOGRAPHIC_VARIANT"],"synonym":false,"class":"Magnoliopsida"},{"key":5693083,"nubKey":5693083,"nameKey":1095840,"taxonID":"gbif:5693083","sourceTaxonKey":169349747,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster mesopotamicus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5693083,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster mesopotamicus Spreng.","canonicalName":"Aster mesopotamicus","authorship":"Spreng.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"1(Bot. Gart. Halle): 13 (1801)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.732+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":8292516,"nubKey":8292516,"nameKey":1095843,"taxonID":"gbif:8292516","sourceTaxonKey":169349748,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster mesopotamicus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":8292516,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster mesopotamicus Steud.","canonicalName":"Aster mesopotamicus","authorship":"Steud.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"Possible variant of Aster mesopotamicus Spreng.","publishedIn":"Nomencl. Bot. 1: 82 (1821)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.711+00:00","issues":["ORTHOGRAPHIC_VARIANT"],"synonym":false,"class":"Magnoliopsida"},{"key":5693066,"nubKey":5693066,"nameKey":1095992,"taxonID":"gbif:5693066","sourceTaxonKey":169349749,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster microlonchus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5693066,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster microlonchus Greene","canonicalName":"Aster microlonchus","authorship":"Greene","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Ottawa Naturalist 15: 278 (1902)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.725+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5693057,"nubKey":5693057,"nameKey":1096024,"taxonID":"gbif:5693057","sourceTaxonKey":169349737,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster militaris","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5693057,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster militaris Greene","canonicalName":"Aster militaris","authorship":"Greene","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Proc. Acad. Nat. Sci. Philadelphia 1895: 550 (1896)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.610+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5693053,"nubKey":5693053,"nameKey":1096039,"taxonID":"gbif:5693053","sourceTaxonKey":169349739,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster milleri","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5693053,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster milleri J.Forbes","canonicalName":"Aster milleri","authorship":"J.Forbes","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Hort. Woburn.: 189 (1833)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.451+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5693041,"nubKey":5693041,"nameKey":1096083,"taxonID":"gbif:5693041","sourceTaxonKey":169349738,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster misellus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5693041,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster misellus Piper","canonicalName":"Aster misellus","authorship":"Piper","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Proc. Biol. Soc. Washington 33: 105 (1920)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.695+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5406330,"nubKey":5406330,"nameKey":19040774,"taxonID":"gbif:5406330","sourceTaxonKey":154875049,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster miser","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5406330,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"2d59e5db-57ad-41ff-97d6-11f5fb264527","parentKey":3093921,"parent":"Aster","scientificName":"Aster miser L., 1789","canonicalName":"Aster miser","authorship":"L., 1789","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"(1789). Hortus Kew. (W. Aiton) 3","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.174+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5387527,"nubKey":5387527,"nameKey":1096273,"taxonID":"gbif:5387527","sourceTaxonKey":171524805,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster miyagii","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5387527,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":3093921,"parent":"Aster","scientificName":"Aster miyagii Koidz.","canonicalName":"Aster miyagii","authorship":"Koidz.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Koidz. (1914). In: Bot. Mag., Tokyo, 28: 148.","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:27.576+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5692998,"nubKey":5692998,"nameKey":1096327,"taxonID":"gbif:5692998","sourceTaxonKey":169349743,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster mollescens","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5692998,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster mollescens E.S.Burgess","canonicalName":"Aster mollescens","authorship":"E.S.Burgess","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Mem. Torrey Bot. Club 13: 229 (1906)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.452+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":8680337,"nubKey":8680337,"nameKey":41035234,"taxonID":"gbif:8680337","sourceTaxonKey":171524784,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster molliusculus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":8680337,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":3093921,"parent":"Aster","basionymKey":3094211,"basionym":"Diplopappus molliusculus Lindl. ex DC.","scientificName":"Aster molliusculus (Wall. ex Lindl.) C.B.Clarke","canonicalName":"Aster molliusculus","authorship":"(Wall. ex Lindl.) C.B.Clarke","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Clarke, C. B. (1876). In: Comp. Ind. 45.","numDescendants":2,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:27.011+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5386110,"nubKey":5386110,"nameKey":1096353,"taxonID":"gbif:5386110","sourceTaxonKey":171524744,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster mongolicus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5386110,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":3093921,"parent":"Aster","scientificName":"Aster mongolicus Franch.","canonicalName":"Aster mongolicus","authorship":"Franch.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Franch. (1884). In: Pl. David. 1: 161, T. 13.","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:27.237+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":7994856,"nubKey":7994856,"nameKey":19040502,"taxonID":"gbif:7994856","sourceTaxonKey":154873953,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster monticola","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":7994856,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"2d59e5db-57ad-41ff-97d6-11f5fb264527","parentKey":3093921,"parent":"Aster","scientificName":"Aster monticola Lindl. ex DC., 1836","canonicalName":"Aster monticola","authorship":"Lindl. ex DC., 1836","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"(1836). Prodr. (DC.) 5","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.389+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":8361458,"nubKey":8361458,"nameKey":1096426,"taxonID":"gbif:8361458","sourceTaxonKey":171524741,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster morrisonensis","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":8361458,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":3093921,"parent":"Aster","scientificName":"Aster morrisonensis Hayata","canonicalName":"Aster morrisonensis","authorship":"Hayata","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Hayata. (1919). In: Ic. Pl. Formos. 8: 48.","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:27.326+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5404838,"nubKey":5404838,"nameKey":1096445,"taxonID":"gbif:5404838","sourceTaxonKey":171524734,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster moupinensis","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5404838,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":3093921,"parent":"Aster","scientificName":"Aster moupinensis (Franch.) Hand.-Mazz.","canonicalName":"Aster moupinensis","authorship":"(Franch.) Hand.-Mazz.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Hand.-Mazz. (1937). In: Notizbl. Bot. Gart. Berlin, 13: 613.","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:27.579+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5929399,"nubKey":5929399,"nameKey":1096451,"taxonID":"gbif:5929399","sourceTaxonKey":101319838,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster moupinsensis","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5929399,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"66dd0960-2d7d-46ee-a491-87b9adcfe7b1","parentKey":3093921,"parent":"Aster","scientificName":"Aster moupinsensis (Franch.) Hand.-Mazz.","canonicalName":"Aster moupinsensis","authorship":"(Franch.) Hand.-Mazz.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Notizbl. Bot. Gart. Berlin-Dahlem 13:613. 1937","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.083+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5692964,"nubKey":5692964,"nameKey":1096453,"taxonID":"gbif:5692964","sourceTaxonKey":169349740,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster mucronatus","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5692964,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster mucronatus E.Sheld.","canonicalName":"Aster mucronatus","authorship":"E.Sheld.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Bull. Torrey Bot. Club 30: 309 (1903)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.720+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"},{"key":5387468,"nubKey":5387468,"nameKey":1096466,"taxonID":"gbif:5387468","sourceTaxonKey":169349741,"kingdom":"Plantae","phylum":"Tracheophyta","order":"Asterales","family":"Asteraceae","genus":"Aster","species":"Aster muliensis","kingdomKey":6,"phylumKey":7707728,"classKey":220,"orderKey":414,"familyKey":3065,"genusKey":3093921,"speciesKey":5387468,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"f382f0ce-323a-4091-bb9f-add557f3a9a2","parentKey":3093921,"parent":"Aster","scientificName":"Aster muliensis Hand.-Mazz.","canonicalName":"Aster muliensis","authorship":"Hand.-Mazz.","nameType":"SCIENTIFIC","rank":"SPECIES","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Oesterr. Bot. Z. 88: 309 (1939)","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:32:26.588+00:00","issues":[],"synonym":false,"class":"Magnoliopsida"}]}
+				gbifnomes = data['results'];
+				data = {
+				"offset":59,"limit":40,"endOfRecords":false,"results":[{"key":2606526,"nubKey":2606526,"nameKey":35248968,"taxonID":"gbif:2606526","sourceTaxonKey":168061155,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Kaernefeltia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2606526,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Kaernefeltia A.Thell & Goward, 1996","canonicalName":"Kaernefeltia","authorship":"A.Thell & Goward, 1996","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.071+00:00","issues":["NO_SPECIES"],"synonym":false,"class":"Lecanoromycetes"},{"key":2603743,"nubKey":2603743,"nameKey":18073658,"taxonID":"gbif:2603743","sourceTaxonKey":168061151,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Karoowia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2603743,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Karoowia Hale, 1989","canonicalName":"Karoowia","authorship":"Hale, 1989","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":3,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.132+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605402,"nubKey":2605402,"nameKey":6261551,"taxonID":"gbif:2605402","sourceTaxonKey":172234702,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Letharia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605402,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Letharia (Th.Fr.) Zahlbr.","canonicalName":"Letharia","authorship":"(Th.Fr.) Zahlbr.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":6,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:03.093+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3409288,"nubKey":3409288,"nameKey":6261786,"taxonID":"gbif:3409288","sourceTaxonKey":172234708,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Lethariella","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3409288,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Lethariella (Mot.) Krog","canonicalName":"Lethariella","authorship":"(Mot.) Krog","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":17,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:07.437+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":7247523,"nubKey":7247523,"nameKey":6306232,"taxonID":"gbif:7247523","sourceTaxonKey":154771352,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Lichen","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":7247523,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"2d59e5db-57ad-41ff-97d6-11f5fb264527","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Lichen Linnaeus, 1753","canonicalName":"Lichen","authorship":"Linnaeus, 1753","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Linnaeus, C. (1753). Species plantarum, exhibentes plantas rite cognitas ad genera relatas cum differentiis specificis, nominibus trivialibus, synonymis selectis, locis natalibus, secundum systema sexuale digestas. Stockholm.","numDescendants":6,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.159+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2607259,"nubKey":2607259,"nameKey":6708352,"taxonID":"gbif:2607259","sourceTaxonKey":172234781,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Maronina","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2607259,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Maronina Hafellner & R.W.Rogers","canonicalName":"Maronina","authorship":"Hafellner & R.W.Rogers","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":3,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:06.933+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3408787,"nubKey":3408787,"nameKey":6721410,"taxonID":"gbif:3408787","sourceTaxonKey":168061123,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Masonhalea","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3408787,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Masonhalea Karnef.","canonicalName":"Masonhalea","authorship":"Karnef.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.122+00:00","issues":["NO_SPECIES"],"synonym":false,"class":"Lecanoromycetes"},{"key":2603699,"nubKey":2603699,"nameKey":6807936,"taxonID":"gbif:2603699","sourceTaxonKey":172234796,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Melanelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2603699,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Melanelia Essl.","canonicalName":"Melanelia","vernacularName":"Camouflage Lichens","authorship":"Essl.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":21,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:13.683+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605684,"nubKey":2605684,"nameKey":6808136,"taxonID":"gbif:2605684","sourceTaxonKey":172234860,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Melanelixia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605684,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Melanelixia O.Blanco, A.Crespo, Divakar, Essl., D.Hawksw. & Lumbsch","canonicalName":"Melanelixia","authorship":"O.Blanco, A.Crespo, Divakar, Essl., D.Hawksw. & Lumbsch","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":34,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:06.951+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605303,"nubKey":2605303,"nameKey":6812628,"taxonID":"gbif:2605303","sourceTaxonKey":172234993,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Melanohalea","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605303,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Melanohalea O.Blanco, A.Crespo, Divakar, Essl., D.Hawksw. & Lumbsch","canonicalName":"Melanohalea","authorship":"O.Blanco, A.Crespo, Divakar, Essl., D.Hawksw. & Lumbsch","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":68,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:08.337+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2603653,"nubKey":2603653,"nameKey":6864111,"taxonID":"gbif:2603653","sourceTaxonKey":172235180,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Menegazzia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2603653,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Menegazzia A.Massal.","canonicalName":"Menegazzia","authorship":"A.Massal.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":106,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:13.083+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":8684581,"nubKey":8684581,"nameKey":30493573,"taxonID":"gbif:8684581","sourceTaxonKey":176009025,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Montanelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":8684581,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Montanelia Divakar et al.","canonicalName":"Montanelia","authorship":"Divakar et al.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Divakar, P. K.; Del-Prado, R.; Lumbsch, H. T.; Wedin, M.; Esslinger, T. L.; Leavitt, S. D.; Crespo, A. (2012). Diversification of the newly recognized lichen-forming fungal lineage Montanelia(Parmeliaceae, Ascomycota) and its relation to key geological and climatic events. American Journal of Botany. 99(12): 2014-2026.","numDescendants":23,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.731+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605358,"nubKey":2605358,"nameKey":18123532,"taxonID":"gbif:2605358","sourceTaxonKey":172235473,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Myelochroa","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605358,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Myelochroa (Y.Asahina) J.A.Elix & M.E.Hale, 1987","canonicalName":"Myelochroa","authorship":"(Y.Asahina) J.A.Elix & M.E.Hale, 1987","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":39,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:16.039+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":9812645,"nubKey":9812645,"nameKey":40963457,"taxonID":"gbif:9812645","sourceTaxonKey":161280218,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Asahina","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":9812645,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"0e61f8fe-7d25-4f81-ada7-d970bbb2c6d6","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Myelochroa gen. Asahina Elix & Hale, 1987","canonicalName":"Asahina","authorship":"Elix & Hale, 1987","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.046+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605349,"nubKey":2605349,"nameKey":18073937,"taxonID":"gbif:2605349","sourceTaxonKey":168060908,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Namakwa","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605349,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Namakwa Hale, 1988","canonicalName":"Namakwa","authorship":"Hale, 1988","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.116+00:00","issues":["NO_SPECIES"],"synonym":false,"class":"Lecanoromycetes"},{"key":7247637,"nubKey":7247637,"nameKey":34590711,"taxonID":"gbif:7247637","sourceTaxonKey":117903128,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Neofuscelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":7247637,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a43ec6d8-7b8a-4868-ad74-56b824c75698","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Neofuscelia Essl., 1978","canonicalName":"Neofuscelia","authorship":"Essl., 1978","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.155+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":10054091,"nubKey":10054091,"nameKey":33105680,"taxonID":"gbif:10054091","sourceTaxonKey":172235528,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Neoprotoparmelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":10054091,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Neoprotoparmelia Garima Singh, Lumbsch & I.Schmitt, 2018","canonicalName":"Neoprotoparmelia","authorship":"Garima Singh, Lumbsch & I.Schmitt, 2018","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Singh, Garima, ptroot, Andre, ico, Victor J., tte, Juergen, Pradeep K. Divakar,, Crespo, Ana, Caceres, Marcela Eugenia da Silva, H. Thorsten Lumbsch,, Schmitt, Imke (2018): Neoprotoparmelia gen. nov. and Maronina (Lecanorales, Protoparmelioideae): species description and generic delimitation using DNA barcodes and phenotypical characters. MycoKeys 44: 19-50, DOI: http://dx.doi.org/10.3897/mycokeys.44.29904, URL: http://dx.doi.org/10.3897/mycokeys.44.29904","numDescendants":37,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.302+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3404506,"nubKey":3404506,"nameKey":7465785,"taxonID":"gbif:3404506","sourceTaxonKey":172243411,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Neopsoromopsis","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3404506,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Neopsoromopsis Gyelin.","canonicalName":"Neopsoromopsis","authorship":"Gyelin.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":1,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.056+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":6607767,"nubKey":6607767,"nameKey":16100526,"taxonID":"gbif:6607767","sourceTaxonKey":172235589,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Nephromopsis","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":6607767,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Nephromopsis Müll.Arg.","canonicalName":"Nephromopsis","authorship":"Müll.Arg.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":72,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:03.523+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2582032,"nubKey":2582032,"nameKey":17178244,"taxonID":"gbif:2582032","sourceTaxonKey":172235837,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Nesolechia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2582032,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Nesolechia A.Massal.","canonicalName":"Nesolechia","authorship":"A.Massal.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":9,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:05.778+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":7247517,"nubKey":7247517,"nameKey":18074722,"taxonID":"gbif:7247517","sourceTaxonKey":172235857,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Neuropogon","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":7247517,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Neuropogon Nees & Flot., 1835","canonicalName":"Neuropogon","authorship":"Nees & Flot., 1835","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":4,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:04.849+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3409282,"nubKey":3409282,"nameKey":17177978,"taxonID":"gbif:3409282","sourceTaxonKey":168060789,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Nimisia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3409282,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Nimisia I.Kärnefelt & A.Thell, 1993","canonicalName":"Nimisia","authorship":"I.Kärnefelt & A.Thell, 1993","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.119+00:00","issues":["NO_SPECIES"],"synonym":false,"class":"Lecanoromycetes"},{"key":8079264,"nubKey":8079264,"nameKey":33106170,"taxonID":"gbif:8079264","sourceTaxonKey":172235863,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Nipponoparmelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":8079264,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Nipponoparmelia (Kurok.) K.H.Moon, Y.Ohmura & Kashiw., 2010","canonicalName":"Nipponoparmelia","authorship":"(Kurok.) K.H.Moon, Y.Ohmura & Kashiw., 2010","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Taxon, 59, 1749","numDescendants":9,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:05.138+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605353,"nubKey":2605353,"nameKey":18073939,"taxonID":"gbif:2605353","sourceTaxonKey":172231979,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Nodobryoria","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605353,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Nodobryoria Common & Brodo, 1995","canonicalName":"Nodobryoria","authorship":"Common & Brodo, 1995","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":7,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:13.472+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":8128177,"nubKey":8128177,"nameKey":33106386,"taxonID":"gbif:8128177","sourceTaxonKey":172231895,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Notoparmelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":8128177,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Notoparmelia A.Crespo, Ferencová & Divakar, 2014","canonicalName":"Notoparmelia","authorship":"A.Crespo, Ferencová & Divakar, 2014","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","publishedIn":"Ferencova, Z.; Cubas, P.; Divakar, P. K.; Molina, M. C.; Crespo, A. (2014). Notoparmelia, a new genus of Parmeliaceae (Ascomycota) based on overlooked reproductive anatomical features, phylogeny and distribution pattern. The Lichenologist. 46(1): 51-67.","numDescendants":25,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:03.422+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3409279,"nubKey":3409279,"nameKey":7777025,"taxonID":"gbif:3409279","sourceTaxonKey":168060773,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Omphalodiella","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3409279,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Omphalodiella Henssen","canonicalName":"Omphalodiella","authorship":"Henssen","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.103+00:00","issues":["NO_SPECIES"],"synonym":false,"class":"Lecanoromycetes"},{"key":3230746,"nubKey":3230746,"nameKey":7777182,"taxonID":"gbif:3230746","sourceTaxonKey":168060768,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Omphalodium","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3230746,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Omphalodium Meyen & Flot.","canonicalName":"Omphalodium","authorship":"Meyen & Flot.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":3,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.075+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2603634,"nubKey":2603634,"nameKey":7776496,"taxonID":"gbif:2603634","sourceTaxonKey":172231883,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Omphalora","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2603634,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Omphalora Nash & Hafellner","canonicalName":"Omphalora","authorship":"Nash & Hafellner","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:06.660+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605068,"nubKey":2605068,"nameKey":17186725,"taxonID":"gbif:2605068","sourceTaxonKey":176009036,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Oropogon","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605068,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Oropogon Th.Fr.","canonicalName":"Oropogon","authorship":"Th.Fr.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":56,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.906+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605797,"nubKey":2605797,"nameKey":17610432,"taxonID":"gbif:2605797","sourceTaxonKey":172231839,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Pannoparmelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605797,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Pannoparmelia (Mull.Arg.) Darbish","canonicalName":"Pannoparmelia","authorship":"(Mull.Arg.) Darbish","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":8,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:13.435+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":7248022,"nubKey":7248022,"nameKey":19846474,"taxonID":"gbif:7248022","sourceTaxonKey":172231831,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Paraparmelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":7248022,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Paraparmelia Elix & J.Johnst., 1986","canonicalName":"Paraparmelia","authorship":"Elix & J.Johnst., 1986","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":2,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:12.258+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3409311,"nubKey":3409311,"nameKey":18123506,"taxonID":"gbif:3409311","sourceTaxonKey":168061208,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmelaria","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3409311,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"a6c6cead-b5ce-4a4e-8cf5-1542ba708dec","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmelaria D.D.Awasthi, 1987","canonicalName":"Parmelaria","authorship":"D.D.Awasthi, 1987","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"DOUBTFUL","nomenclaturalStatus":[],"remarks":"","publishedIn":"Journal of the Hattori Botanical Laboratory 63: 368","numDescendants":0,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.131+00:00","issues":["NO_SPECIES"],"synonym":false,"class":"Lecanoromycetes"},{"key":2576643,"nubKey":2576643,"nameKey":8251119,"taxonID":"gbif:2576643","sourceTaxonKey":172231709,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmelia","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2576643,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmelia Acharius, 1803","canonicalName":"Parmelia","vernacularName":"Shield Lichens","authorship":"Acharius, 1803","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":181,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:12.354+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605167,"nubKey":2605167,"nameKey":8257210,"taxonID":"gbif:2605167","sourceTaxonKey":172231623,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmelina","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605167,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmelina Hale","canonicalName":"Parmelina","authorship":"Hale","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":34,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:11.888+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605841,"nubKey":2605841,"nameKey":18074085,"taxonID":"gbif:2605841","sourceTaxonKey":172231569,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmelinella","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605841,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmelinella Elix & Hale, 1987","canonicalName":"Parmelinella","authorship":"Elix & Hale, 1987","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":18,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:02.227+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2605638,"nubKey":2605638,"nameKey":8257561,"taxonID":"gbif:2605638","sourceTaxonKey":172231511,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmelinopsis","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2605638,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmelinopsis Elix & Hale","canonicalName":"Parmelinopsis","authorship":"Elix & Hale","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":17,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:07.355+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":8283982,"nubKey":8283982,"nameKey":8257681,"taxonID":"gbif:8283982","sourceTaxonKey":172231483,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmeliopsis","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":8283982,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmeliopsis Nyl.","canonicalName":"Parmeliopsis","vernacularName":"Bran Lichens","authorship":"Nyl.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":6,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:13.810+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2565599,"nubKey":2565599,"nameKey":19846572,"taxonID":"gbif:2565599","sourceTaxonKey":172230741,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmotrema","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2565599,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmotrema A.Massal., 1860","canonicalName":"Parmotrema","vernacularName":"Ruffle Lichens","authorship":"A.Massal., 1860","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":394,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:14.575+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":3407445,"nubKey":3407445,"nameKey":32346311,"taxonID":"gbif:3407445","sourceTaxonKey":172230725,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Parmotremopsis","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":3407445,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Parmotremopsis Elix & Hale, 1987","canonicalName":"Parmotremopsis","authorship":"Elix & Hale, 1987","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":3,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:04.648+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"},{"key":2584200,"nubKey":2584200,"nameKey":8491487,"taxonID":"gbif:2584200","sourceTaxonKey":172230703,"kingdom":"Fungi","phylum":"Ascomycota","order":"Lecanorales","family":"Parmeliaceae","genus":"Phacopsis","kingdomKey":5,"phylumKey":95,"classKey":180,"orderKey":1048,"familyKey":8305,"genusKey":2584200,"datasetKey":"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c","constituentKey":"7ddf754f-d193-4cc9-b351-99906754a03b","parentKey":8305,"parent":"Parmeliaceae","scientificName":"Phacopsis Tul.","canonicalName":"Phacopsis","authorship":"Tul.","nameType":"SCIENTIFIC","rank":"GENUS","origin":"SOURCE","taxonomicStatus":"ACCEPTED","nomenclaturalStatus":[],"remarks":"","numDescendants":9,"lastCrawled":"2022-11-23T06:43:37.357+00:00","lastInterpreted":"2022-11-23T06:23:05.708+00:00","issues":[],"synonym":false,"class":"Lecanoromycetes"}]}
+				gbifnomes = data['results'];
+				*/
+				//JSON.parse(listanomes)['results'].forEach(function(v,k) {console.log(k+1, v['canonicalName'])});
+				listanomes=[];
+				listanomesLcase=[] // para non admitir versións uppercase/lowercase do mesmo nome canónico
+				//gbifnomes.forEach(function(v,k) {
+				for(k=0;k<gbifnomes.length;k++) {
+					v=gbifnomes[k];
+					nome = v['canonicalName']
+					console.log(k+1, nome)
+					if(typeof(nome)!='undefined' && !(listanomesLcase.indexOf(nome.toLowerCase())>=0) && nome>"") {
+						listanomes.push(nome);
+						listanomesLcase.push(nome.toLowerCase());
+					}
+					if(listanomes.length >= limit) break;
+					listanomes.sort();
+				}
+				//});
+				div = document.getElementById("gridDemo");
+				var rollo="";
+				listanomes.forEach(function(v,k) {
+					rollo += '<div class="grid-square" id="i-'+(k+1)+'" data-id="'+(k+1)+'">'+v+'</div>';
+				});
+				div.innerHTML=rollo;
+				enlace = parentname+": "+nomes[parentname]+" ["+parents[parent]["children"]+" children]";
+				enlace += " <a href="+URLnomenclator+" target=_blank>"+URLnomenclator+"</a>";
+				document.getElementById("apicallurl").innerHTML = enlace;
+				barallar();
+			}
+		});
+		//sleep(3); barallar();
+	});
+	function biodict(elems) {
+	}
+	biodict(3);
+</script>
+<!-- PHP CODE BELOW: -- >
+$reveal_version="3.0.0";
+$cdn="https://cdn.jsdelivr.net/reveal.js";
+$reveal_version="3.7.0";
+$cdn="https://cdnjs.cloudflare.com/ajax/libs/reveal.js";
+	function diccionario($elementos=10) {
+		$parents=array(
+		/*
+			"Magnoliopsida"=>array("key"=>220,"children"=>367),
+		*/
+			"Poaceae"=>array("key"=>3073,"children"=>1332),
+			"Asteraceae"=>array("key"=>3065,"children"=>3275),
+			"Aster"=>array("key"=>3093921,"children"=>625),
+			"Centaurea"=>array("key"=>3127469,"children"=>1425),
+			"Carex"=>array("key"=>2721893,"children"=>3303),
+			"Parmeliaceae"=>array("key"=>8305,"children"=>127),
+			"Bryum"=>array("key"=>2676502,"children"=>1406),
+			"Ulva"=>array("key"=>9408069,"children"=>74),
+		);
+		
+		$nomes=array_keys($parents);
+		$parent=$nomes[rand(0,count($parents)-1)];
+		//echo var_export($nomes,true);
+		//echo $nome;
+		//$parent="Carex";
+		$datasets=array(
+			"GBIF"=>"d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+			"TPL"=>"046bbc50-cae2-47ff-aa43-729fbf53f7c5",
+		);
+		$limit=2*$elementos;
+		$url="https://api.gbif.org/v1/species/".$parents[$parent]["key"]."/children?limit=".($limit)
+		."&offset=".rand(0,$parents[$parent]["children"]-$limit);
+		//$url="https://api.gbif.org/v1/species/2721893/children?limit=42&offset=1680";
+		echo "<a href=".$url." target=_blank>".$url."</a>";
+		$json=file_get_contents($url);
+		$array=json_decode($json,true);
+		//echo var_export($array,true);
+		$devolver=Array();
+		foreach($array["results"] as $key=>$value) {
+			if(!in_array($value["canonicalName"],$devolver) && $value["canonicalName"]>"") {
+				$n++;
+				array_push($devolver, $value["canonicalName"]);
+				if($n >= $elementos) break;
+			}
+		}
+		$url="https://api.gbif.org/v1/species/2721893/children?limit=42&offset=3234";
+		// REORDENAR O ARRAI, POIS NON SEMPRE GBIF O SERVE EN ORDE ALFABÉTICA (EXEMPLO DOS CAREX ANTERIORES)
+		sort($devolver);
+		return(json_encode($devolver));
+		return($json);
+	}
+?>
+-->
+		<!--link rel="stylesheet" href="<?php echo $cdn."/".$reveal_version; ?>/css/reveal.min.css">
+		<link rel="stylesheet" href="<?php echo $cdn."/".$reveal_version; ?>/css/theme/simple.css" id="theme"-->
+		<!--link rel="stylesheet" href="<?php echo $cdn."/".$reveal_version; ?>/css/theme/moon.css">
+		<link rel="stylesheet" href="<?php echo $cdn."/".$reveal_version; ?>/css/theme/night.css"-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://sortablejs.github.io/Sortable/st/theme.css">
+	<style>
+	.grid-square {
+		width: 150px;
+		vertical-align: top;
+	}
+	.stacked-bar-graph {
+		wodtj_ 50%;
+		height: 38px;
+		color: #000000;
+		border: 2px solid red;
+	}
+	</style>
+	<!--?php 
+		$nelems=isset($_GET["elems"]) ? $_GET["elems"] : 10;
+		$dict=diccionario($nelems);
+		echo "<script>
+		";
+		echo "var dict=".$dict.";"; 
+	?-->
+	<span id="apicallurl"><a href=https://api.gbif.org/v1/species/3073/children?limit=20&offset=569 target=_blank>https://api.gbif.org/v1/species/3073/children?limit=20&offset=569</a></span>
+	<script>
+		var dict=["Lasiorhachis","Lasiorrhachis","Lasiurus","Lecomtella","Leersia","Leleba","Lepidopyronia","Lepiurus","Leptagrostis","Leptaspis"];
+		dict = listarnomes();
+		//dict.results.forEach(function(item,index) {console.log(index,item.canonicalName)});
+		//dict.forEach(function(item,index) {console.log(index,item)});
+	</script>
+	</head>
+	<body>
+
+		<div id="grid" class="row">
+			<h4 class="col-12">Grid Example</h4>
+			<div id="gridDemo" class="col">
+			<!-- ?php 
+				//for($i=1;$i<=20;$i++) {
+				$phpdict=json_decode($dict,true);
+				//echo var_export($phpdict["results"],true);
+				//for($i=1;$i<=count($phpdict["results"]);$i++) {
+				for($i=1;$i<=count($phpdict);$i++) {
+					//echo '<div class="grid-square" id="i-'.$i.'" data-id="'.$i.'">Item '.$i.'</div>';
+					if(true) {
+						//echo '<div class="grid-square" id="i-'.$i.'" data-id="'.$i.'">'.$phpdict["results"][$i-1]["canonicalName"].'</div>';
+						echo '<div class="grid-square" id="i-'.$i.'" data-id="'.$i.'">'.$phpdict[$i-1].'</div>';
+					}
+				}
+			? -->
+			<div class="grid-square" id="i-1" data-id="1">Lasiorhachis</div><div class="grid-square" id="i-2" data-id="2">Lasiorrhachis</div><div class="grid-square" id="i-3" data-id="3">Lasiurus</div><div class="grid-square" id="i-4" data-id="4">Lecomtella</div><div class="grid-square" id="i-5" data-id="5">Leersia</div><div class="grid-square" id="i-6" data-id="6">Leleba</div><div class="grid-square" id="i-7" data-id="7">Lepidopyronia</div><div class="grid-square" id="i-8" data-id="8">Lepiurus</div><div class="grid-square" id="i-9" data-id="9">Leptagrostis</div><div class="grid-square" id="i-10" data-id="10">Leptaspis</div>
+			</div>
+			<h4 class="col-12" style="border:1px dashed red;">Results</h4>
+			<div id="divresults" class="col" style="border:1px dashed red;">
+			bla bla bla
+			</div>
+		</div>
+	<!-- Latest Sortable -->
+	<script src="https://sortablejs.github.io/Sortable/Sortable.js"></script>
+
+	<script type="text/javascript" src="https://sortablejs.github.io/Sortable/st/prettify/prettify.js"></script>
+	<script type="text/javascript" src="https://sortablejs.github.io/Sortable/st/prettify/run_prettify.js"></script>
+
+	<!--script src="https://sortablejs.github.io/Sortable/st/app.js"-->
+	<script type="text/javascript">
+	function barallar() { //alert(1);
+		function shuffle(array) { //https://stackoverflow.com/a/2450976
+			var currentIndex = array.length, temporaryValue, randomIndex;
+			// While there remain elements to shuffle...
+			while (0 !== currentIndex) {
+				// Pick a remaining element...
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+				// And swap it with the current element.
+				temporaryValue = array[currentIndex];
+				array[currentIndex] = array[randomIndex];
+				array[randomIndex] = temporaryValue;
+			}
+			return array;
+		}
+		function compArrays(a,b) { // https://stackoverflow.com/a/27212/710788
+			var objectsAreSame=true, equal=0, dif=0, dist=0;
+			for(var propertyName in a) {
+				//console.log(a[propertyName],b[propertyName]);
+				if(a[propertyName] !== b[propertyName]) {
+					objectsAreSame = false;
+					//break;
+					dif++;
+					dist += Math.abs(a[propertyName] - b[propertyName]);
+				} else {
+					equal++;
+					//console.log(a[propertyName]);
+				}
+			}
+			console.log("distance: "+dist);
+			maxdist=0;
+			for(i=1;i<=a.length;i++) {
+				maxdist+=Math.abs(i - (a.length-(i-1)))
+			}
+			return {"status":objectsAreSame, "ben":equal, "mal":dif, "dist":dist,"maxdist":maxdist};
+			return objectsAreSame;
+		}
+		function resaltar(gridDemo,dataIdAttr) {
+			for (var n=0;n<gridDemo.children.length;n++) {
+				elem = gridDemo.children[n];
+				poscorrecta = parseInt(elem.getAttribute(dataIdAttr));
+				if(n+1 == poscorrecta) {
+					elem.style="background:lightgreen;";
+				} else {
+					elem.style="background:lightpink;";
+				}
+			}
+		}
+		function marcar(ordeOrixinal,ordeActual) {
+			var marcadorjson=compArrays(ordeOrixinal,ordeActual);
+			console.log(marcadorjson);
+			var marcador=document.getElementById("divresults"), mwidth=100;
+			var total=marcadorjson["ben"]+marcadorjson["mal"];
+			var pben=marcadorjson["ben"]/total, pmal=marcadorjson["mal"]/total;
+			var pdist=marcadorjson["dist"]/marcadorjson["maxdist"];
+			marcador.innerHTML="<div style='background:green; width:"+(mwidth*pben)+"px;'>"+marcadorjson["ben"]+"</div>"
+			+"<div style='background:red; width:"+(mwidth*pmal)+"px;'>"+marcadorjson["mal"]+"</div>"
+			+"";/// (marcadorjson["ben"]+marcadorjson["mal"]);
+			marcador.innerHTML=""
+			/*
+			+"<div class='stacked-bar-graph' style='width:50%; display:block;'>"
+			+"<span class='bar-1' style='display:inline-block; width:"+(pben*100)+"%; background-color:green;'>"
+			+(pben>0.10 ? (Math.floor(pben*1000)/10) +'% BEN' : '')
+			+"</span>"
+			+"<span class='bar-2' style='display:inline-block; width:"+(pmal*100)+"%; background-color:red;'>"
+			+(pmal>0.10 ? (Math.floor(pmal*1000)/10) +'% MAL' : '')
+			+"</span>"
+			+"</div>" */
+			+"<div class='stacked-bar-graph' style='width:50%; display:block;'>"
+			+"<span class='bar-1' style='display:inline-block; width:"+(100-pdist*100)+"%; background-color:green;'>"
+			+(1-pdist>0.10 ? (Math.floor(1000-pdist*1000)/10) +'% BEN' : '&nbsp;')
+			+"</span>"
+			+"<span class='bar-2' style='display:inline-block; width:"+(pdist*100)+"%; background-color:red;'>"
+			+(pdist>0.10 ? (Math.floor(pdist*1000)/10) +'% MAL' : '&nbsp;')
+			+"</span>"
+			+"</div>"
+			;
+		}
+		var ordeOrixinal,ordeActual;
+		var gridDemo = document.getElementById('gridDemo');
+		// Grid demo
+		new Sortable(gridDemo, {
+			animation: 150,
+			ghostClass: 'blue-background-class',
+			dataIdAttr: 'data-id',
+			// Element dragging ended
+			onEnd: function (/**Event*/evt) {
+				var itemEl = evt.item;  // dragged HTMLElement
+				evt.to;    // target list
+				evt.from;  // previous list
+				evt.oldIndex;  // element's old index within old parent
+				evt.newIndex;  // element's new index within new parent
+				console.log(evt);
+			},
+			store: {
+				/**
+				 * Get the order of elements. Called once during initialization.
+				 * @param   {Sortable}  sortable
+				 * @returns {Array}
+				 */
+				
+				get: function (sortable) {
+					ordeOrixinal=sortable.toArray();
+					console.log("ORDE ORIXINAL: ",sortable.toArray());
+					// SE QUEREMOS QUE A ORDE ORIXINAL SEXA IGUAL Á ÚLTIMA GARDADA:
+					if(false) {
+						var order = localStorage.getItem(sortable.options.group.name);
+						console.log(order);
+						ordeOrixinal=order;
+						//return order ? order.split('|') : [];
+						return [];
+					}
+					// SE QUEREMOS QUE A ORDE ORIXINAL SEXA ALEATORIA:
+					if(true) {
+						var copia=ordeOrixinal.slice(); // https://stackoverflow.com/a/7486130/710788
+						var order = shuffle(copia);
+						return order;
+					}
+				},
+				
+				/**
+				 * Save the order of elements. Called onEnd (when the item is dropped).
+				 * @param {Sortable}  sortable
+				 */
+				set: function (sortable) {
+					var order = sortable.toArray();
+					ordeActual=order;
+					localStorage.setItem(sortable.options.group.name, order.join('|'));
+					console.log(order);
+					marcar(ordeOrixinal,ordeActual);
+					resaltar(gridDemo,'data-id');
+				}
+			}
+		});
+	}
+	barallar();
+	//$("#nomen").click();
+		
+	</script>
+	
+	</body>
+</html>
