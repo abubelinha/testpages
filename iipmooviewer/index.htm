@@ -64,12 +64,11 @@
    
   <script type="text/javascript">
 	var server = "https://zenodo.org/api/iiif/v2/";
-	var image = '6d2dbb72-5736-4679-b350-77492092068b:ad623be0-59e3-4468-8927-398573d033c7:BR0000012078165.jpg';
-	var client_w = 4900, client_h = 7167, client_dpi=600;
+	var image = 'record:2869800:BR0000012078165.jpg'; client_w = 4900; client_h = 7167; client_dpi=600;
 	// 256 is too small tilesize for Zenodo ("too many requests" responses when zooming in)
 	var client_tw = 512, client_th = 512; // we want server to send us this tilesize (even if its info.json suggests to use 256!)
 	var client_scale = client_dpi/25.4;
-	var credit = '<a href="https://iiif.archive.org/image/iiif/3/platowithenglish04platuoft%2Fplatowithenglish04platuoft_jp2.zip%2Fplatowithenglish04platuoft_jp2%2Fplatowithenglish04platuoft_0002.jp2/full/512,/0/default.jpg">sample Internet Archive image</a> from <a href="https://archive.org/details/platowithenglish04platuoft"><i>Plato, with an English translation</i> by H.N. Fowler, W.R.M. Lamb & R.G. Bury (1914)</a>';
+	var credit = '<a href="https://zenodo.org/records/2869800">BR 12078165</a>';
 	// ANNOTATIONS
 	  var annotations = {
 		 1: { x: 0.7, y: 0.6, w: 0.2, h: 0.18, category: "pigments", text: "prussian blue" },
