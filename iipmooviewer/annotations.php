@@ -1,6 +1,12 @@
 <?php
 /* SCRIPT TO PROCESS ANNOTATIONS MADE ON IMAGE FILES, RECIBED FROM IIPMOOVIEWER CLIENT:
-
+   Just a minimalistic writing/reading example. Much more to be done:
+   - Access control
+   - Process key-value pairs and insert into a database ¿
+   - Update DB whenever same annotation id exists
+   - Avoid conflicting ids. Either:
+     - Generate UUIDs?
+     - Let iimooviewer client read DB so new annotations avoid repeating ids
 */
 $values = '';
 foreach($_POST as $key=>$value) {
