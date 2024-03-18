@@ -30,6 +30,7 @@ Sumario realizado a partir de datos de fondos existentes en Herbario SANT (D.G.S
 <script type="text/javascript" src="./exsi.js"></script>
 
 ## Evolución temporal de participación:
+
 |PARTICIPANTES|1996 - 2022<br>27 centurias|
 |---|---|
 |**ABH**<br>26 participacións<br>102 exemplares|█████·█████·<br>█████·█████·<br>█████·█▒ ...|
