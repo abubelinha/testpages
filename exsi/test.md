@@ -1,22 +1,10 @@
-# Exsiccata de Flora Ibero-Macaronésica Selecta.
-Sumario realizado a partir de datos de fondos existentes en Herbario SANT (D.G.SanLeón 2004-2024, cit. [`DOI 10.5281/zenodo.6597490`](https://doi.org/10.5281/zenodo.6597490)).
-
-* TOC 
-{:toc}
-
-
------------
-
-
 <div id='panel'>
 <span title="CERRAR" class='close' onclick="document.getElementById('panel').style.visibility='hidden';">X</span><br>
 <div id='visor' class='visor'>
 </div>
 </div>
 
-## Lista de exemplares (3034, repartidos en 27 centurias):
-
-(actualizada según última determinacion en SANT, a 2024.03) [+ = taxon repetido]
+## List:
 
 <button id='cancel_sel'>ver todo</button>
 <select id=sel_herbario><option selected value=''>Herbario</option><option id='ABH' value='ABH'>ABH [102]</option><option id='AH' value='AH'>AH [96]</option><option id='ALBA' value='ALBA'>ALBA [50]</option><option id='ARAN' value='ARAN'>ARAN [81]</option><option id='BC' value='BC'>BC [43]</option><option id='BCN' value='BCN'>BCN [99]</option><option id='BIO' value='BIO'>BIO [98]</option><option id='COA' value='COA'>COA [48]</option><option id='EMMA' value='EMMA'>EMMA [7]</option><option id='FCO' value='FCO'>FCO [102]</option><option id='GDA' value='GDA'>GDA [96]</option><option id='HBIL' value='HBIL'>HBIL [35]</option><option id='HGI' value='HGI'>HGI [9]</option><option id='HJBS' value='HJBS'>HJBS [20]</option><option id='HSS' value='HSS'>HSS [52]</option><option id='HUAL' value='HUAL'>HUAL [54]</option><option id='JACA' value='JACA'>JACA [103]</option><option id='JBAG' value='JBAG'>JBAG [37]</option><option id='LEB' value='LEB'>LEB [100]</option><option id='LISI' value='LISI'>LISI [96]</option><option id='LISU' value='LISU'>LISU [3]</option><option id='LOU' value='LOU'>LOU [36]</option><option id='LPA' value='LPA'>LPA [105]</option><option id='MA' value='MA'>MA [110]</option><option id='MACB' value='MACB'>MACB [79]</option><option id='MAF' value='MAF'>MAF [104]</option><option id='MGC' value='MGC'>MGC [3]</option><option id='ORT' value='ORT'>ORT [63]</option><option id='PAMP' value='PAMP'>PAMP [98]</option><option id='SALA' value='SALA'>SALA [109]</option><option id='SANT' value='SANT'>SANT [107]</option><option id='SEV' value='SEV'>SEV [47]</option><option id='TFC' value='TFC'>TFC [37]</option><option id='UEVH' value='UEVH'>UEVH [59]</option><option id='UMAD' value='UMAD'>UMAD [4]</option><option id='UPNA' value='UPNA'>UPNA [96]</option><option id='UPOS' value='UPOS'>UPOS [11]</option><option id='VAL' value='VAL'>VAL [110]</option><option id='VIT' value='VIT'>VIT [109]</option><option id='h-Alejandre' value='h-Alejandre'>h.Alejandre [107]</option><option id='h-CALM' value='h-CALM'>h.CALM [26]</option><option id='h-J-M-Labarga' value='h-J-M-Labarga'>h.J.M.Labarga [75]</option><option id='h-L-M-Medrano' value='h-L-M-Medrano'>h.L.M.Medrano [4]</option><option id='h-L-Serra' value='h-L-Serra'>h.L.Serra [11]</option><option id='h-MAL-JBLC' value='h-MAL-JBLC'>h.MAL-JBLC [66]</option><option id='h-R-Senar' value='h-R-Senar'>h.R.Senar [11]</option><option id='h-SESTAO' value='h-SESTAO'>h.SESTAO [102]</option><option id='h-V-J-Arán' value='h-V-J-Arán'>h.V.J.Arán [14]</option></select><select id=sel_centuria><option selected value=''>Centuria</option><option id='c_1' value='c_1'>cent.1 [100]</option><option id='c_2' value='c_2'>cent.2 [100]</option><option id='c_3' value='c_3'>cent.3 [100]</option><option id='c_4' value='c_4'>cent.4 [92]</option><option id='c_5' value='c_5'>cent.5 [124]</option><option id='c_6' value='c_6'>cent.6 [110]</option><option id='c_7' value='c_7'>cent.7 [100]</option><option id='c_8' value='c_8'>cent.8 [112]</option><option id='c_9' value='c_9'>cent.9 [117]</option><option id='c_10' value='c_10'>cent.10 [116]</option><option id='c_11' value='c_11'>cent.11 [108]</option><option id='c_12' value='c_12'>cent.12 [112]</option><option id='c_13' value='c_13'>cent.13 [116]</option><option id='c_14' value='c_14'>cent.14 [120]</option><option id='c_15' value='c_15'>cent.15 [127]</option><option id='c_16' value='c_16'>cent.16 [106]</option><option id='c_17' value='c_17'>cent.17 [107]</option><option id='c_18' value='c_18'>cent.18 [120]</option><option id='c_19' value='c_19'>cent.19 [101]</option><option id='c_20' value='c_20'>cent.20 [127]</option><option id='c_21' value='c_21'>cent.21 [113]</option><option id='c_22' value='c_22'>cent.22 [98]</option><option id='c_23' value='c_23'>cent.23 [119]</option><option id='c_24' value='c_24'>cent.24 [116]</option><option id='c_25' value='c_25'>cent.25 [131]</option><option id='c_26' value='c_26'>cent.26 [111]</option><option id='c_27' value='c_27'>cent.27 [131]</option></select><select id=sel_zona><option selected value=''>Zona</option><option id='z_AND' value='z_AND'>AND [2]</option><option id='z_ESP-A' value='z_ESP-A'>ESP-A [130]</option><option id='z_ESP-AL' value='z_ESP-AL'>ESP-AL [1]</option><option id='z_ESP-Ab' value='z_ESP-Ab'>ESP-Ab [50]</option><option id='z_ESP-Al' value='z_ESP-Al'>ESP-Al [83]</option><option id='z_ESP-Av' value='z_ESP-Av'>ESP-Av [26]</option><option id='z_ESP-B' value='z_ESP-B'>ESP-B [92]</option><option id='z_ESP-Ba' value='z_ESP-Ba'>ESP-Ba [42]</option><option id='z_ESP-Bi' value='z_ESP-Bi'>ESP-Bi [52]</option><option id='z_ESP-Bu' value='z_ESP-Bu'>ESP-Bu [112]</option><option id='z_ESP-C' value='z_ESP-C'>ESP-C [94]</option><option id='z_ESP-CR' value='z_ESP-CR'>ESP-CR [18]</option><option id='z_ESP-Ca' value='z_ESP-Ca'>ESP-Ca [46]</option><option id='z_ESP-Cc' value='z_ESP-Cc'>ESP-Cc [25]</option><option id='z_ESP-Co' value='z_ESP-Co'>ESP-Co [47]</option><option id='z_ESP-Cs' value='z_ESP-Cs'>ESP-Cs [49]</option><option id='z_ESP-Cu' value='z_ESP-Cu'>ESP-Cu [30]</option><option id='z_ESP-GC' value='z_ESP-GC'>ESP-GC [105]</option><option id='z_ESP-Ge' value='z_ESP-Ge'>ESP-Ge [34]</option><option id='z_ESP-Gi' value='z_ESP-Gi'>ESP-Gi [1]</option><option id='z_ESP-Gr' value='z_ESP-Gr'>ESP-Gr [67]</option><option id='z_ESP-Gu' value='z_ESP-Gu'>ESP-Gu [92]</option><option id='z_ESP-H' value='z_ESP-H'>ESP-H [11]</option><option id='z_ESP-Hu' value='z_ESP-Hu'>ESP-Hu [102]</option><option id='z_ESP-J' value='z_ESP-J'>ESP-J [11]</option><option id='z_ESP-L' value='z_ESP-L'>ESP-L [41]</option><option id='z_ESP-Le' value='z_ESP-Le'>ESP-Le [104]</option><option id='z_ESP-Lo' value='z_ESP-Lo'>ESP-Lo [50]</option><option id='z_ESP-Lu' value='z_ESP-Lu'>ESP-Lu [15]</option><option id='z_ESP-M' value='z_ESP-M'>ESP-M [155]</option><option id='z_ESP-Ma' value='z_ESP-Ma'>ESP-Ma [87]</option><option id='z_ESP-Mll' value='z_ESP-Mll'>ESP-Mll [8]</option><option id='z_ESP-Mn' value='z_ESP-Mn'>ESP-Mn [1]</option><option id='z_ESP-Mu' value='z_ESP-Mu'>ESP-Mu [20]</option><option id='z_ESP-Na' value='z_ESP-Na'>ESP-Na [191]</option><option id='z_ESP-O' value='z_ESP-O'>ESP-O [128]</option><option id='z_ESP-Or' value='z_ESP-Or'>ESP-Or [17]</option><option id='z_ESP-P' value='z_ESP-P'>ESP-P [50]</option><option id='z_ESP-PM' value='z_ESP-PM'>ESP-PM [31]</option><option id='z_ESP-Po' value='z_ESP-Po'>ESP-Po [21]</option><option id='z_ESP-S' value='z_ESP-S'>ESP-S [46]</option><option id='z_ESP-SG' value='z_ESP-SG'>ESP-SG [1]</option><option id='z_ESP-SS' value='z_ESP-SS'>ESP-SS [68]</option><option id='z_ESP-Sa' value='z_ESP-Sa'>ESP-Sa [26]</option><option id='z_ESP-Se' value='z_ESP-Se'>ESP-Se [13]</option><option id='z_ESP-Sg' value='z_ESP-Sg'>ESP-Sg [12]</option><option id='z_ESP-So' value='z_ESP-So'>ESP-So [21]</option><option id='z_ESP-T' value='z_ESP-T'>ESP-T [3]</option><option id='z_ESP-Te' value='z_ESP-Te'>ESP-Te [24]</option><option id='z_ESP-Tf' value='z_ESP-Tf'>ESP-Tf [102]</option><option id='z_ESP-To' value='z_ESP-To'>ESP-To [44]</option><option id='z_ESP-V' value='z_ESP-V'>ESP-V [40]</option><option id='z_ESP-Va' value='z_ESP-Va'>ESP-Va [10]</option><option id='z_ESP-Vi' value='z_ESP-Vi'>ESP-Vi [91]</option><option id='z_ESP-Z' value='z_ESP-Z'>ESP-Z [50]</option><option id='z_ESP-Za' value='z_ESP-Za'>ESP-Za [12]</option><option id='z_FRA' value='z_FRA'>FRA [24]</option><option id='z_ITA' value='z_ITA'>ITA [3]</option><option id='z_MAR' value='z_MAR'>MAR [10]</option><option id='z_PRT' value='z_PRT'>PRT [5]</option><option id='z_PRT-AAl' value='z_PRT-AAl'>PRT-AAl [34]</option><option id='z_PRT-Ag' value='z_PRT-Ag'>PRT-Ag [28]</option><option id='z_PRT-Az' value='z_PRT-Az'>PRT-Az [1]</option><option id='z_PRT-BA' value='z_PRT-BA'>PRT-BA [3]</option><option id='z_PRT-BAl' value='z_PRT-BAl'>PRT-BAl [38]</option><option id='z_PRT-BB' value='z_PRT-BB'>PRT-BB [3]</option><option id='z_PRT-BL' value='z_PRT-BL'>PRT-BL [4]</option><option id='z_PRT-E' value='z_PRT-E'>PRT-E [40]</option><option id='z_PRT-Mad' value='z_PRT-Mad'>PRT-Mad [3]</option><option id='z_PRT-Mi' value='z_PRT-Mi'>PRT-Mi [4]</option><option id='z_PRT-R' value='z_PRT-R'>PRT-R [16]</option><option id='z_PRT-TM' value='z_PRT-TM'>PRT-TM [13]</option><option id='z_TUN' value='z_TUN'>TUN [1]</option></select>
@@ -26,58 +14,6 @@ Sumario realizado a partir de datos de fondos existentes en Herbario SANT (D.G.S
 -----------
 
 
-<link rel="stylesheet" href="./exsi.css">
-<script type="text/javascript" src="./exsi.js"></script>
+<link rel="stylesheet" href="./longpress_test.css">
+<script type="text/javascript" src="./longpress_test.js"></script>
 
-## Evolución temporal de participación:
-
-|PARTICIPANTES|1996 - 2022<br>27 centurias|
-|---|---|
-|**ABH**<br>26 participacións<br>102 exemplares|█████·█████·<br>█████·█████·<br>█████·█▒ ...|
-|**AH**<br>25 participacións<br>96 exemplares|▒████·█████·<br>████▒·█████·<br>█████·██ ...|
-|**ALBA**<br>13 participacións<br>50 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·█████·<br>█████·██ ...|
-|**ARAN**<br>21 participacións<br>81 exemplares|▒█▒██·█████·<br>█████·█████·<br>██▒█▒·▒▒ ...|
-|**BC**<br>12 participacións<br>43 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·█████·<br>▒████·██ ...|
-|**BCN**<br>25 participacións<br>99 exemplares|▒█▒██·█████·<br>█████·█████·<br>█████·██ ...|
-|**BIO**<br>25 participacións<br>98 exemplares|███▒█·█████·<br>█████·█████·<br>████▒·██ ...|
-|**COA**<br>13 participacións<br>48 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·█████·<br>█████·██ ...|
-|**EMMA**<br>2 participacións<br>7 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·██ ...|
-|**FCO**<br>26 participacións<br>102 exemplares|█████·█████·<br>█████·██▒██·<br>█████·██ ...|
-|**GDA**<br>25 participacións<br>96 exemplares|▒████·█████·<br>█████·█████·<br>███▒█·██ ...|
-|**HBIL**<br>9 participacións<br>35 exemplares|▒▒▒▒▒·▒▒███·<br>█████·█▒▒▒▒·<br>▒▒▒▒▒·▒▒ ...|
-|**HGI**<br>2 participacións<br>9 exemplares|▒▒▒▒█·▒▒█▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒ ...|
-|**HJBS**<br>5 participacións<br>20 exemplares|▒▒▒▒▒·███▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒█▒·█▒ ...|
-|**HSS**<br>13 participacións<br>52 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒██·██▒██·<br>█████·██ ...|
-|**HUAL**<br>15 participacións<br>54 exemplares|▒▒▒▒▒·▒▒▒██·<br>▒██▒▒·█████·<br>▒████·██ ...|
-|**JACA**<br>26 participacións<br>103 exemplares|█████·█████·<br>█████·█████·<br>███▒█·██ ...|
-|**JBAG**<br>10 participacións<br>37 exemplares|▒▒▒▒▒·▒▒▒▒█·<br>█████·██▒██·<br>▒▒▒▒▒·▒▒ ...|
-|**LEB**<br>26 participacións<br>100 exemplares|▒████·█████·<br>█████·█████·<br>█████·██ ...|
-|**LISI**<br>25 participacións<br>96 exemplares|▒████·█████·<br>█████·█████·<br>▒████·██ ...|
-|**LISU**<br>1 participacións<br>3 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒█▒▒▒·<br>▒▒▒▒▒·▒▒ ...|
-|**LOU**<br>9 participacións<br>36 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒██·<br>█████·██ ...|
-|**LPA**<br>27 participacións<br>105 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**MA**<br>27 participacións<br>110 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**MACB**<br>21 participacións<br>79 exemplares|███▒█·█████·<br>▒███▒·█▒▒▒█·<br>█████·██ ...|
-|**MAF**<br>27 participacións<br>104 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**MGC**<br>1 participacións<br>3 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒█▒▒▒·▒▒ ...|
-|**ORT**<br>16 participacións<br>63 exemplares|▒████·█▒███·<br>█████·███▒▒·<br>▒▒▒▒▒·▒▒ ...|
-|**PAMP**<br>25 participacións<br>98 exemplares|█████·██▒██·<br>█████·█████·<br>▒████·██ ...|
-|**SALA**<br>27 participacións<br>109 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**SANT**<br>27 participacións<br>107 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**SEV**<br>12 participacións<br>47 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·▒████·<br>█████·██ ...|
-|**TFC**<br>9 participacións<br>37 exemplares|███▒▒·████▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·██ ...|
-|**UEVH**<br>17 participacións<br>59 exemplares|▒▒▒▒▒·▒▒▒▒█·<br>█▒███·█████·<br>█████·██ ...|
-|**UMAD**<br>1 participacións<br>4 exemplares|▒▒▒▒▒·█▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒ ...|
-|**UPNA**<br>25 participacións<br>96 exemplares|▒▒███·█████·<br>█████·█████·<br>█████·██ ...|
-|**UPOS**<br>3 participacións<br>11 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·██ ...|
-|**VAL**<br>27 participacións<br>110 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**VIT**<br>27 participacións<br>109 exemplares|█████·█████·<br>█████·█████·<br>█████·██ ...|
-|**h.Alejandre**<br>25 participacións<br>107 exemplares|█████·█████·<br>█████·█████·<br>███▒█·█▒ ...|
-|**h.CALM**<br>7 participacións<br>26 exemplares|▒▒▒▒▒·▒▒▒█▒·<br>▒▒▒██·███▒▒·<br>█▒▒▒▒·▒▒ ...|
-|**h.J.M.Labarga**<br>20 participacións<br>75 exemplares|▒▒▒▒▒·▒▒███·<br>█████·█████·<br>█████·██ ...|
-|**h.L.M.Medrano**<br>1 participacións<br>4 exemplares|▒█▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒ ...|
-|**h.L.Serra**<br>3 participacións<br>11 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·██ ...|
-|**h.MAL-JBLC**<br>17 participacións<br>66 exemplares|▒▒███·█████·<br>█████·████▒·<br>▒▒▒▒▒·▒▒ ...|
-|**h.R.Senar**<br>3 participacións<br>11 exemplares|▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒█·██ ...|
-|**h.SESTAO**<br>26 participacións<br>102 exemplares|█████·█████·<br>████▒·█████·<br>█████·██ ...|
-|**h.V.J.Arán**<br>3 participacións<br>14 exemplares|███▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒▒▒▒·<br>▒▒▒▒▒·▒▒ ...|
