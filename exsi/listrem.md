@@ -27,6 +27,7 @@ Sumario realizado a partir de datos de fondos existentes en Herbario SANT (D.G.S
 
 
 <p><link rel="stylesheet" href="https://www.usc.es/hsant/exsi/exsi_rem.css"></p>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="https://www.usc.es/hsant/exsi/exsi_rem.js"></script></html>
 
 ## Evolución temporal de participación:
