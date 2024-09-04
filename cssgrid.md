@@ -19,6 +19,9 @@ body { padding: 1rem; }
   height: 4rem;
 }
 
+.card1 { background-color: blue;
+  color: red; }
+
 .cards {
   max-width: 1200px;
   margin: 0 auto;
@@ -33,7 +36,7 @@ body { padding: 1rem; }
 
 <div class="cards">
   <div class="card">OoooNE</div>
-  <div class="card">TWO</div>
+  <div class="card card1">TWO</div>
   <div class="card">THREE</div>
   <div class="card">FOUR</div>
   <div class="card">FIVE</div>
