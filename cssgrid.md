@@ -29,7 +29,7 @@ body { padding: 1rem; }
 <body>
 
 <div class="cards">
-  <div class="card">ONE</div>
+  <div class="card">OoooNE</div>
   <div class="card">TWO</div>
   <div class="card">THREE</div>
   <div class="card">FOUR</div>
