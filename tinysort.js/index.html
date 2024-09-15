@@ -8,7 +8,7 @@
 <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.8/tinysort.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.8/tinysort.charorder.min.js"></script>
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.8/tinysort.charorder.min.js"></script-->
 <script type="text/javascript">
 var myCharOrder='a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]';
 myCharOrder='_[aáàäâãå]bc[ç]d[eéèëê]h[iíìïî]nñ[oóòöôõ]t[uúùüû]';
@@ -36,7 +36,7 @@ function sortByLength(a,b) { /*
 <button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.code&quot;,forceStrings:true});'>code</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=name]",{natural:true}); document.getElementById("messages").innerHTML="";'>product name</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
-<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:'t[uúü]'}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
+<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:myCharOrder}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
 <button onclick='tinysort("div#mylist>ol>li",{sortFunction:sortByLength}); document.getElementById("messages").innerHTML="";'>by length</button>
 
