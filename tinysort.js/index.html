@@ -1,0 +1,64 @@
+<h1><a href=http://tinysort.sjeiti.com/>TinySort homepage</a> and <a href=https://github.com/Sjeiti/TinySort/issues>GitHub page</a></h1>
+
+<li><a href=https://www.w3schools.com/cssref/css_selectors.asp>CSS selectors reference</a></li>
+<li><a href=https://github.com/Sjeiti/TinySort/issues/125#issuecomment-244302431>how to unsort</a>? ... <a href=https://jsfiddle.net/Sjeiti/66tgnwzg/>jsfiddle demo</a></li>
+<li>var myCharOrder='<span id="charord">a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]</span>';</li>
+<hr>
+
+<!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.8/tinysort.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/3.2.8/tinysort.charorder.min.js"></script>
+<script type="text/javascript">
+var myCharOrder1='a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]';
+var myCharOrder='[aáàäâãå]bc[ç]d[eéèëê]h[iíìïî]nñ[oóòöôõ]t[uúùüû]';
+document.getElementById('charord').innerHTML=myCharOrder;
+
+function sortCodes(a,b) {
+  var sa=a.elm.textContent.toString();
+  var sb=b.elm.textContent.toString();
+  return sa===sb ? 0 : (sa>sb?1:-1);
+}
+function sortByLength(a,b) { /*
+  Taken from here:    https://jsfiddle.net/Sjeiti/wkcayhq7/
+  And commented here: https://github.com/Sjeiti/TinySort/issues/132#issuecomment-307611044
+  */
+  var lenA = a.elm.textContent.length;
+  var lenB = b.elm.textContent.length;
+  return lenA === lenB ? 0 : (lenA > lenB ? 1 : -1);
+}  
+</script>
+<style>
+.code {color:red; font-weight:bold;}
+#messages {background-color:yellow; color:red; font-weight:bold;}
+</style>
+
+<button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.code&quot;,forceStrings:true});'>code</button>
+<button onclick='tinysort("div#mylist>ol>li","[class=name]",{natural:true}); document.getElementById("messages").innerHTML="";'>product name</button>
+<button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
+<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:myCharOrder}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
+<button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
+<button onclick='tinysort("div#mylist>ol>li",{sortFunction:sortByLength}); document.getElementById("messages").innerHTML="";'>by length</button>
+
+<p>
+<div id="messages"></div>
+<div id="mylist">
+<ol>
+<li><b><i><span class="name">Pop corn</span></i></b>. <span class="place">USA. New York</span><br><span class="person">Donald Duck</span> <span class="date">(2018.05.11)</span>
+<span class="code">Product.1-2</span></li>
+<li><b><i><span class="name">Croissant</span></i></b>. <span class="place">France. Paris.</span><br><span class="person">Amelie Dupont</span> <span class="date">(2017.05.23)</span>
+<span class="code">Product.1.0</span></li>
+<li><b><i><span class="name">Beer</span></i></b>. <span class="place">Deutschland. Berlin.</span><br><span class="person">Karl Heinz</span> <span class="date">(2017.05.24)</span>
+<span class="code">Product.1-11</span></li>
+<li><b><i><span class="name">Coffee</span></i></b>. <span class="place">Brasil. São Paulo.</span><br><span class="person">João Vieira</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1-1</span></li>
+<li><b><i><span class="name">cafeína</span></i></b>. <span class="place">Brasil. Salvador da Bahia.</span><br><span class="person">Sánchez Dragão</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.21</span></li>
+<li><b><i><span class="name">café</span></i></b>. <span class="place">Brasil. San Paulo.</span><br><span class="person">Saúl Craviotto</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.10</span></li>
+<li><b><i><span class="name">cafeteiras</span></i></b>. <span class="place">Brasil. Santa Catarina.</span><br><span class="person">Sandra Lopes</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.01</span></li>
+<li><b><i><span class="name">cafetinhos</span></i></b>. <span class="place">Brasil. Santos.</span><br><span class="person">Sàcha Yamamoto</span> <span class="date">(2017.06.04)</span>
+<span class="code">Product.1.1</span></li>
+</ol>
+</div>
