@@ -80,7 +80,7 @@ function myAZorderFunction(elem_a,elem_b) {
 <button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:myCharOrder}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
 <button onclick='tinysort("div#mylist>ol>li",{sortFunction:sortByLength}); document.getElementById("messages").innerHTML="";'>by length</button>
-<button onclick='tinysort("div#mylist>ol>li",{sortFunction:myAZorderFunction, selector:"span.person"}); document.getElementById("messages").innerHTML="";'>custom â-Z function</button>
+<button onclick='tinysort("div#mylist>ol>li",{sortFunction:myAZorderFunction, selector:&quot;span.person&quot;}); document.getElementById("messages").innerHTML="";'>custom â-Z function</button>
 
 <p>
 <div id="messages"></div>
