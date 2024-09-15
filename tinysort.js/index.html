@@ -2,14 +2,15 @@
 
 <li><a href=https://www.w3schools.com/cssref/css_selectors.asp>CSS selectors reference</a></li>
 <li><a href=https://github.com/Sjeiti/TinySort/issues/125#issuecomment-244302431>how to unsort</a>? ... <a href=https://jsfiddle.net/Sjeiti/66tgnwzg/>jsfiddle demo</a></li>
-<li>var myCharOrder='a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]';</li>
+<li>var myCharOrder='<span id="charord">a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]</span>';</li>
 <hr>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.charorder.min.js"></script>
 <script type="text/javascript">
-var myCharOrder='a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]';
+var myCharOrder1='a[áàäâãå]bc[ç]de[éèëê]hi[íìïî]nño[óòöôõ]t[uúùüû]';
 myCharOrder='[aáàäâãå]bc[ç]d[eéèëê]h[iíìïî]nñ[oóòöôõ]t[uúùüû]';
+document.getElementById('charorder').innerHTML
 
 function sortCodes(a,b) {
   var sa=a.elm.textContent.toString();
