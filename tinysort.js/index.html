@@ -80,7 +80,7 @@ function myAZorderFunction(elem_a,elem_b) {
 <button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:myCharOrder}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
 <button onclick='tinysort("div#mylist>ol>li",{sortFunction:sortByLength}); document.getElementById("messages").innerHTML="";'>by length</button>
-<button onclick='tinysort("div#mylist>ol>li",{sortFunction:myAZorderFunction, selector:"span.char"}); document.getElementById("messages").innerHTML="";'>custom â-Z function</button>
+<button onclick='tinysort("div#mylist>ol>li",{sortFunction:myAZorderFunction, selector:"span.person"}); document.getElementById("messages").innerHTML="";'>custom â-Z function</button>
 
 <p>
 <div id="messages"></div>
@@ -103,13 +103,13 @@ function myAZorderFunction(elem_a,elem_b) {
 <li><b><i><span class="name">cafetinhos</span></i></b>. <span class="place">Brasil. Santos.</span><br><span class="person">Sàcha Yamamoto</span> <span class="date">(2017.06.04)</span>
 <span class="code">Product.1.1</span></li>
 
-<li><span class="char">Sandra</span></li>
-<li><span class="char">Sécha</span></li>
-<li><span class="char">Sïcha</span></li>
-<li><span class="char">Sàcha</span></li>
-<li><span class="char">Szàcha</span></li>
-<li><span class="char">Sàcha</span></li>
-<li><span class="char">Saúl</span></li>
+<li><span class="person">Sandra</span></li>
+<li><span class="person">Sécha</span></li>
+<li><span class="person">Sïcha</span></li>
+<li><span class="person">Sàcha</span></li>
+<li><span class="person">Szàcha</span></li>
+<li><span class="person">Sàcha</span></li>
+<li><span class="person">Saúl</span></li>
 <li><span class="char">Sánchez</span></li>
 
 </ol>
