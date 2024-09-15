@@ -36,7 +36,7 @@ function sortByLength(a,b) { /*
 <button style="color:red;font-weight:bold;" onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.code&quot;,forceStrings:true});'>code</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=name]",{natural:true}); document.getElementById("messages").innerHTML="";'>product name</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=place]",{natural:true}); document.getElementById("messages").innerHTML="";'>place</button>
-<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:myCharOrder}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
+<button onclick='tinysort("div#mylist>ol>li",{selector:&quot;span.person&quot;,charOrder:&quot;æøå[{Aa}]&quot;}); document.getElementById("messages").innerHTML="sorted by person! "+myCharOrder;'>person</button>
 <button onclick='tinysort("div#mylist>ol>li","[class=date]",{natural:true}); document.getElementById("messages").innerHTML="";'>date</button>
 <button onclick='tinysort("div#mylist>ol>li",{sortFunction:sortByLength}); document.getElementById("messages").innerHTML="";'>by length</button>
 
