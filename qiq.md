@@ -15,12 +15,12 @@ estos valiosos datos biográficos para su incorporación en las bases de datos d
 ## ¿Por qué debería importarnos?
 
 Saber quiénes son estas personas y poder identificarlas de manera inequívoca es esencial para:
-- cumplir con los **[Principios de Datos FAIR](https://doi.org/10.1038/sdata.2016.18?utm_source=chatgpt.com)**, 
+- cumplir con los **[Principios de Datos FAIR](https://es.wikipedia.org/wiki/Datos_FAIR)**, 
 - para mejorar la **calidad** de los datos de los especímenes y los resultados científicos.
 - **interconectar datos** como especímenes, publicaciones, secuencias de ADN y otros resultados de investigación.
 
-## ¿Qué pasa con [GDPR](https://www.consilium.europa.eu/en/policies/data-protection-regulation)?
-El Reglamento General de Protección de Datos (GDPR) no se aplica a personas fallecidas. 
+## ¿Qué pasa con GDPR?
+El [Reglamento General de Protección de Datos](https://es.wikipedia.org/wiki/Reglamento_General_de_Protecci%C3%B3n_de_Datos) ([GDPR](https://www.consilium.europa.eu/en/policies/data-protection-regulation)) no se aplica a personas fallecidas. 
 Las instituciones pueden almacenar indefinidamente datos personales de recolectoras vivas, 
 como su nombre, ID o fechas de nacimiento/muerte sin necesidad de pedir su consentimiento, 
 pero tienen la obligación de informarles.
