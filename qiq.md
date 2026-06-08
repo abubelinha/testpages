@@ -40,7 +40,7 @@ pero tienen la obligación de informarles.
 
 ## Para Administradores de Bases de Datos
 - Publique los identificadores de personas con los datos de la colección
-en la Instalación Global de Información sobre Biodiversidad (GBIF) o en GeoCASE. 
+en la Infraestructura Global de Información sobre Biodiversidad ([GBIF](https://www.gbif.org)) o en [GeoCASE](https://geocase.eu/). 
 
 ## Para Editores
 - Incluya los identificadores de personas con los datos de la colección mencionados en la publicación. 
