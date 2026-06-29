@@ -40,6 +40,9 @@ background-color: #ddd; font-style: italic;
 .nexo {
 background-color: red; font-weight: bold;
 }
+.select-group {
+font-size: 18px;   /* increase what you see before opening */
+}
 </style>
 
 <script type=text/javascript>
@@ -82,11 +85,11 @@ el.style.display = 'none'; //'none';
 
 </head>
 <body>
-<h4>2026.06.29_21:54:25</h4>
+<h4>2026.06.29_22:00:45</h4>
 <h4>
 C:\Dropbox\CVs\Idiomas\_DE\Deutsch.xlsx
 DETECTADOS 23 DUPLICADOS: -, aber, aus, bei, bitte, da, dann, das, doch, finden, gleich, Lehrer/in, nicht, nichts, noch, nächste, paar, Stift der, Stück(e) DAS, unter, vor, zu, über</h4>
-<select id='grupos' onchange="handleSelectChange(event)"><option selected value=''>select option:</option><option></option><option>Fragen</option><option>Jahreszeit</option><option>Monat</option><option>Tageszeit</option><option>Uhrzeit</option><option>Wochentag</option><option>actividade</option><option>bebida</option><option>cantidad</option><option>cantidade</option><option>casa</option><option>casos</option><option>cocina</option><option>comida</option><option>compras</option><option>corpo</option><option>cosas</option><option>cualidade</option><option>datetime</option><option>especias</option><option>estudio</option><option>estudios</option><option>exame</option><option>familia</option><option>farbe</option><option>fito</option><option>fragen</option><option>fruta</option><option>importante</option><option>intro</option><option>lact</option><option>lugares</option><option>material</option><option>meteo</option><option>modal</option><option>modalverben</option><option>numerar</option><option>poses</option><option>posición</option><option>prefixos</option><option>profesión</option><option>ropa</option><option>saludar</option><option>singplur</option><option>sufixos</option><option>toponimia</option><option>traballo</option><option>transporte</option><option>verdura</option><option>zoo</option></select>
+<select id='grupos' class='select-group'  onchange="handleSelectChange(event)"><option selected value=''>select option:</option><option></option><option>Fragen</option><option>Jahreszeit</option><option>Monat</option><option>Tageszeit</option><option>Uhrzeit</option><option>Wochentag</option><option>actividade</option><option>bebida</option><option>cantidad</option><option>cantidade</option><option>casa</option><option>casos</option><option>cocina</option><option>comida</option><option>compras</option><option>corpo</option><option>cosas</option><option>cualidade</option><option>datetime</option><option>especias</option><option>estudio</option><option>estudios</option><option>exame</option><option>familia</option><option>farbe</option><option>fito</option><option>fragen</option><option>fruta</option><option>importante</option><option>intro</option><option>lact</option><option>lugares</option><option>material</option><option>meteo</option><option>modal</option><option>modalverben</option><option>numerar</option><option>poses</option><option>posición</option><option>prefixos</option><option>profesión</option><option>ropa</option><option>saludar</option><option>singplur</option><option>sufixos</option><option>toponimia</option><option>traballo</option><option>transporte</option><option>verdura</option><option>zoo</option></select>
 <div id='panel'></div>
 
 <hr>
